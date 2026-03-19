@@ -1834,7 +1834,7 @@ const anim={
   // SC11: Visual-only ecosystem — auto-animate, no speech
   10:[[1200,'z11glow'],[2000,'z11orbit'],[3000,'z11hub'],[5000,'z11n1'],[6500,'z11n2'],[8000,'z11n3'],[9500,'z11ar1'],[9800,'z11ar2'],[10100,'z11ar3'],[10400,'z11ar4']],
   // SC12: Host: "Together with Samsung..." → phone (3s) → laptop (6s) → map (9s) → then closing speech + fold
-  11:[[1500,'z12c3'],[4000,'z12lbl'],[6000,'z12c1'],[9000,'z12bg']]
+  11:[[1500,'z12c3'],[4000,'z12c1'],[7000,'z12bg'],[10000,'z12lbl']]
 };
 
 let act=[];
@@ -1948,7 +1948,7 @@ function show(i){
     const allItems=['z12c1','z12c3'];
     const hlOrder=['z12c3','z12c1']; // phone, laptop
     const hlStart=3000;
-    const hlPer=3000;
+    const hlPer=3500;
     // Forward cycle
     hlOrder.forEach((id,idx)=>{
       act.push(setTimeout(()=>{
@@ -1961,22 +1961,21 @@ function show(i){
     act.push(setTimeout(()=>{
       allItems.forEach(p=>{const e=document.getElementById(p);if(e){e.classList.add('featured');e.style.opacity='1';}});
     },groupTime));
-    // Step 1: Title fades, arrow fades, laptop & phone move to center
+    // Step 1: Title fades, laptop & phone move to center (5s after group)
     act.push(setTimeout(()=>{
       const lbl=document.getElementById('z12lbl');if(lbl)lbl.classList.add('fold-out');
-      const a1=document.getElementById('z12a1');if(a1)a1.classList.add('fold');
       const c1=document.getElementById('z12c1');if(c1){c1.classList.remove('featured');c1.classList.add('move-to-center-left');}
       const c3=document.getElementById('z12c3');if(c3){c3.classList.remove('featured');c3.classList.add('move-to-center-right');}
-    },groupTime+1200));
+    },groupTime+7000));
     // Step 2: Laptop & phone vanish
     act.push(setTimeout(()=>{
       const c1=document.getElementById('z12c1');if(c1){c1.classList.remove('move-to-center-left');c1.classList.add('absorb-left');}
       const c3=document.getElementById('z12c3');if(c3){c3.classList.remove('move-to-center-right');c3.classList.add('absorb-right');}
-    },groupTime+2700));
+    },groupTime+8500));
     // Step 3: Background folds shut
     act.push(setTimeout(()=>{
       const sc12=document.getElementById('sc12');if(sc12)sc12.classList.add('bg-folding');
-    },groupTime+3800));
+    },groupTime+10000));
   }
 }
 
