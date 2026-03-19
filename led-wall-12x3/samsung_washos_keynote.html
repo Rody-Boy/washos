@@ -801,7 +801,7 @@
   .sc11-hub-logo{height:min(5vw,16vh);filter:drop-shadow(0 0 1.5vw rgba(76,175,80,.3)) drop-shadow(0 0 3vw rgba(33,150,243,.15));}
 
   /* ══════ SC12 — PLATFORM OVERVIEW ══════ */
-  #sc12{background:var(--black);flex-direction:column;}
+  #sc12{background:#1a2e24;flex-direction:column;}
   .sc12-lbl{font-family:'Bebas Neue',sans-serif;font-size:min(2vw,7vh);letter-spacing:0.35vw;text-transform:uppercase;color:var(--white);margin-bottom:min(2vw,5vh);opacity:0;transform:translateY(10px);transition:all 2.5s ease;z-index:2;text-align:center;}
   .sc12-lbl.on{opacity:1;transform:translateY(0);}
   .sc12-lbl .accent{color:var(--green-bright);}
@@ -1413,6 +1413,25 @@
 <!-- SC12 — PLATFORM OVERVIEW -->
 <!-- SC12 — PLATFORM OVERVIEW -->
 <div class="scene" id="sc12">
+  <!-- Map background elements -->
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,8,.1),rgba(0,10,5,.2));z-index:0;"></div>
+  <div class="sc12-radar" style="position:absolute;inset:0;z-index:0;"><div class="sc12-radar-sweep"></div></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:18%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:42%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:68%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:90%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-v" style="left:22%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-v" style="left:52%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-v" style="left:78%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-h" style="top:8%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-h" style="top:30%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-h" style="top:55%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-h" style="top:80%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-v" style="left:10%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-v" style="left:35%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-v" style="left:65%;z-index:0;"></div>
+  <div class="sc12-map-road sc12-map-road-v" style="left:92%;z-index:0;"></div>
+
   <div class="sc12-lbl" id="z12lbl">Intelligence In <span class="accent">Every Cycle.</span></div>
   <div class="sc12-row">
     <div class="sc12-item" id="z12c1">
