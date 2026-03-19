@@ -890,8 +890,8 @@
   .map-line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(76,175,80,.12),transparent);transform-origin:left center;}
   .map-pulse{position:absolute;width:8px;height:8px;border-radius:50%;background:rgba(76,175,80,.25);animation:mapP 3.5s ease-in-out infinite;}
   @keyframes mapP{0%,100%{transform:scale(1);opacity:.25;}50%{transform:scale(2.5);opacity:0;}}
-  .sc10-hero{font-family:'Bebas Neue',sans-serif;font-size:min(7.7vw,15vh);letter-spacing:0.42vw;text-align:center;line-height:1.15;max-width:85%;z-index:2;display:flex;flex-direction:column;align-items:center;}
-  .sc10-line{opacity:0;transform:translateY(20px);transition:opacity 2s ease,transform 2s cubic-bezier(.25,.46,.45,.94);}
+  .sc10-hero{font-family:'Bebas Neue',sans-serif;font-size:min(7.7vw,15vh);letter-spacing:0.42vw;line-height:1.15;z-index:2;display:flex;flex-direction:column;align-items:flex-start;position:absolute;left:8%;top:50%;transform:translateY(-50%);}
+  .sc10-line{opacity:0;transform:translateY(16px);transition:all 2.4s cubic-bezier(.25,.46,.45,.94);}
   .sc10-line.on{opacity:1;transform:translateY(0);}
 
   /* ══════ SC11 — CLOSING ══════ */
@@ -907,7 +907,7 @@
   /* ══════ SC12 — PLATFORM OVERVIEW ══════ */
   #sc12{background:var(--black);position:relative;padding:0 !important;}
   /* Map covers the entire slide as background */
-  .sc12-map-bg-full{position:absolute;inset:0;z-index:1;background:#161e1a;overflow:hidden;}
+  .sc12-map-bg-full{position:absolute;inset:0;z-index:1;background:#1a2e24;overflow:hidden;}
   /* Title overlays the map */
   .sc12-lbl{font-family:'Bebas Neue',sans-serif;font-size:min(3vw,6vh);letter-spacing:0.42vw;text-transform:uppercase;color:var(--white);opacity:0;transform:translateY(10px);transition:all 2.5s ease;z-index:5;text-align:center;position:absolute;top:4vh;left:0;right:0;text-shadow:0 0 2vw rgba(0,0,0,.6);}
   .sc12-lbl.on{opacity:1;transform:translateY(0);}
@@ -978,12 +978,12 @@
   /* Map panel is now hidden — content lives in the full-screen bg */
   .sc12-map-panel{display:none;}
   /* Roads inside the map */
-  .sc12-map-road{position:absolute;background:rgba(76,175,80,.08);z-index:1;}
+  .sc12-map-road{position:absolute;background:rgba(76,175,80,.12);z-index:1;}
   .sc12-map-road-h{height:2px;width:100%;}
   .sc12-map-road-v{width:2px;height:100%;}
-  .sc12-map-road-main{background:rgba(76,175,80,.12);}
-  .sc12-map-road-main.sc12-map-road-h{height:3px;}
-  .sc12-map-road-main.sc12-map-road-v{width:3px;}
+  .sc12-map-road-main{background:rgba(76,175,80,.18);}
+  .sc12-map-road-main.sc12-map-road-h{height:4px;}
+  .sc12-map-road-main.sc12-map-road-v{width:4px;}
 
   /* Phone card — for map and customer app */
   .sc12-phone-card{
@@ -1008,7 +1008,7 @@
   .sc12-phone-chin::after{content:'';width:2vw;height:.1vw;border-radius:.07vw;background:#333;}
 
   /* Map tint overlay */
-  .sc12-map-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,8,.2),rgba(0,10,5,.4));z-index:1;}
+  .sc12-map-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,8,.1),rgba(0,10,5,.2));z-index:1;}
 
   /* Radar sweep — rotating scan line from center */
   .sc12-radar{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
