@@ -15,7 +15,7 @@ const HEIGHT = 960;  // 3m LED wall — 4:1 aspect ratio
 const FRAME_DURATION_MS = 1000 / FPS;
 
 // Scene durations from the HTML (in ms)
-const durations = [20000, 20000, 20000, 18000, 25000, 18000, 22000, 20000, 18000, 16000, 16000, 28000];
+const durations = [20000, 20000, 20000, 18000, 25000, 18000, 22000, 20000, 18000, 16000, 16000, 35000];
 const TOTAL_MS = durations.reduce((a, b) => a + b, 0);
 const TOTAL_FRAMES = Math.ceil((TOTAL_MS / 1000) * FPS);
 

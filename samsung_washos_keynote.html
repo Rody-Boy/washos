@@ -910,7 +910,7 @@
   /* Map background hidden by default, revealed last */
   #sc12 .sc12-map-bg{position:absolute;inset:0;z-index:0;background:#1a2e24;opacity:0;transition:opacity 2.5s ease;pointer-events:none;}
   #sc12 .sc12-map-bg.on{opacity:1;}
-  .sc12-lbl{font-family:'Bebas Neue',sans-serif;font-size:min(3vw,6vh);letter-spacing:0.42vw;text-transform:uppercase;color:var(--white);margin-bottom:min(2.5vw,5vh);opacity:0;transform:translateY(10px);transition:all 2.5s ease;z-index:2;text-align:center;}
+  .sc12-lbl{font-family:'Bebas Neue',sans-serif;font-size:min(3.5vw,7vh);letter-spacing:0.42vw;text-transform:uppercase;color:var(--white);opacity:0;transform:translateY(10px);transition:all 2.5s ease;z-index:2;text-align:center;max-width:min(25vw,50vh);line-height:1.2;text-shadow:0 0 2vw rgba(0,0,0,.5);}
   .sc12-lbl.on{opacity:1;transform:translateY(0);}
   .sc12-lbl .accent{color:var(--green-bright);}
   .sc12-row{display:flex;align-items:center;justify-content:center;gap:min(4vw,8vh);position:relative;max-height:75vh;z-index:2;}
@@ -1039,7 +1039,7 @@
 
   /* Shop pins with status labels */
   .sc12-pin{position:absolute;z-index:4;display:flex;flex-direction:column;align-items:center;}
-  .sc12-pin-dot{width:1.2vw;height:1.2vw;border-radius:.25vw;background:rgba(76,175,80,.15);border:1.5px solid rgba(76,175,80,.25);box-shadow:0 0 .8vw rgba(76,175,80,.3);position:relative;display:flex;align-items:center;justify-content:center;}
+  .sc12-pin-dot{width:1.5vw;height:1.5vw;border-radius:.3vw;background:rgba(76,175,80,.2);border:2px solid rgba(76,175,80,.3);box-shadow:0 0 1vw rgba(76,175,80,.4);position:relative;display:flex;align-items:center;justify-content:center;}
   .sc12-pin-dot svg{width:.7vw;height:.7vw;}
   .sc12-pin-dot::before{content:'';position:absolute;inset:-.5vw;border-radius:.4vw;border:1.5px solid rgba(76,175,80,.1);animation:sc12Pulse 2.5s ease-out infinite;}
   .sc12-pin-dot::before{content:'';position:absolute;inset:-.35vw;border-radius:50%;border:1.5px solid rgba(76,175,80,.15);animation:sc12Pulse 2.5s ease-out infinite;}
@@ -1052,7 +1052,7 @@
   @keyframes sc12StatusFade{0%,100%{opacity:0;}20%,80%{opacity:.8;}}
 
   /* Customer dots that move toward nearest shop */
-  .sc12-cust{position:absolute;z-index:3;width:.3vw;height:.3vw;border-radius:50%;background:var(--green-bright);box-shadow:0 0 .3vw rgba(76,175,80,.4);opacity:0;}
+  .sc12-cust{position:absolute;z-index:3;width:.6vw;height:.6vw;border-radius:50%;background:var(--green-bright);box-shadow:0 0 .8vw rgba(76,175,80,.5);opacity:0;}
   .sc12-cust-moving{animation:sc12CustMove var(--cdur) ease-in-out infinite;animation-delay:var(--cdelay);}
   @keyframes sc12CustMove{
     0%{opacity:0;transform:translate(0,0);}
@@ -1640,6 +1640,15 @@
   <div class="sc12-cust sc12-cust-moving" style="top:65%;left:95%;z-index:1;--cx:-1.5vw;--cy:-1vw;--cdur:3.2s;--cdelay:.6s"></div>
   <div class="sc12-cust sc12-cust-moving" style="top:90%;left:30%;z-index:1;--cx:1vw;--cy:-1.5vw;--cdur:4s;--cdelay:1s"></div>
   <div class="sc12-cust sc12-cust-moving" style="top:92%;left:75%;z-index:1;--cx:-1.5vw;--cy:-1vw;--cdur:3.4s;--cdelay:1.8s"></div>
+  <!-- Extra moving customers -->
+  <div class="sc12-cust sc12-cust-moving" style="top:18%;left:30%;z-index:1;--cx:1.5vw;--cy:1.2vw;--cdur:3.3s;--cdelay:.2s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:22%;left:55%;z-index:1;--cx:-1vw;--cy:1.5vw;--cdur:4.5s;--cdelay:1.1s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:45%;left:42%;z-index:1;--cx:1.2vw;--cy:-.8vw;--cdur:3.7s;--cdelay:.7s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:50%;left:62%;z-index:1;--cx:-1.5vw;--cy:1vw;--cdur:4.1s;--cdelay:1.4s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:72%;left:48%;z-index:1;--cx:1vw;--cy:-1.2vw;--cdur:3.5s;--cdelay:.5s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:78%;left:15%;z-index:1;--cx:2vw;--cy:.5vw;--cdur:3.9s;--cdelay:1.6s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:28%;left:80%;z-index:1;--cx:-1.2vw;--cy:-.5vw;--cdur:4.3s;--cdelay:.9s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:55%;left:25%;z-index:1;--cx:1.5vw;--cy:-.8vw;--cdur:3.1s;--cdelay:2.1s"></div>
   <!-- Background connection lines -->
   <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;">
     <line class="sc12-conn" x1="20%" y1="5%" x2="8%" y2="10%" style="stroke:rgba(76,175,80,.08);stroke-width:1;stroke-dasharray:3 3;animation:sc12ConnDraw 3s ease-in-out infinite;animation-delay:0s"/>
@@ -1653,7 +1662,6 @@
   </svg>
   </div><!-- /sc12-map-bg -->
 
-  <div class="sc12-lbl" id="z12lbl" style="z-index:2;">Intelligence In <span class="accent">Every Cycle.</span></div>
   <div class="sc12-row">
     <!-- LEFT: Shop Portal -->
     <div class="sc12-item" id="z12c1">
@@ -1661,7 +1669,8 @@
       <div class="sc12-item-label">Shop Portal</div>
     </div>
 
-    <div class="sc12-arrow" id="z12a1"><div class="sc12-arrow-line"><div class="sc12-arrow-dot"></div></div></div>
+    <!-- CENTER: Title -->
+    <div class="sc12-lbl" id="z12lbl">Intelligence In<br><span class="accent">Every Cycle.</span></div>
 
     <!-- RIGHT: Customer App -->
     <div class="sc12-item" id="z12c3">
@@ -1698,7 +1707,7 @@ const dur=[
   18000, // 9  Smart Machines — "Samsung machines now become intelligent..."
   16000, // 10 Industry Transformation — "Laundry is no longer just a machine..."
   16000, // 11 Ecosystem visual
-  28000  // 12 Closing — "Together with Samsung..." + fold outro
+  35000  // 12 Closing — "Together with Samsung..." + fold outro
 ];
 
 // Particles for atmospheric scenes (SC5 WASH OS reveal, SC11 closing)
@@ -1825,7 +1834,7 @@ const anim={
   // SC11: Visual-only ecosystem — auto-animate, no speech
   10:[[1200,'z11glow'],[2000,'z11orbit'],[3000,'z11hub'],[5000,'z11n1'],[6500,'z11n2'],[8000,'z11n3'],[9500,'z11ar1'],[9800,'z11ar2'],[10100,'z11ar3'],[10400,'z11ar4']],
   // SC12: Host: "Together with Samsung..." → phone (3s) → laptop (6s) → map (9s) → then closing speech + fold
-  11:[[1500,'z12lbl'],[3000,'z12c3'],[5500,'z12a1'],[6000,'z12c1'],[9000,'z12bg']]
+  11:[[1500,'z12c3'],[4000,'z12lbl'],[6000,'z12c1'],[9000,'z12bg']]
 };
 
 let act=[];

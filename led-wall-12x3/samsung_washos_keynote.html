@@ -804,7 +804,7 @@
   #sc12{background:var(--black);flex-direction:column;}
   #sc12 .sc12-map-bg{position:absolute;inset:0;z-index:0;background:#1a2e24;opacity:0;transition:opacity 2.5s ease;pointer-events:none;}
   #sc12 .sc12-map-bg.on{opacity:1;}
-  .sc12-lbl{font-family:'Bebas Neue',sans-serif;font-size:min(2vw,7vh);letter-spacing:0.35vw;text-transform:uppercase;color:var(--white);margin-bottom:min(2vw,5vh);opacity:0;transform:translateY(10px);transition:all 2.5s ease;z-index:2;text-align:center;}
+  .sc12-lbl{font-family:'Bebas Neue',sans-serif;font-size:min(2.5vw,8vh);letter-spacing:0.35vw;text-transform:uppercase;color:var(--white);opacity:0;transform:translateY(10px);transition:all 2.5s ease;z-index:2;text-align:center;max-width:min(18vw,55vh);line-height:1.2;text-shadow:0 0 1.5vw rgba(0,0,0,.5);}
   .sc12-lbl.on{opacity:1;transform:translateY(0);}
   .sc12-lbl .accent{color:var(--green-bright);}
   .sc12-row{display:flex;align-items:center;justify-content:center;gap:min(3vw,8vh);width:90vw;position:relative;max-height:78vh;}
@@ -914,7 +914,7 @@
   @keyframes sc12Sweep{0%{transform:rotate(0);}100%{transform:rotate(360deg);}}
 
   .sc12-pin{position:absolute;z-index:4;display:flex;flex-direction:column;align-items:center;}
-  .sc12-pin-dot{width:.85vw;height:.85vw;border-radius:.18vw;background:rgba(76,175,80,.15);border:1.5px solid rgba(76,175,80,.25);box-shadow:0 0 .6vw rgba(76,175,80,.3);position:relative;display:flex;align-items:center;justify-content:center;}
+  .sc12-pin-dot{width:1.1vw;height:1.1vw;border-radius:.18vw;background:rgba(76,175,80,.15);border:1.5px solid rgba(76,175,80,.25);box-shadow:0 0 .7vw rgba(76,175,80,.4);position:relative;display:flex;align-items:center;justify-content:center;}
   .sc12-pin-dot svg{width:.5vw;height:.5vw;}
   .sc12-pin-dot::before{content:'';position:absolute;inset:-.35vw;border-radius:.3vw;border:1.5px solid rgba(76,175,80,.1);animation:sc12Pulse 2.5s ease-out infinite;}
   @keyframes sc12Pulse{0%{transform:scale(.5);opacity:.5;}100%{transform:scale(2.5);opacity:0;}}
@@ -923,7 +923,7 @@
   .sc12-pin-status{position:absolute;left:120%;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.2vw;letter-spacing:.02vw;color:var(--green-bright);background:rgba(0,15,8,.85);padding:.04vw .14vw;border-radius:.07vw;border:1px solid rgba(76,175,80,.15);opacity:0;animation:sc12StatusFade 4s ease-in-out infinite;}
   @keyframes sc12StatusFade{0%,100%{opacity:0;}20%,80%{opacity:.8;}}
 
-  .sc12-cust{position:absolute;z-index:3;width:.2vw;height:.2vw;border-radius:50%;background:var(--green-bright);box-shadow:0 0 .2vw rgba(76,175,80,.4);opacity:0;}
+  .sc12-cust{position:absolute;z-index:3;width:.45vw;height:.45vw;border-radius:50%;background:var(--green-bright);box-shadow:0 0 .6vw rgba(76,175,80,.5);opacity:0;}
   .sc12-cust-moving{animation:sc12CustMove var(--cdur) ease-in-out infinite;animation-delay:var(--cdelay);}
   @keyframes sc12CustMove{0%{opacity:0;transform:translate(0,0);}10%{opacity:.7;}80%{opacity:.5;}100%{opacity:0;transform:translate(var(--cx),var(--cy));}}
 
@@ -1464,6 +1464,14 @@
   <div class="sc12-cust sc12-cust-moving" style="top:65%;left:95%;z-index:1;--cx:-1vw;--cy:-.7vw;--cdur:3.2s;--cdelay:.6s"></div>
   <div class="sc12-cust sc12-cust-moving" style="top:90%;left:30%;z-index:1;--cx:.7vw;--cy:-1vw;--cdur:4s;--cdelay:1s"></div>
   <div class="sc12-cust sc12-cust-moving" style="top:92%;left:75%;z-index:1;--cx:-1vw;--cy:-.7vw;--cdur:3.4s;--cdelay:1.8s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:18%;left:30%;z-index:1;--cx:1vw;--cy:.8vw;--cdur:3.3s;--cdelay:.2s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:22%;left:55%;z-index:1;--cx:-.7vw;--cy:1vw;--cdur:4.5s;--cdelay:1.1s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:45%;left:42%;z-index:1;--cx:.8vw;--cy:-.5vw;--cdur:3.7s;--cdelay:.7s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:50%;left:62%;z-index:1;--cx:-1vw;--cy:.7vw;--cdur:4.1s;--cdelay:1.4s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:72%;left:48%;z-index:1;--cx:.7vw;--cy:-.8vw;--cdur:3.5s;--cdelay:.5s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:78%;left:15%;z-index:1;--cx:1.5vw;--cy:.3vw;--cdur:3.9s;--cdelay:1.6s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:28%;left:80%;z-index:1;--cx:-.8vw;--cy:-.3vw;--cdur:4.3s;--cdelay:.9s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:55%;left:25%;z-index:1;--cx:1vw;--cy:-.5vw;--cdur:3.1s;--cdelay:2.1s"></div>
   <!-- Background connection lines -->
   <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;">
     <line style="stroke:rgba(76,175,80,.08);stroke-width:1;stroke-dasharray:3 3;animation:sc12ConnDraw 3s ease-in-out infinite;animation-delay:0s" x1="20%" y1="5%" x2="8%" y2="10%"/>
@@ -1477,13 +1485,12 @@
   </svg>
   </div>
 
-  <div class="sc12-lbl" id="z12lbl">Intelligence In <span class="accent">Every Cycle.</span></div>
   <div class="sc12-row">
     <div class="sc12-item" id="z12c1">
       <img src="WashOS Portal.png" alt="Shop Portal" class="sc12-laptop-img"/>
       <div class="sc12-item-label">Shop Portal</div>
     </div>
-    <div class="sc12-arrow" id="z12a1"><div class="sc12-arrow-line"><div class="sc12-arrow-dot"></div></div></div>
+    <div class="sc12-lbl" id="z12lbl">Intelligence In<br><span class="accent">Every Cycle.</span></div>
     <div class="sc12-item" id="z12c3">
       <div class="sc12-phone-card">
         <div class="sc12-phone-notch"></div>
@@ -1518,7 +1525,7 @@ const dur=[
   18000, // 9  Smart Machines
   16000, // 10 Industry Transformation
   16000, // 11 Ecosystem visual
-  28000  // 12 Closing
+  35000  // 12 Closing
 ];
 
 // Particles for atmospheric scenes (SC5 WASH OS reveal, SC11 closing)
@@ -1633,7 +1640,7 @@ const anim={
   8:[[2000,'z9lbl'],[4000,'z9m'],[7000,'z9a'],[9000,'z9b'],[11000,'z9c'],[13000,'z9d']],
   9:[[2000,'z10map'],[4000,'z10l1'],[6500,'z10l2'],[9000,'z10l3']],
   10:[[1200,'z11glow'],[2000,'z11orbit'],[3000,'z11hub'],[5000,'z11n1'],[6500,'z11n2'],[8000,'z11n3'],[9500,'z11ar1'],[9800,'z11ar2'],[10100,'z11ar3'],[10400,'z11ar4']],
-  11:[[1500,'z12lbl'],[3000,'z12c3'],[5500,'z12a1'],[6000,'z12c1'],[9000,'z12bg']]
+  11:[[1500,'z12c3'],[4000,'z12lbl'],[6000,'z12c1'],[9000,'z12bg']]
 };
 
 let act=[];
