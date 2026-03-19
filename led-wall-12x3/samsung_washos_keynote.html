@@ -855,13 +855,15 @@
   .sc12-item.map-folding .sc12-fold-left{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
   .sc12-item.map-folding .sc12-fold-right{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
   .sc12-bg-fold-left,.sc12-bg-fold-right{
-    position:absolute;top:0;width:50%;height:100%;z-index:3;
+    position:absolute;top:0;width:50%;height:100%;z-index:10;
     background:var(--black);transform:scaleX(0);visibility:hidden;pointer-events:none;
   }
   .sc12-bg-fold-left{left:0;transform-origin:left center;}
   .sc12-bg-fold-right{right:0;transform-origin:right center;}
   #sc12.bg-folding .sc12-bg-fold-left{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
   #sc12.bg-folding .sc12-bg-fold-right{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
+  #sc12.bg-folding .sc12-row{opacity:0;transition:opacity 1s ease;}
+  #sc12.bg-folding .sc12-lbl{opacity:0 !important;transition:opacity 1s ease !important;}
   .sc12-item.map-shrink .sc12-map-panel{
     transform:scale(.3);opacity:0;
     transition:all 1.5s cubic-bezier(.4,0,.2,1);

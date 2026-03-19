@@ -966,7 +966,7 @@
   .sc12-item.map-folding .sc12-fold-right{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
   /* Full-screen background fold doors */
   .sc12-bg-fold-left,.sc12-bg-fold-right{
-    position:absolute;top:0;width:50%;height:100%;z-index:3;
+    position:absolute;top:0;width:50%;height:100%;z-index:10;
     background:var(--black);
     transform:scaleX(0);visibility:hidden;
     pointer-events:none;
@@ -975,6 +975,8 @@
   .sc12-bg-fold-right{right:0;transform-origin:right center;}
   #sc12.bg-folding .sc12-bg-fold-left{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
   #sc12.bg-folding .sc12-bg-fold-right{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
+  #sc12.bg-folding .sc12-row{opacity:0;transition:opacity 1s ease;}
+  #sc12.bg-folding .sc12-lbl{opacity:0 !important;transition:opacity 1s ease !important;}
   .sc12-item.map-shrink .sc12-map-panel{transform:scale(.3);opacity:0;transition:all 1.5s cubic-bezier(.4,0,.2,1);}
   .sc12-item.map-folding .sc12-item-label,.sc12-item.map-shrink .sc12-item-label{transition:opacity .8s ease;opacity:0;}
   .sc12-item-label{font-size:min(1vw,2vh);font-weight:600;letter-spacing:.2vw;text-transform:uppercase;color:var(--gray);transition:all 1s ease;}
