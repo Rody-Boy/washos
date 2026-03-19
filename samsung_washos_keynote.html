@@ -1602,6 +1602,35 @@
   <div class="sc12-map-road sc12-map-road-v" style="left:35%;z-index:0;"></div>
   <div class="sc12-map-road sc12-map-road-v" style="left:65%;z-index:0;"></div>
   <div class="sc12-map-road sc12-map-road-v" style="left:92%;z-index:0;"></div>
+  <!-- Background pins (z-index:1 so behind content at z-index:2) -->
+  <div class="sc12-pin" style="top:10%;left:8%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:0s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
+  <div class="sc12-pin" style="top:12%;left:45%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:.8s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
+  <div class="sc12-pin" style="top:10%;left:82%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:1.5s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
+  <div class="sc12-pin" style="top:85%;left:12%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:.3s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
+  <div class="sc12-pin" style="top:82%;left:55%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:1.2s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
+  <div class="sc12-pin" style="top:88%;left:90%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:.6s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
+  <div class="sc12-pin" style="top:45%;left:5%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:1.8s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
+  <div class="sc12-pin" style="top:48%;left:92%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:.4s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
+  <!-- Background customers moving -->
+  <div class="sc12-cust sc12-cust-moving" style="top:5%;left:20%;z-index:1;--cx:2vw;--cy:1vw;--cdur:4s;--cdelay:0s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:15%;left:70%;z-index:1;--cx:-2vw;--cy:1.5vw;--cdur:3.5s;--cdelay:.8s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:35%;left:10%;z-index:1;--cx:1.5vw;--cy:1vw;--cdur:3.8s;--cdelay:1.2s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:40%;left:88%;z-index:1;--cx:-2vw;--cy:-.5vw;--cdur:4.2s;--cdelay:.3s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:60%;left:5%;z-index:1;--cx:2vw;--cy:-.8vw;--cdur:3.6s;--cdelay:1.5s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:65%;left:95%;z-index:1;--cx:-1.5vw;--cy:-1vw;--cdur:3.2s;--cdelay:.6s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:90%;left:30%;z-index:1;--cx:1vw;--cy:-1.5vw;--cdur:4s;--cdelay:1s"></div>
+  <div class="sc12-cust sc12-cust-moving" style="top:92%;left:75%;z-index:1;--cx:-1.5vw;--cy:-1vw;--cdur:3.4s;--cdelay:1.8s"></div>
+  <!-- Background connection lines -->
+  <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;">
+    <line class="sc12-conn" x1="20%" y1="5%" x2="8%" y2="10%" style="stroke:rgba(76,175,80,.08);stroke-width:1;stroke-dasharray:3 3;animation:sc12ConnDraw 3s ease-in-out infinite;animation-delay:0s"/>
+    <line class="sc12-conn" x1="70%" y1="15%" x2="45%" y2="12%" style="stroke:rgba(76,175,80,.08);stroke-width:1;stroke-dasharray:3 3;animation:sc12ConnDraw 3s ease-in-out infinite;animation-delay:1s"/>
+    <line class="sc12-conn" x1="10%" y1="35%" x2="5%" y2="45%" style="stroke:rgba(76,175,80,.08);stroke-width:1;stroke-dasharray:3 3;animation:sc12ConnDraw 3s ease-in-out infinite;animation-delay:.5s"/>
+    <line class="sc12-conn" x1="88%" y1="40%" x2="92%" y2="48%" style="stroke:rgba(76,175,80,.08);stroke-width:1;stroke-dasharray:3 3;animation:sc12ConnDraw 3s ease-in-out infinite;animation-delay:1.5s"/>
+    <line class="sc12-conn" x1="5%" y1="60%" x2="12%" y2="85%" style="stroke:rgba(76,175,80,.08);stroke-width:1;stroke-dasharray:3 3;animation:sc12ConnDraw 3s ease-in-out infinite;animation-delay:2s"/>
+    <line class="sc12-conn" x1="95%" y1="65%" x2="90%" y2="88%" style="stroke:rgba(76,175,80,.08);stroke-width:1;stroke-dasharray:3 3;animation:sc12ConnDraw 3s ease-in-out infinite;animation-delay:.8s"/>
+    <line class="sc12-conn" x1="30%" y1="90%" x2="55%" y2="82%" style="stroke:rgba(76,175,80,.08);stroke-width:1;stroke-dasharray:3 3;animation:sc12ConnDraw 3s ease-in-out infinite;animation-delay:1.3s"/>
+    <line class="sc12-conn" x1="75%" y1="92%" x2="82%" y2="10%" style="stroke:rgba(76,175,80,.08);stroke-width:1;stroke-dasharray:3 3;animation:sc12ConnDraw 3s ease-in-out infinite;animation-delay:.4s"/>
+  </svg>
 
   <div class="sc12-lbl" id="z12lbl">Intelligence In <span class="accent">Every Cycle.</span></div>
   <div class="sc12-row">
