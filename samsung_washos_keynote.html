@@ -953,7 +953,7 @@
   .sc12-arrow.fold{opacity:0 !important;transition:opacity .5s ease;}
   .sc12-lbl.fold-out{opacity:0 !important;transform:translateY(-10px) !important;transition:all 1.5s ease !important;}
 
-  /* Step 2: Map fold doors — two panels that close inward from edges to center */
+  /* Fold doors — inside map panel */
   .sc12-fold-left,.sc12-fold-right{
     position:absolute;top:0;width:50%;height:100%;z-index:8;
     background:var(--black);
@@ -964,6 +964,17 @@
   .sc12-fold-right{right:0;transform-origin:right center;}
   .sc12-item.map-folding .sc12-fold-left{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
   .sc12-item.map-folding .sc12-fold-right{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
+  /* Full-screen background fold doors */
+  .sc12-bg-fold-left,.sc12-bg-fold-right{
+    position:absolute;top:0;width:50%;height:100%;z-index:3;
+    background:var(--black);
+    transform:scaleX(0);visibility:hidden;
+    pointer-events:none;
+  }
+  .sc12-bg-fold-left{left:0;transform-origin:left center;}
+  .sc12-bg-fold-right{right:0;transform-origin:right center;}
+  #sc12.bg-folding .sc12-bg-fold-left{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
+  #sc12.bg-folding .sc12-bg-fold-right{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
   .sc12-item.map-shrink .sc12-map-panel{transform:scale(.3);opacity:0;transition:all 1.5s cubic-bezier(.4,0,.2,1);}
   .sc12-item.map-folding .sc12-item-label,.sc12-item.map-shrink .sc12-item-label{transition:opacity .8s ease;opacity:0;}
   .sc12-item-label{font-size:min(1vw,2vh);font-weight:600;letter-spacing:.2vw;text-transform:uppercase;color:var(--gray);transition:all 1s ease;}
@@ -1584,6 +1595,9 @@
 
 <!-- SC12 — PLATFORM OVERVIEW -->
 <div class="scene" id="sc12">
+  <!-- Background fold doors -->
+  <div class="sc12-bg-fold-left"></div>
+  <div class="sc12-bg-fold-right"></div>
   <!-- Map background elements (absolute, behind everything) -->
   <div class="sc12-map-tint" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,8,.1),rgba(0,10,5,.2));z-index:0;"></div>
   <div class="sc12-radar" style="position:absolute;inset:0;z-index:0;"><div class="sc12-radar-sweep"></div></div>
@@ -1874,6 +1888,7 @@ function show(i){
   ['z12c1','z12c2','z12c3'].forEach(id=>{const e=document.getElementById(id);if(e){e.classList.remove('featured','move-to-center-left','move-to-center-right','absorb-left','absorb-right','map-folding','map-shrink');e.style.opacity='';}});
   ['z12a1','z12a2'].forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove('fold');});
   const z12lbl=document.getElementById('z12lbl');if(z12lbl)z12lbl.classList.remove('fold-out');
+  const sc12el=document.getElementById('sc12');if(sc12el)sc12el.classList.remove('bg-folding');
 
   // Reset SC9 machines
   document.querySelectorAll('.sc9-machine').forEach(m=>m.classList.remove('on'));
@@ -1996,9 +2011,10 @@ function show(i){
       const c1=document.getElementById('z12c1');if(c1){c1.classList.remove('move-to-center-left');c1.classList.add('absorb-left');}
       const c3=document.getElementById('z12c3');if(c3){c3.classList.remove('move-to-center-right');c3.classList.add('absorb-right');}
     },groupTime+2700));
-    // Step 3: Map doors fold shut from edges to center
+    // Step 3: Map panel + background both fold shut
     act.push(setTimeout(()=>{
       const c2=document.getElementById('z12c2');if(c2)c2.classList.add('map-folding');
+      const sc12=document.getElementById('sc12');if(sc12)sc12.classList.add('bg-folding');
     },groupTime+3800));
   }
 }
