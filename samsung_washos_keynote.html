@@ -905,15 +905,11 @@
   @media (max-aspect-ratio:2.5/1){.sc11-hub-logo{height:min(6vw,12vh);}}
 
   /* ══════ SC12 — PLATFORM OVERVIEW ══════ */
-  #sc12{background:#1a2e24;position:relative;padding:0 !important;overflow:hidden;}
-  /* Map covers the entire slide */
-  .sc12-map-bg-full{position:absolute;inset:0;z-index:0;overflow:hidden;}
-  /* Title overlays the map */
-  .sc12-lbl{font-family:'Bebas Neue',sans-serif;font-size:min(3vw,6vh);letter-spacing:0.42vw;text-transform:uppercase;color:var(--white);opacity:0;transform:translateY(10px);transition:all 2.5s ease;z-index:5;text-align:center;position:absolute;top:4vh;left:0;right:0;text-shadow:0 0 2vw rgba(0,0,0,.6);}
+  #sc12{background:var(--black);flex-direction:column;}
+  .sc12-lbl{font-family:'Bebas Neue',sans-serif;font-size:min(3vw,6vh);letter-spacing:0.42vw;text-transform:uppercase;color:var(--white);margin-bottom:min(2.5vw,5vh);opacity:0;transform:translateY(10px);transition:all 2.5s ease;z-index:2;text-align:center;}
   .sc12-lbl.on{opacity:1;transform:translateY(0);}
   .sc12-lbl .accent{color:var(--green-bright);}
-  /* Items row overlays the map */
-  .sc12-row{display:flex;align-items:center;justify-content:space-between;width:90vw;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:4;}
+  .sc12-row{display:flex;align-items:center;justify-content:space-between;width:90vw;position:relative;max-height:75vh;}
 
   /* Connection arrows */
   .sc12-arrow{opacity:0;transition:opacity 2s ease;z-index:2;display:flex;align-items:center;}
@@ -965,8 +961,10 @@
   }
   .sc12-fold-left{left:0;transform-origin:left center;}
   .sc12-fold-right{right:0;transform-origin:right center;}
-  .sc12-map-bg-full.map-folding .sc12-fold-left{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
-  .sc12-map-bg-full.map-folding .sc12-fold-right{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
+  .sc12-item.map-folding .sc12-fold-left{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
+  .sc12-item.map-folding .sc12-fold-right{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
+  .sc12-item.map-shrink .sc12-map-panel{transform:scale(.3);opacity:0;transition:all 1.5s cubic-bezier(.4,0,.2,1);}
+  .sc12-item.map-folding .sc12-item-label,.sc12-item.map-shrink .sc12-item-label{transition:opacity .8s ease;opacity:0;}
   .sc12-item-label{font-size:min(1vw,2vh);font-weight:600;letter-spacing:.2vw;text-transform:uppercase;color:var(--gray);transition:all 1s ease;}
   .sc12-item.featured .sc12-item-label{color:var(--green-bright);}
 
@@ -975,8 +973,15 @@
   .sc12-item.featured .sc12-laptop-img{filter:drop-shadow(0 .5vw 3vw rgba(76,175,80,.15)) drop-shadow(0 .5vw 2vw rgba(0,0,0,.5));}
 
   /* Center map — wide rectangle */
-  /* Map panel is now hidden — content lives in the full-screen bg */
-  .sc12-map-panel{display:none;}
+  .sc12-map-panel{
+    width:min(36vw,70vh);height:min(26vw,52vh);
+    border-radius:1.2vw;overflow:hidden;position:relative;
+    border:1.5px solid rgba(76,175,80,.15);
+    background:#1a2e24;
+    box-shadow:0 .4vw 2.5vw rgba(0,0,0,.5);
+    transition:all 1.5s ease;
+  }
+  .sc12-item.featured .sc12-map-panel{box-shadow:0 0 3vw rgba(76,175,80,.15),0 .4vw 2.5vw rgba(0,0,0,.5);}
   /* Roads inside the map */
   .sc12-map-road{position:absolute;background:rgba(76,175,80,.12);z-index:1;}
   .sc12-map-road-h{height:2px;width:100%;}
@@ -1578,12 +1583,23 @@
 
 <!-- SC12 — PLATFORM OVERVIEW -->
 <div class="scene" id="sc12">
-  <!-- Full-screen map background -->
-  <div class="sc12-map-bg-full" id="z12c2">
-    <div class="sc12-map-tint"></div>
-    <div class="sc12-radar"><div class="sc12-radar-sweep"></div></div>
-    <div class="sc12-fold-left"></div>
-    <div class="sc12-fold-right"></div>
+  <div class="sc12-lbl" id="z12lbl">Intelligence In <span class="accent">Every Cycle.</span></div>
+  <div class="sc12-row">
+    <!-- LEFT: Shop Portal -->
+    <div class="sc12-item" id="z12c1">
+      <img src="WashOS Portal.png" alt="Shop Portal" class="sc12-laptop-img"/>
+      <div class="sc12-item-label">Shop Portal</div>
+    </div>
+
+    <div class="sc12-arrow" id="z12a1"><div class="sc12-arrow-line"><div class="sc12-arrow-dot"></div></div></div>
+
+    <!-- CENTER: Map panel -->
+    <div class="sc12-item" id="z12c2">
+      <div class="sc12-map-panel">
+        <div class="sc12-fold-left"></div>
+        <div class="sc12-fold-right"></div>
+        <div class="sc12-map-tint"></div>
+        <div class="sc12-radar"><div class="sc12-radar-sweep"></div></div>
     <!-- Roads -->
     <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:20%"></div>
     <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:45%"></div>
@@ -1626,25 +1642,12 @@
       <line x1="25%" y1="75%" x2="40%" y2="80%" style="animation-delay:2s"/>
       <line x1="65%" y1="88%" x2="85%" y2="80%" style="animation-delay:.8s"/>
     </svg>
-  </div>
-
-  <!-- Title overlays the map -->
-  <div class="sc12-lbl" id="z12lbl">Intelligence In <span class="accent">Every Cycle.</span></div>
-
-  <!-- Items overlay the map -->
-  <div class="sc12-row">
-    <div class="sc12-item" id="z12c1">
-      <img src="WashOS Portal.png" alt="Shop Portal" class="sc12-laptop-img"/>
-      <div class="sc12-item-label">Shop Portal</div>
+      </div>
     </div>
-
-    <div class="sc12-arrow" id="z12a1"><div class="sc12-arrow-line"><div class="sc12-arrow-dot"></div></div></div>
-
-    <!-- Empty center spacer where the map lives behind -->
-    <div class="sc12-item" style="flex:1;"></div>
 
     <div class="sc12-arrow" id="z12a2"><div class="sc12-arrow-line"><div class="sc12-arrow-dot" style="animation-delay:1s"></div></div></div>
 
+    <!-- RIGHT: Customer App -->
     <div class="sc12-item" id="z12c3">
       <div class="sc12-phone-card">
         <div class="sc12-phone-notch"></div>
@@ -1806,7 +1809,7 @@ const anim={
   // SC11: Visual-only ecosystem — auto-animate, no speech
   10:[[1200,'z11glow'],[2000,'z11orbit'],[3000,'z11hub'],[5000,'z11n1'],[6500,'z11n2'],[8000,'z11n3'],[9500,'z11ar1'],[9800,'z11ar2'],[10100,'z11ar3'],[10400,'z11ar4']],
   // SC12: Host: "Together with Samsung..." → phone (3s) → laptop (6s) → map (9s) → then closing speech + fold
-  11:[[1500,'z12lbl'],[3000,'z12c3'],[5000,'z12a2'],[6000,'z12c1'],[8000,'z12a1']]
+  11:[[1500,'z12lbl'],[3000,'z12c3'],[5000,'z12a2'],[6000,'z12c1'],[8000,'z12a1'],[9000,'z12c2']]
 };
 
 let act=[];
@@ -1915,8 +1918,8 @@ function show(i){
 
   // SC12 — highlight: phone first, laptop second, map last, then fold
   if(i===11){
-    const allItems=['z12c1','z12c3'];
-    const hlOrder=['z12c3','z12c1']; // phone, laptop (map is now full-screen bg)
+    const allItems=['z12c1','z12c2','z12c3'];
+    const hlOrder=['z12c3','z12c1','z12c2']; // phone, laptop, map
     const hlStart=3000;
     const hlPer=3000;
     // Forward cycle
