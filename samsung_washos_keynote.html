@@ -905,9 +905,9 @@
   @media (max-aspect-ratio:2.5/1){.sc11-hub-logo{height:min(6vw,12vh);}}
 
   /* ══════ SC12 — PLATFORM OVERVIEW ══════ */
-  #sc12{background:var(--black);position:relative;padding:0 !important;}
-  /* Map covers the entire slide as background */
-  .sc12-map-bg-full{position:absolute;inset:0;z-index:1;background:#1a2e24;overflow:hidden;}
+  #sc12{background:#1a2e24;position:relative;padding:0 !important;overflow:hidden;}
+  /* Map covers the entire slide */
+  .sc12-map-bg-full{position:absolute;inset:0;z-index:0;overflow:hidden;}
   /* Title overlays the map */
   .sc12-lbl{font-family:'Bebas Neue',sans-serif;font-size:min(3vw,6vh);letter-spacing:0.42vw;text-transform:uppercase;color:var(--white);opacity:0;transform:translateY(10px);transition:all 2.5s ease;z-index:5;text-align:center;position:absolute;top:4vh;left:0;right:0;text-shadow:0 0 2vw rgba(0,0,0,.6);}
   .sc12-lbl.on{opacity:1;transform:translateY(0);}
