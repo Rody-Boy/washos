@@ -960,13 +960,13 @@
   .sc12-fold-left,.sc12-fold-right{
     position:absolute;top:0;width:50%;height:100%;z-index:8;
     background:var(--black);
-    transform:scaleX(0);
-    transition:transform 2.5s cubic-bezier(.4,0,.2,1);
+    transform:scaleX(0);visibility:hidden;
+    pointer-events:none;
   }
   .sc12-fold-left{left:0;transform-origin:left center;}
   .sc12-fold-right{right:0;transform-origin:right center;}
-  .sc12-map-bg-full.map-folding .sc12-fold-left{transform:scaleX(1);}
-  .sc12-map-bg-full.map-folding .sc12-fold-right{transform:scaleX(1);}
+  .sc12-map-bg-full.map-folding .sc12-fold-left{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
+  .sc12-map-bg-full.map-folding .sc12-fold-right{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
   .sc12-item-label{font-size:min(1vw,2vh);font-weight:600;letter-spacing:.2vw;text-transform:uppercase;color:var(--gray);transition:all 1s ease;}
   .sc12-item.featured .sc12-item-label{color:var(--green-bright);}
 
