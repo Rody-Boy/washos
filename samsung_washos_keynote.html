@@ -1855,7 +1855,7 @@ const anim={
   // SC11: Visual-only ecosystem — auto-animate, no speech
   10:[[1200,'z11glow'],[2000,'z11orbit'],[3000,'z11hub'],[5000,'z11n1'],[6500,'z11n2'],[8000,'z11n3'],[9500,'z11ar1'],[9800,'z11ar2'],[10100,'z11ar3'],[10400,'z11ar4']],
   // SC12: Host: "Together with Samsung..." → phone (3s) → laptop (6s) → map (9s) → then closing speech + fold
-  11:[[1500,'z12c3'],[4000,'z12c1'],[7000,'z12bg'],[10000,'z12lbl']]
+  11:[[1500,'z12bg'],[5000,'z12c3'],[8000,'z12c1'],[12000,'z12lbl']]
 };
 
 let act=[];
@@ -1968,7 +1968,7 @@ function show(i){
   if(i===11){
     const allItems=['z12c1','z12c3'];
     const hlOrder=['z12c3','z12c1']; // phone, laptop
-    const hlStart=3000;
+    const hlStart=5000;
     const hlPer=3500;
     // Forward cycle
     hlOrder.forEach((id,idx)=>{
