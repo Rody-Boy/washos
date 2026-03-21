@@ -880,16 +880,24 @@
     box-shadow:0 .3vw 1.8vw rgba(0,0,0,.5);transition:all 1.5s ease;
   }
   .sc12-item.featured .sc12-map-panel{box-shadow:0 0 2vw rgba(76,175,80,.15),0 .3vw 1.8vw rgba(0,0,0,.5);}
-  .sc12-map-block{position:absolute;background:rgba(12,24,18,.5);border:1px solid rgba(76,175,80,.04);border-radius:2px;z-index:0;}
-  .sc12-map-park{position:absolute;background:rgba(76,175,80,.05);border:1px solid rgba(76,175,80,.03);border-radius:20%;z-index:0;}
-  .sc12-map-water{position:absolute;background:rgba(20,50,45,.3);border:1px solid rgba(40,80,70,.08);z-index:0;}
-  .sc12-road-label{position:absolute;font-size:.22vw;letter-spacing:.03vw;color:rgba(76,175,80,.12);text-transform:uppercase;white-space:nowrap;z-index:1;}
-  .sc12-map-road{position:absolute;background:rgba(76,175,80,.12);z-index:1;}
+  .sc12-map-block{position:absolute;background:rgba(12,28,20,.6);border:1px solid rgba(76,175,80,.06);border-radius:2px;z-index:0;}
+  .sc12-map-park{position:absolute;background:rgba(76,175,80,.08);border:1px solid rgba(76,175,80,.05);border-radius:20%;z-index:0;}
+  .sc12-map-water{position:absolute;background:rgba(20,60,55,.35);border:1px solid rgba(40,100,85,.1);z-index:0;}
+  .sc12-map-road{position:absolute;background:rgba(76,175,80,.18);z-index:1;}
   .sc12-map-road-h{height:2px;width:100%;}
   .sc12-map-road-v{width:2px;height:100%;}
-  .sc12-map-road-main{background:rgba(76,175,80,.18);}
-  .sc12-map-road-main.sc12-map-road-h{height:3px;}
-  .sc12-map-road-main.sc12-map-road-v{width:2px;}
+  .sc12-map-road-main{background:rgba(76,175,80,.28);}
+  .sc12-map-road-main.sc12-map-road-h{height:4px;}
+  .sc12-map-road-main.sc12-map-road-v{width:4px;}
+  .sc12-road-label{position:absolute;font-size:.25vw;letter-spacing:.04vw;color:rgba(76,175,80,.18);text-transform:uppercase;white-space:nowrap;z-index:1;}
+  .sc12-compass{position:absolute;top:3%;right:3%;width:1.8vw;height:1.8vw;z-index:1;display:flex;align-items:center;justify-content:center;flex-direction:column;}
+  .sc12-compass-n{font-size:.35vw;font-weight:700;color:rgba(76,175,80,.3);letter-spacing:.04vw;}
+  .sc12-compass-ring{width:1.3vw;height:1.3vw;border-radius:50%;border:1.5px solid rgba(76,175,80,.1);position:relative;display:flex;align-items:center;justify-content:center;}
+  .sc12-compass-needle{width:1px;height:.7vw;background:linear-gradient(180deg,rgba(200,80,80,.2) 50%,rgba(76,175,80,.15) 50%);}
+  .sc12-scale{position:absolute;bottom:3%;left:3%;z-index:1;display:flex;align-items:flex-end;gap:.15vw;}
+  .sc12-scale-bar{width:2vw;height:2px;background:rgba(76,175,80,.2);border-left:1px solid rgba(76,175,80,.15);border-right:1px solid rgba(76,175,80,.15);}
+  .sc12-scale-txt{font-size:.22vw;color:rgba(76,175,80,.15);letter-spacing:.02vw;}
+  .sc12-hood{position:absolute;font-size:.35vw;letter-spacing:.2vw;text-transform:uppercase;color:rgba(76,175,80,.08);font-weight:700;z-index:0;}
 
   .sc12-phone-card{
     width:min(7vw,34vh);aspect-ratio:9/19;border-radius:1vw;
@@ -1445,11 +1453,19 @@
   <div class="sc12-map-block" style="top:82%;left:45%;width:7%;height:6%;"></div>
   <div class="sc12-map-block" style="top:82%;left:65%;width:10%;height:5%;"></div>
   <div class="sc12-map-block" style="top:5%;left:60%;width:6%;height:8%;"></div>
+  <div class="sc12-compass"><div class="sc12-compass-n">N</div><div class="sc12-compass-ring"><div class="sc12-compass-needle"></div></div></div>
+  <div class="sc12-scale"><div class="sc12-scale-bar"></div><div class="sc12-scale-txt">500m</div></div>
+  <div class="sc12-hood" style="top:8%;left:5%;">Downtown</div>
+  <div class="sc12-hood" style="top:35%;left:60%;">Midtown</div>
+  <div class="sc12-hood" style="top:72%;left:8%;">Riverside</div>
+  <div class="sc12-hood" style="top:75%;right:8%;">Eastside</div>
   <div class="sc12-road-label" style="top:16%;left:2%;">Main St</div>
   <div class="sc12-road-label" style="top:40%;left:2%;">2nd Ave</div>
   <div class="sc12-road-label" style="top:66%;left:2%;">Park Blvd</div>
+  <div class="sc12-road-label" style="top:88%;left:2%;">River Rd</div>
   <div class="sc12-road-label" style="top:4%;left:23%;transform:rotate(90deg);transform-origin:left top;">Central Dr</div>
   <div class="sc12-road-label" style="top:4%;left:53%;transform:rotate(90deg);transform-origin:left top;">Market St</div>
+  <div class="sc12-road-label" style="top:4%;left:79%;transform:rotate(90deg);transform-origin:left top;">East Blvd</div>
   <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:18%;z-index:0;"></div>
   <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:42%;z-index:0;"></div>
   <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:68%;z-index:0;"></div>
