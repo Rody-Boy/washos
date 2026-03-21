@@ -719,11 +719,11 @@
     font-family:'Bebas Neue',sans-serif;font-size:3.5vw;letter-spacing:0.42vw;
     text-transform:uppercase;color:var(--white);text-align:center;
     position:absolute;z-index:3;
-    opacity:0;transform:translateY(10px) scale(.95);
-    transition:all 2.8s cubic-bezier(.25,.46,.45,.94);
+    opacity:0;transform:translateY(15px) scale(.5);
+    transition:opacity 3.5s ease, transform 4s cubic-bezier(.16,1,.3,1);
   }
   .sc5-tagline.on{opacity:1;transform:translateY(0) scale(1);}
-  .sc5-tagline.emphasis{transform:scale(1.08);transition:transform 2s ease;}
+  .sc5-tagline.emphasis{transform:scale(1.15);transition:transform 3s cubic-bezier(.25,.46,.45,.94);}
 
   /* ══════ SC6 — ECOSYSTEM (orbital circle) ══════ */
   #sc6{background:var(--deep);flex-direction:column;}
