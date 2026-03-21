@@ -924,7 +924,7 @@
 
   /* Radar sweep */
   .sc12-radar{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
-  .sc12-radar-sweep{position:absolute;top:50%;left:50%;width:100%;height:100%;transform-origin:0 0;animation:sc12Sweep 4s linear infinite;background:conic-gradient(from 0deg,transparent 0deg,rgba(76,175,80,.08) 30deg,transparent 60deg);}
+  .sc12-radar-sweep{position:absolute;top:50%;left:50%;width:100%;height:100%;transform-origin:0 0;animation:sc12Sweep 4s linear infinite;background:conic-gradient(from 0deg,transparent 0deg,rgba(76,175,80,.15) 20deg,rgba(76,175,80,.08) 40deg,transparent 60deg);}
   @keyframes sc12Sweep{0%{transform:rotate(0);}100%{transform:rotate(360deg);}}
 
   .sc12-pin{position:absolute;z-index:4;display:flex;flex-direction:column;align-items:center;}
@@ -1452,6 +1452,26 @@
   <div class="sc12-biz-label" style="top:35%;left:30%;">Mandaue Branch</div>
   <div class="sc12-biz-label" style="top:70%;left:50%;">SM City Cebu</div>
   <div class="sc12-radar" style="position:absolute;inset:0;z-index:0;"><div class="sc12-radar-sweep"></div></div>
+  <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;">
+    <path d="M0 20% Q25% 18%,50% 22% T100% 20%" stroke="rgba(200,220,200,.25)" stroke-width="3" fill="none"/>
+    <path d="M0 50% Q30% 45%,60% 52% T100% 48%" stroke="rgba(200,220,200,.25)" stroke-width="3" fill="none"/>
+    <path d="M0 78% Q20% 82%,45% 76% T100% 80%" stroke="rgba(200,220,200,.25)" stroke-width="3" fill="none"/>
+    <path d="M22% 0 Q20% 30%,24% 60% T22% 100%" stroke="rgba(200,220,200,.25)" stroke-width="3" fill="none"/>
+    <path d="M55% 0 Q52% 25%,58% 50% T54% 100%" stroke="rgba(200,220,200,.25)" stroke-width="3" fill="none"/>
+    <path d="M80% 0 Q78% 35%,82% 65% T80% 100%" stroke="rgba(200,220,200,.25)" stroke-width="2" fill="none"/>
+    <path d="M0 10% Q15% 8%,35% 12% T70% 8%" stroke="rgba(180,200,180,.15)" stroke-width="1.5" fill="none"/>
+    <path d="M0 35% Q20% 38%,40% 33% T80% 36%" stroke="rgba(180,200,180,.15)" stroke-width="1.5" fill="none"/>
+    <path d="M0 65% Q25% 62%,55% 68% T100% 64%" stroke="rgba(180,200,180,.15)" stroke-width="1.5" fill="none"/>
+    <path d="M0 90% Q30% 88%,65% 92% T100% 90%" stroke="rgba(180,200,180,.15)" stroke-width="1.5" fill="none"/>
+    <path d="M10% 0 Q12% 20%,8% 45% T11% 80%" stroke="rgba(180,200,180,.15)" stroke-width="1.5" fill="none"/>
+    <path d="M38% 0 Q35% 30%,40% 55% T37% 100%" stroke="rgba(180,200,180,.15)" stroke-width="1.5" fill="none"/>
+    <path d="M68% 0 Q65% 25%,70% 50% T67% 85%" stroke="rgba(180,200,180,.15)" stroke-width="1.5" fill="none"/>
+    <path d="M92% 0 Q90% 20%,94% 45% T91% 100%" stroke="rgba(180,200,180,.15)" stroke-width="1.5" fill="none"/>
+    <path d="M5% 5% Q25% 15%,40% 30%" stroke="rgba(180,200,180,.12)" stroke-width="1" fill="none"/>
+    <path d="M70% 10% Q80% 25%,95% 35%" stroke="rgba(180,200,180,.12)" stroke-width="1" fill="none"/>
+    <path d="M15% 70% Q30% 80%,50% 85%" stroke="rgba(180,200,180,.12)" stroke-width="1" fill="none"/>
+    <path d="M60% 60% Q75% 70%,90% 85%" stroke="rgba(180,200,180,.12)" stroke-width="1" fill="none"/>
+  </svg>
   <!-- Background pins -->
   <div class="sc12-pin" style="top:10%;left:8%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:0s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
   <div class="sc12-pin" style="top:12%;left:45%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:.8s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
@@ -1651,7 +1671,21 @@ const anim={
 
 let act=[];
 
+// ══════ SOUND EFFECTS ENGINE ══════
+const sfx={
+  ctx:null,
+  init(){if(!this.ctx)this.ctx=new(window.AudioContext||window.webkitAudioContext)();if(this.ctx.state==='suspended')this.ctx.resume();},
+  whoosh(){this.init();const c=this.ctx,now=c.currentTime;const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.4,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.08));}n.buffer=buf;const f=c.createBiquadFilter();f.type='bandpass';f.frequency.value=800;f.Q.value=.5;const g=c.createGain();g.gain.setValueAtTime(.08,now);g.gain.exponentialRampToValueAtTime(.001,now+.4);n.connect(f);f.connect(g);g.connect(c.destination);n.start(now);},
+  pop(){this.init();const c=this.ctx,now=c.currentTime;const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(600,now);o.frequency.exponentialRampToValueAtTime(200,now+.1);g.gain.setValueAtTime(.06,now);g.gain.exponentialRampToValueAtTime(.001,now+.15);o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.15);},
+  reveal(){this.init();const c=this.ctx,now=c.currentTime;[200,300,400,500].forEach((freq,i)=>{const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(0,now+i*.15);g.gain.linearRampToValueAtTime(.04,now+i*.15+.1);g.gain.exponentialRampToValueAtTime(.001,now+i*.15+1);o.connect(g);g.connect(c.destination);o.start(now+i*.15);o.stop(now+i*.15+1);});},
+  shimmer(){this.init();const c=this.ctx,now=c.currentTime;const o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.setValueAtTime(300,now);o.frequency.linearRampToValueAtTime(800,now+.6);g.gain.setValueAtTime(.03,now);g.gain.exponentialRampToValueAtTime(.001,now+.8);o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.8);},
+  thud(){this.init();const c=this.ctx,now=c.currentTime;const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(80,now);o.frequency.exponentialRampToValueAtTime(30,now+.3);g.gain.setValueAtTime(.12,now);g.gain.exponentialRampToValueAtTime(.001,now+.4);o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.4);},
+  splash(){this.init();const c=this.ctx,now=c.currentTime;const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.5,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.12))*(1+Math.sin(i*.02)*.5);}n.buffer=buf;const f=c.createBiquadFilter();f.type='lowpass';f.frequency.value=1200;const g=c.createGain();g.gain.setValueAtTime(.06,now);g.gain.exponentialRampToValueAtTime(.001,now+.5);n.connect(f);f.connect(g);g.connect(c.destination);n.start(now);},
+  tick(){this.init();const c=this.ctx,now=c.currentTime;const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=1000;g.gain.setValueAtTime(.03,now);g.gain.exponentialRampToValueAtTime(.001,now+.05);o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.05);}
+};
+
 function show(i){
+  sfx.whoosh();
   act.forEach(t=>clearTimeout(t));act=[];
   document.querySelectorAll('.on').forEach(el=>el.classList.remove('on'));
   const br=document.getElementById('z5burst');if(br)br.classList.remove('on','dim');
@@ -1682,10 +1716,15 @@ function show(i){
       const el=document.getElementById(id);
       if(el){
         el.classList.add('on');
+        if(id==='z5burst'||id==='z5a')sfx.reveal();
+        else if(id==='z1vortex')sfx.splash();
+        else if(id.startsWith('z6')||id.startsWith('z11'))sfx.shimmer();
+        else if(id.startsWith('z8w'))sfx.tick();
+        else sfx.pop();
         // For SC9 machines group — animate children
         if(id==='z9m'){
           el.querySelectorAll('.sc9-machine').forEach((m,idx)=>{
-            setTimeout(()=>m.classList.add('on'),idx*600);
+            setTimeout(()=>{m.classList.add('on');sfx.tick();},idx*600);
           });
         }
       }
@@ -1778,7 +1817,7 @@ function show(i){
       const c3=document.getElementById('z12c3');if(c3){c3.classList.remove('move-to-center-right');c3.classList.add('absorb-right');}
     },groupTime+8500));
     act.push(setTimeout(()=>{
-      const sc12=document.getElementById('sc12');if(sc12)sc12.classList.add('bg-folding');
+      const sc12=document.getElementById('sc12');if(sc12)sc12.classList.add('bg-folding');sfx.thud();
     },groupTime+10000));
   }
 }
