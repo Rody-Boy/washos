@@ -900,6 +900,15 @@
   .sc12-scale-bar{width:2vw;height:2px;background:rgba(180,200,180,.12);border-left:1px solid rgba(180,200,180,.1);border-right:1px solid rgba(180,200,180,.1);}
   .sc12-scale-txt{font-size:.22vw;color:rgba(180,200,180,.1);letter-spacing:.02vw;}
   .sc12-hood{position:absolute;font-size:.4vw;letter-spacing:.3vw;text-transform:uppercase;color:rgba(180,200,180,.06);font-weight:700;z-index:0;}
+  .sc12-outro{position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1vw;opacity:0;visibility:hidden;pointer-events:none;}
+  .sc12-outro.on{opacity:1;visibility:visible;transition:opacity 2s ease;}
+  .sc12-outro-glow{position:absolute;width:30vw;height:30vw;border-radius:50%;background:radial-gradient(circle,rgba(76,175,80,.08) 0%,rgba(33,150,243,.04) 40%,transparent 70%);animation:sc12OutroGlow 4s ease-in-out infinite;}
+  @keyframes sc12OutroGlow{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:1;transform:scale(1.1);}}
+  .sc12-outro-logo{height:min(8vw,30vh);opacity:0;transform:scale(.5);filter:drop-shadow(0 0 2vw rgba(76,175,80,.3)) drop-shadow(0 0 4vw rgba(33,150,243,.15));}
+  .sc12-outro.on .sc12-outro-logo{opacity:1;transform:scale(1);transition:all 3s cubic-bezier(.16,1,.3,1);}
+  .sc12-outro-powered{display:flex;align-items:center;gap:0;font-family:'DM Sans',sans-serif;font-size:min(.7vw,2.5vh);letter-spacing:0;text-transform:uppercase;color:var(--gray);opacity:0;transform:translateY(8px);}
+  .sc12-outro.on .sc12-outro-powered{opacity:.6;transform:translateY(0);transition:all 2.5s ease 1.5s;}
+  .sc12-outro-powered .goodapps-logo{height:min(2vw,7vh);margin-left:-.2vw;}
 
   .sc12-phone-card{
     width:min(10vw,38vh);aspect-ratio:9/19;border-radius:1vw;
@@ -1526,6 +1535,11 @@
       <div class="sc12-item-label">Customer App</div>
     </div>
   </div>
+  <div class="sc12-outro" id="z12outro">
+    <div class="sc12-outro-glow"></div>
+    <img src="washos-logo.png" alt="Wash OS" class="sc12-outro-logo"/>
+    <div class="sc12-outro-powered">Powered by<img src="whitegoodapps Logo.png" alt="GoodApps, Inc." class="goodapps-logo"/></div>
+  </div>
 </div>
 
 </div><!-- /stage -->
@@ -1675,13 +1689,13 @@ let act=[];
 const sfx={
   ctx:null,
   init(){if(!this.ctx)this.ctx=new(window.AudioContext||window.webkitAudioContext)();if(this.ctx.state==='suspended')this.ctx.resume();},
-  whoosh(){this.init();const c=this.ctx,now=c.currentTime;const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.4,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.08));}n.buffer=buf;const f=c.createBiquadFilter();f.type='bandpass';f.frequency.value=800;f.Q.value=.5;const g=c.createGain();g.gain.setValueAtTime(.08,now);g.gain.exponentialRampToValueAtTime(.001,now+.4);n.connect(f);f.connect(g);g.connect(c.destination);n.start(now);},
-  pop(){this.init();const c=this.ctx,now=c.currentTime;const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(600,now);o.frequency.exponentialRampToValueAtTime(200,now+.1);g.gain.setValueAtTime(.06,now);g.gain.exponentialRampToValueAtTime(.001,now+.15);o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.15);},
-  reveal(){this.init();const c=this.ctx,now=c.currentTime;[200,300,400,500].forEach((freq,i)=>{const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(0,now+i*.15);g.gain.linearRampToValueAtTime(.04,now+i*.15+.1);g.gain.exponentialRampToValueAtTime(.001,now+i*.15+1);o.connect(g);g.connect(c.destination);o.start(now+i*.15);o.stop(now+i*.15+1);});},
-  shimmer(){this.init();const c=this.ctx,now=c.currentTime;const o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.setValueAtTime(300,now);o.frequency.linearRampToValueAtTime(800,now+.6);g.gain.setValueAtTime(.03,now);g.gain.exponentialRampToValueAtTime(.001,now+.8);o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.8);},
-  thud(){this.init();const c=this.ctx,now=c.currentTime;const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(80,now);o.frequency.exponentialRampToValueAtTime(30,now+.3);g.gain.setValueAtTime(.12,now);g.gain.exponentialRampToValueAtTime(.001,now+.4);o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.4);},
-  splash(){this.init();const c=this.ctx,now=c.currentTime;const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.5,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.12))*(1+Math.sin(i*.02)*.5);}n.buffer=buf;const f=c.createBiquadFilter();f.type='lowpass';f.frequency.value=1200;const g=c.createGain();g.gain.setValueAtTime(.06,now);g.gain.exponentialRampToValueAtTime(.001,now+.5);n.connect(f);f.connect(g);g.connect(c.destination);n.start(now);},
-  tick(){this.init();const c=this.ctx,now=c.currentTime;const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=1000;g.gain.setValueAtTime(.03,now);g.gain.exponentialRampToValueAtTime(.001,now+.05);o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.05);}
+  whoosh(){this.init();const c=this.ctx,now=c.currentTime;const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.6,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.15));}n.buffer=buf;const f=c.createBiquadFilter();f.type='bandpass';f.frequency.setValueAtTime(400,now);f.frequency.linearRampToValueAtTime(1200,now+.15);f.frequency.linearRampToValueAtTime(300,now+.5);f.Q.value=.8;const g=c.createGain();g.gain.setValueAtTime(.05,now);g.gain.linearRampToValueAtTime(.07,now+.1);g.gain.exponentialRampToValueAtTime(.001,now+.6);n.connect(f);f.connect(g);g.connect(c.destination);n.start(now);},
+  pop(){this.init();const c=this.ctx,now=c.currentTime;[880,1320].forEach((freq)=>{const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(.03,now);g.gain.exponentialRampToValueAtTime(.001,now+.3);o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.3);});},
+  reveal(){this.init();const c=this.ctx,now=c.currentTime;[261.6,329.6,392,523.3].forEach((freq,i)=>{const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(0,now+i*.2);g.gain.linearRampToValueAtTime(.035,now+i*.2+.15);g.gain.exponentialRampToValueAtTime(.001,now+i*.2+1.5);o.connect(g);g.connect(c.destination);o.start(now+i*.2);o.stop(now+i*.2+1.5);});const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*1.5,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.3))*Math.sin(i*.005);}n.buffer=buf;const f=c.createBiquadFilter();f.type='highpass';f.frequency.value=2000;const g2=c.createGain();g2.gain.setValueAtTime(0,now);g2.gain.linearRampToValueAtTime(.02,now+.5);g2.gain.exponentialRampToValueAtTime(.001,now+1.5);n.connect(f);f.connect(g2);g2.connect(c.destination);n.start(now);},
+  shimmer(){this.init();const c=this.ctx,now=c.currentTime;[600,900,1200].forEach((freq,i)=>{const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(freq*.7,now+i*.1);o.frequency.linearRampToValueAtTime(freq,now+i*.1+.4);g.gain.setValueAtTime(.015,now+i*.1);g.gain.exponentialRampToValueAtTime(.001,now+i*.1+.6);o.connect(g);g.connect(c.destination);o.start(now+i*.1);o.stop(now+i*.1+.6);});},
+  thud(){this.init();const c=this.ctx,now=c.currentTime;const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.setValueAtTime(60,now);o.frequency.exponentialRampToValueAtTime(25,now+.5);g.gain.setValueAtTime(.15,now);g.gain.exponentialRampToValueAtTime(.001,now+.8);o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.8);const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.2,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.03));}n.buffer=buf;const g2=c.createGain();g2.gain.setValueAtTime(.08,now);g2.gain.exponentialRampToValueAtTime(.001,now+.15);n.connect(g2);g2.connect(c.destination);n.start(now);},
+  splash(){this.init();const c=this.ctx,now=c.currentTime;const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.7,c.sampleRate),d=buf.getChannelData(0);for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.18))*(1+Math.sin(i*.015)*.6);}n.buffer=buf;const f=c.createBiquadFilter();f.type='lowpass';f.frequency.setValueAtTime(800,now);f.frequency.linearRampToValueAtTime(400,now+.5);const g=c.createGain();g.gain.setValueAtTime(.05,now);g.gain.exponentialRampToValueAtTime(.001,now+.7);n.connect(f);f.connect(g);g.connect(c.destination);n.start(now);},
+  tick(){this.init();const c=this.ctx,now=c.currentTime;const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=1400;g.gain.setValueAtTime(.02,now);g.gain.exponentialRampToValueAtTime(.001,now+.06);o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.06);}
 };
 
 function show(i){
@@ -1696,6 +1710,7 @@ function show(i){
   ['z12c1','z12c3'].forEach(id=>{const e=document.getElementById(id);if(e){e.classList.remove('featured','move-to-center-left','move-to-center-right','absorb-left','absorb-right','map-folding','map-shrink');e.style.opacity='';}});
   ['z12a1'].forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove('fold');});
   const z12lbl=document.getElementById('z12lbl');if(z12lbl)z12lbl.classList.remove('fold-out');
+  const z12outro=document.getElementById('z12outro');if(z12outro)z12outro.classList.remove('on');
   const z12bg=document.getElementById('z12bg');if(z12bg)z12bg.classList.remove('on');
   const sc12el=document.getElementById('sc12');if(sc12el)sc12el.classList.remove('bg-folding');
 
@@ -1819,6 +1834,10 @@ function show(i){
     act.push(setTimeout(()=>{
       const sc12=document.getElementById('sc12');if(sc12)sc12.classList.add('bg-folding');sfx.thud();
     },groupTime+10000));
+    act.push(setTimeout(()=>{
+      const outro=document.getElementById('z12outro');if(outro)outro.classList.add('on');
+      sfx.reveal();
+    },groupTime+13000));
   }
 }
 
