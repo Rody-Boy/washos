@@ -535,10 +535,10 @@
   .old-door{flex:.6;background:linear-gradient(180deg,rgba(40,55,65,.3),rgba(30,40,48,.5));border:1.5px solid #5a5040;border-radius:.2vw;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;}
   .old-door-handle{position:absolute;right:.2vw;top:45%;width:.14vw;height:.55vw;border-radius:.07vw;background:#8a7a68;border:1px solid #6a5a48;}
   .old-door-push{font-size:.2vw;letter-spacing:.05vw;text-transform:uppercase;color:rgba(200,200,200,.15);margin-top:.2vw;}
-  .old-washer{width:4.5vw;height:5.5vw;border-radius:.4vw;border:2px solid rgba(76,175,80,.25);background:linear-gradient(170deg,rgba(10,26,18,.7),rgba(6,16,10,.8));display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 1vw rgba(76,175,80,.08);}
-  .old-washer-panel{position:absolute;top:.3vw;left:50%;transform:translateX(-50%);width:2.2vw;height:.18vw;border-radius:.1vw;background:rgba(76,175,80,.2);}
-  .old-washer-drum{width:3vw;height:3vw;border-radius:50%;border:2px solid rgba(76,175,80,.22);box-shadow:inset 0 0 .7vw rgba(76,175,80,.08);display:flex;align-items:center;justify-content:center;animation:drumSlow 18s linear infinite;}
-  .old-washer-drum::after{content:'';width:.9vw;height:.9vw;border-radius:50%;border:1.5px solid rgba(30,144,255,.12);}
+  .old-washer{width:13.5vw;height:16.5vw;border-radius:1vw;border:3px solid rgba(76,175,80,.3);background:linear-gradient(170deg,rgba(10,26,18,.75),rgba(6,16,10,.85));display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 2vw rgba(76,175,80,.1);}
+  .old-washer-panel{position:absolute;top:.7vw;left:50%;transform:translateX(-50%);width:6.5vw;height:.4vw;border-radius:.2vw;background:rgba(76,175,80,.2);}
+  .old-washer-drum{width:8.5vw;height:8.5vw;border-radius:50%;border:3px solid rgba(76,175,80,.25);box-shadow:inset 0 0 1.8vw rgba(76,175,80,.1);display:flex;align-items:center;justify-content:center;animation:drumSlow 18s linear infinite;}
+  .old-washer-drum::after{content:'';width:2.5vw;height:2.5vw;border-radius:50%;border:2px solid rgba(30,144,255,.12);}
   .old-person{position:absolute;bottom:0;z-index:2;display:flex;flex-direction:column;align-items:center;}
   .old-person-head{width:1.5vw;height:1.5vw;border-radius:50%;background:rgba(200,200,200,.1);}
   .old-person-body{width:2vw;height:5vw;border-radius:.5vw .5vw .3vw .3vw;background:rgba(200,200,200,.07);margin-top:-.12vw;}
@@ -1114,7 +1114,11 @@
             <div class="old-window">
               <div class="old-washer"><div class="old-washer-panel"></div><div class="old-washer-drum"></div></div>
               <div class="old-washer"><div class="old-washer-panel"></div><div class="old-washer-drum"></div></div>
-              <div class="old-washer"><div class="old-washer-panel"></div><div class="old-washer-drum"></div></div>
+              <!-- Laundry baskets -->
+              <div class="old-basket" style="left:2%;"><div class="old-basket-handle"></div><div class="old-basket-body"><div class="old-basket-clothes"></div></div></div>
+              <div class="old-basket" style="right:5%;"><div class="old-basket-handle"></div><div class="old-basket-body"><div class="old-basket-clothes" style="background:rgba(200,160,100,.06)"></div></div></div>
+              <!-- Folding table -->
+              <div class="old-table" style="left:38%;"><div class="old-table-top"></div><div class="old-table-legs"><div class="old-table-leg"></div><div class="old-table-leg"></div></div></div>
             </div>
             <div class="old-door">
               <div class="old-door-handle"></div>
