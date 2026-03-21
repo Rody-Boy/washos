@@ -856,16 +856,10 @@
   .sc12-fold-right{right:0;transform-origin:right center;}
   .sc12-item.map-folding .sc12-fold-left{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
   .sc12-item.map-folding .sc12-fold-right{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
-  .sc12-bg-fold-left,.sc12-bg-fold-right{
-    position:absolute;top:0;width:50%;height:100%;z-index:10;
-    background:var(--black);transform:scaleX(0);visibility:hidden;pointer-events:none;
-  }
-  .sc12-bg-fold-left{left:0;transform-origin:left center;}
-  .sc12-bg-fold-right{right:0;transform-origin:right center;}
-  #sc12.bg-folding .sc12-bg-fold-left{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
-  #sc12.bg-folding .sc12-bg-fold-right{transform:scaleX(1);visibility:visible;transition:transform 2.5s cubic-bezier(.4,0,.2,1);}
-  #sc12.bg-folding .sc12-row{opacity:0;transition:opacity 1s ease;}
-  #sc12.bg-folding .sc12-lbl{opacity:0 !important;transition:opacity 1s ease !important;}
+  .sc12-fadeout{position:absolute;inset:0;z-index:10;background:var(--black);opacity:0;pointer-events:none;transition:opacity 2.5s ease;}
+  #sc12.bg-folding .sc12-fadeout{opacity:1;}
+  #sc12.bg-folding .sc12-row{opacity:0;transition:opacity 1.5s ease;}
+  #sc12.bg-folding .sc12-lbl{opacity:0 !important;transition:opacity 1.5s ease !important;}
   .sc12-item.map-shrink .sc12-map-panel{
     transform:scale(.3);opacity:0;
     transition:all 1.5s cubic-bezier(.4,0,.2,1);
@@ -1437,8 +1431,7 @@
 <!-- SC12 — PLATFORM OVERVIEW -->
 <!-- SC12 — PLATFORM OVERVIEW -->
 <div class="scene" id="sc12">
-  <div class="sc12-bg-fold-left"></div>
-  <div class="sc12-bg-fold-right"></div>
+  <div class="sc12-fadeout"></div>
   <div class="sc12-map-bg" id="z12bg">
   <!-- Map background elements -->
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,8,.15),rgba(0,10,5,.25));z-index:0;"></div>
@@ -1713,6 +1706,7 @@ function show(i){
   const z12outro=document.getElementById('z12outro');if(z12outro)z12outro.classList.remove('on');
   const z12bg=document.getElementById('z12bg');if(z12bg)z12bg.classList.remove('on');
   const sc12el=document.getElementById('sc12');if(sc12el)sc12el.classList.remove('bg-folding');
+  document.querySelectorAll('.sc12-fadeout').forEach(e=>e.style.opacity='');
 
   // Reset SC9 machines
   document.querySelectorAll('.sc9-machine').forEach(m=>m.classList.remove('on'));
