@@ -908,8 +908,7 @@
   /* ══════ SC12 — PLATFORM OVERVIEW ══════ */
   #sc12{background:var(--black);flex-direction:column;}
   /* Map background hidden by default, revealed last */
-  #sc12 .sc12-map-bg{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity 2.5s ease;pointer-events:none;overflow:hidden;}
-  .sc12-map-real{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;filter:brightness(.3) saturate(.4) hue-rotate(80deg);}
+  #sc12 .sc12-map-bg{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity 2.5s ease;pointer-events:none;overflow:hidden;background:#1a2a22;}
   #sc12 .sc12-map-bg.on{opacity:1;}
   .sc12-lbl{font-family:'Bebas Neue',sans-serif;font-size:min(3.5vw,7vh);letter-spacing:0.42vw;text-transform:uppercase;color:var(--white);opacity:0;transform:translateY(10px);transition:all 2.5s ease;z-index:2;text-align:center;max-width:min(25vw,50vh);line-height:1.2;text-shadow:0 0 2vw rgba(0,0,0,.5);}
   .sc12-lbl.on{opacity:1;transform:translateY(0);}
@@ -1001,31 +1000,32 @@
   }
   .sc12-item.featured .sc12-map-panel{box-shadow:0 0 3vw rgba(76,175,80,.15),0 .4vw 2.5vw rgba(0,0,0,.5);}
   /* Roads inside the map */
-  /* Google Maps-like terrain features */
-  .sc12-map-block{position:absolute;background:rgba(12,28,20,.6);border:1px solid rgba(76,175,80,.06);border-radius:2px;z-index:0;}
-  .sc12-map-park{position:absolute;background:rgba(76,175,80,.08);border:1px solid rgba(76,175,80,.05);border-radius:20%;z-index:0;}
-  .sc12-map-park::after{content:'🌳';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:.6vw;opacity:.15;}
-  .sc12-map-water{position:absolute;background:rgba(20,60,55,.35);border:1px solid rgba(40,100,85,.1);z-index:0;}
-  /* Roads — brighter, more visible */
-  .sc12-map-road{position:absolute;background:rgba(76,175,80,.18);z-index:1;}
-  .sc12-map-road-h{height:3px;width:100%;}
-  .sc12-map-road-v{width:3px;height:100%;}
-  .sc12-map-road-main{background:rgba(76,175,80,.28);}
-  .sc12-map-road-main.sc12-map-road-h{height:5px;}
-  .sc12-map-road-main.sc12-map-road-v{width:5px;}
-  /* Road labels */
-  .sc12-road-label{position:absolute;font-size:.35vw;letter-spacing:.06vw;color:rgba(76,175,80,.18);text-transform:uppercase;white-space:nowrap;z-index:1;}
+  /* Map terrain — mimics Google Maps dark mode */
+  .sc12-map-block{position:absolute;background:rgba(15,30,22,.7);border:1px solid rgba(76,175,80,.04);border-radius:3px;z-index:0;}
+  .sc12-map-park{position:absolute;background:rgba(40,80,50,.15);border:1px solid rgba(76,175,80,.06);border-radius:30%;z-index:0;}
+  .sc12-map-water{position:absolute;background:rgba(25,65,60,.3);border:1px solid rgba(50,110,95,.08);z-index:0;}
+  /* Roads — white-ish lines like Google Maps dark mode */
+  .sc12-map-road{position:absolute;background:rgba(180,200,180,.08);z-index:1;}
+  .sc12-map-road-h{height:2px;width:100%;}
+  .sc12-map-road-v{width:2px;height:100%;}
+  .sc12-map-road-main{background:rgba(200,220,200,.12);}
+  .sc12-map-road-main.sc12-map-road-h{height:4px;}
+  .sc12-map-road-main.sc12-map-road-v{width:4px;}
+  /* Location/business text labels — like the ones on the screenshot */
+  .sc12-road-label{position:absolute;font-size:.35vw;letter-spacing:.04vw;color:rgba(180,200,180,.12);white-space:nowrap;z-index:1;}
+  .sc12-biz-label{position:absolute;font-size:.3vw;color:rgba(180,200,180,.1);white-space:nowrap;z-index:1;}
+  .sc12-biz-label::before{content:'📍';margin-right:.1vw;font-size:.25vw;}
   /* Compass */
   .sc12-compass{position:absolute;top:3%;right:3%;width:2.5vw;height:2.5vw;z-index:1;display:flex;align-items:center;justify-content:center;flex-direction:column;}
-  .sc12-compass-n{font-size:.5vw;font-weight:700;color:rgba(76,175,80,.3);letter-spacing:.05vw;}
-  .sc12-compass-ring{width:1.8vw;height:1.8vw;border-radius:50%;border:1.5px solid rgba(76,175,80,.1);position:relative;display:flex;align-items:center;justify-content:center;}
-  .sc12-compass-needle{width:1px;height:1vw;background:linear-gradient(180deg,rgba(200,80,80,.2) 50%,rgba(76,175,80,.15) 50%);}
+  .sc12-compass-n{font-size:.5vw;font-weight:700;color:rgba(180,200,180,.2);letter-spacing:.05vw;}
+  .sc12-compass-ring{width:1.8vw;height:1.8vw;border-radius:50%;border:1.5px solid rgba(180,200,180,.08);position:relative;display:flex;align-items:center;justify-content:center;}
+  .sc12-compass-needle{width:1px;height:1vw;background:linear-gradient(180deg,rgba(220,80,80,.15) 50%,rgba(180,200,180,.1) 50%);}
   /* Scale bar */
   .sc12-scale{position:absolute;bottom:3%;left:3%;z-index:1;display:flex;align-items:flex-end;gap:.2vw;}
-  .sc12-scale-bar{width:3vw;height:3px;background:rgba(76,175,80,.2);border-left:1px solid rgba(76,175,80,.15);border-right:1px solid rgba(76,175,80,.15);}
-  .sc12-scale-txt{font-size:.3vw;color:rgba(76,175,80,.15);letter-spacing:.03vw;}
-  /* Neighborhood labels */
-  .sc12-hood{position:absolute;font-size:.5vw;letter-spacing:.3vw;text-transform:uppercase;color:rgba(76,175,80,.08);font-weight:700;z-index:0;}
+  .sc12-scale-bar{width:3vw;height:3px;background:rgba(180,200,180,.12);border-left:1px solid rgba(180,200,180,.1);border-right:1px solid rgba(180,200,180,.1);}
+  .sc12-scale-txt{font-size:.3vw;color:rgba(180,200,180,.1);letter-spacing:.03vw;}
+  /* Neighborhood labels — large faint text like Google Maps */
+  .sc12-hood{position:absolute;font-size:.6vw;letter-spacing:.4vw;text-transform:uppercase;color:rgba(180,200,180,.06);font-weight:700;z-index:0;}
 
   /* Phone card — for map and customer app */
   .sc12-phone-card{
@@ -1609,50 +1609,87 @@
   <div class="sc12-bg-fold-right"></div>
   <!-- Map background — hidden by default, revealed last -->
   <div class="sc12-map-bg" id="z12bg">
-  <img src="screenshot-nearby.png" class="sc12-map-real" alt=""/>
-  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,15,8,.15),rgba(0,10,5,.25));"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,12,6,.1),rgba(0,8,4,.15));"></div>
   <div class="sc12-radar" style="position:absolute;inset:0;"><div class="sc12-radar-sweep"></div></div>
-  <!-- Water body (river) -->
-  <div class="sc12-map-water" style="top:0;right:0;width:18%;height:25%;border-radius:0 0 0 60%;"></div>
-  <div class="sc12-map-water" style="bottom:0;left:0;width:12%;height:15%;border-radius:0 40% 0 0;"></div>
+  <!-- Water -->
+  <div class="sc12-map-water" style="top:0;right:0;width:20%;height:22%;border-radius:0 0 0 50%;"></div>
+  <div class="sc12-map-water" style="bottom:0;left:0;width:14%;height:12%;border-radius:0 35% 0 0;"></div>
   <!-- Parks -->
-  <div class="sc12-map-park" style="top:3%;left:30%;width:8%;height:12%;"></div>
-  <div class="sc12-map-park" style="top:60%;left:58%;width:10%;height:8%;border-radius:40%;"></div>
-  <div class="sc12-map-park" style="top:75%;right:15%;width:6%;height:10%;"></div>
-  <!-- City blocks -->
-  <div class="sc12-map-block" style="top:3%;left:3%;width:6%;height:10%;"></div>
-  <div class="sc12-map-block" style="top:3%;left:12%;width:8%;height:6%;"></div>
-  <div class="sc12-map-block" style="top:12%;left:3%;width:5%;height:5%;"></div>
-  <div class="sc12-map-block" style="top:22%;left:25%;width:10%;height:6%;"></div>
-  <div class="sc12-map-block" style="top:22%;left:55%;width:8%;height:7%;"></div>
-  <div class="sc12-map-block" style="top:33%;left:5%;width:6%;height:8%;"></div>
-  <div class="sc12-map-block" style="top:33%;left:38%;width:12%;height:5%;"></div>
-  <div class="sc12-map-block" style="top:45%;left:25%;width:7%;height:8%;"></div>
-  <div class="sc12-map-block" style="top:45%;left:80%;width:8%;height:6%;"></div>
-  <div class="sc12-map-block" style="top:58%;left:10%;width:9%;height:6%;"></div>
-  <div class="sc12-map-block" style="top:58%;left:38%;width:6%;height:8%;"></div>
-  <div class="sc12-map-block" style="top:70%;left:25%;width:8%;height:5%;"></div>
-  <div class="sc12-map-block" style="top:70%;left:55%;width:5%;height:7%;"></div>
-  <div class="sc12-map-block" style="top:82%;left:45%;width:7%;height:6%;"></div>
-  <div class="sc12-map-block" style="top:82%;left:65%;width:10%;height:5%;"></div>
-  <div class="sc12-map-block" style="top:5%;left:60%;width:6%;height:8%;"></div>
+  <div class="sc12-map-park" style="top:5%;left:32%;width:7%;height:10%;"></div>
+  <div class="sc12-map-park" style="top:55%;left:60%;width:8%;height:7%;"></div>
+  <div class="sc12-map-park" style="top:72%;right:18%;width:5%;height:8%;"></div>
+  <!-- City blocks — denser, more realistic -->
+  <div class="sc12-map-block" style="top:2%;left:2%;width:7%;height:8%;"></div>
+  <div class="sc12-map-block" style="top:2%;left:11%;width:9%;height:5%;"></div>
+  <div class="sc12-map-block" style="top:2%;left:42%;width:6%;height:6%;"></div>
+  <div class="sc12-map-block" style="top:2%;left:58%;width:8%;height:5%;"></div>
+  <div class="sc12-map-block" style="top:10%;left:2%;width:5%;height:6%;"></div>
+  <div class="sc12-map-block" style="top:10%;left:42%;width:9%;height:8%;"></div>
+  <div class="sc12-map-block" style="top:20%;left:12%;width:7%;height:6%;"></div>
+  <div class="sc12-map-block" style="top:20%;left:24%;width:6%;height:7%;"></div>
+  <div class="sc12-map-block" style="top:20%;left:55%;width:10%;height:6%;"></div>
+  <div class="sc12-map-block" style="top:30%;left:2%;width:8%;height:7%;"></div>
+  <div class="sc12-map-block" style="top:30%;left:35%;width:6%;height:5%;"></div>
+  <div class="sc12-map-block" style="top:30%;left:70%;width:7%;height:8%;"></div>
+  <div class="sc12-map-block" style="top:40%;left:12%;width:9%;height:6%;"></div>
+  <div class="sc12-map-block" style="top:40%;left:42%;width:5%;height:7%;"></div>
+  <div class="sc12-map-block" style="top:40%;left:82%;width:8%;height:5%;"></div>
+  <div class="sc12-map-block" style="top:50%;left:2%;width:6%;height:8%;"></div>
+  <div class="sc12-map-block" style="top:50%;left:24%;width:8%;height:5%;"></div>
+  <div class="sc12-map-block" style="top:50%;left:70%;width:6%;height:7%;"></div>
+  <div class="sc12-map-block" style="top:60%;left:12%;width:7%;height:6%;"></div>
+  <div class="sc12-map-block" style="top:60%;left:35%;width:9%;height:5%;"></div>
+  <div class="sc12-map-block" style="top:65%;left:82%;width:7%;height:8%;"></div>
+  <div class="sc12-map-block" style="top:72%;left:2%;width:5%;height:6%;"></div>
+  <div class="sc12-map-block" style="top:72%;left:42%;width:8%;height:5%;"></div>
+  <div class="sc12-map-block" style="top:80%;left:55%;width:6%;height:7%;"></div>
+  <div class="sc12-map-block" style="top:80%;left:24%;width:7%;height:5%;"></div>
+  <div class="sc12-map-block" style="top:88%;left:42%;width:10%;height:6%;"></div>
+  <div class="sc12-map-block" style="top:88%;left:70%;width:8%;height:5%;"></div>
+  <!-- Main roads -->
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:18%"></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:48%"></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-h" style="top:78%"></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-v" style="left:22%"></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-v" style="left:52%"></div>
+  <div class="sc12-map-road sc12-map-road-main sc12-map-road-v" style="left:80%"></div>
+  <!-- Secondary roads -->
+  <div class="sc12-map-road sc12-map-road-h" style="top:8%"></div>
+  <div class="sc12-map-road sc12-map-road-h" style="top:28%"></div>
+  <div class="sc12-map-road sc12-map-road-h" style="top:38%"></div>
+  <div class="sc12-map-road sc12-map-road-h" style="top:58%"></div>
+  <div class="sc12-map-road sc12-map-road-h" style="top:68%"></div>
+  <div class="sc12-map-road sc12-map-road-h" style="top:88%"></div>
+  <div class="sc12-map-road sc12-map-road-v" style="left:10%"></div>
+  <div class="sc12-map-road sc12-map-road-v" style="left:33%"></div>
+  <div class="sc12-map-road sc12-map-road-v" style="left:42%"></div>
+  <div class="sc12-map-road sc12-map-road-v" style="left:65%"></div>
+  <div class="sc12-map-road sc12-map-road-v" style="left:92%"></div>
+  <!-- Diagonal road -->
+  <div class="sc12-map-road" style="top:5%;left:70%;width:25%;height:2px;transform:rotate(35deg);transform-origin:left top;"></div>
   <!-- Compass -->
   <div class="sc12-compass"><div class="sc12-compass-n">N</div><div class="sc12-compass-ring"><div class="sc12-compass-needle"></div></div></div>
   <!-- Scale bar -->
   <div class="sc12-scale"><div class="sc12-scale-bar"></div><div class="sc12-scale-txt">500m</div></div>
   <!-- Neighborhood labels -->
-  <div class="sc12-hood" style="top:8%;left:5%;">Downtown</div>
-  <div class="sc12-hood" style="top:35%;left:60%;">Midtown</div>
-  <div class="sc12-hood" style="top:72%;left:8%;">Riverside</div>
-  <div class="sc12-hood" style="top:75%;right:8%;">Eastside</div>
+  <div class="sc12-hood" style="top:6%;left:4%;">Downtown</div>
+  <div class="sc12-hood" style="top:32%;left:55%;">Midtown</div>
+  <div class="sc12-hood" style="top:62%;left:5%;">Riverside</div>
+  <div class="sc12-hood" style="top:85%;right:6%;">Eastside</div>
   <!-- Road labels -->
-  <div class="sc12-road-label" style="top:16%;left:2%;">Main St</div>
-  <div class="sc12-road-label" style="top:40%;left:2%;">2nd Ave</div>
-  <div class="sc12-road-label" style="top:66%;left:2%;">Park Blvd</div>
-  <div class="sc12-road-label" style="top:88%;left:2%;">River Rd</div>
-  <div class="sc12-road-label" style="top:4%;left:23%;transform:rotate(90deg);transform-origin:left top;">Central Dr</div>
-  <div class="sc12-road-label" style="top:4%;left:53%;transform:rotate(90deg);transform-origin:left top;">Market St</div>
-  <div class="sc12-road-label" style="top:4%;left:79%;transform:rotate(90deg);transform-origin:left top;">East Blvd</div>
+  <div class="sc12-road-label" style="top:16%;left:2%;">Osmeña Blvd</div>
+  <div class="sc12-road-label" style="top:46%;left:2%;">M.J. Cuenco Ave</div>
+  <div class="sc12-road-label" style="top:76%;left:2%;">S. Osmeña Rd</div>
+  <div class="sc12-road-label" style="top:4%;left:23%;transform:rotate(90deg);transform-origin:left top;">Colon St</div>
+  <div class="sc12-road-label" style="top:4%;left:53%;transform:rotate(90deg);transform-origin:left top;">Gen. Maxilom Ave</div>
+  <div class="sc12-road-label" style="top:4%;left:81%;transform:rotate(90deg);transform-origin:left top;">Gorordo Ave</div>
+  <!-- Business labels like the screenshot -->
+  <div class="sc12-biz-label" style="top:12%;left:15%;">Tess Lechon Cebu</div>
+  <div class="sc12-biz-label" style="top:25%;left:65%;">Metro Supermarket</div>
+  <div class="sc12-biz-label" style="top:44%;left:8%;">KFC</div>
+  <div class="sc12-biz-label" style="top:55%;left:48%;">Capex</div>
+  <div class="sc12-biz-label" style="top:35%;left:30%;">Mandaue Branch</div>
+  <div class="sc12-biz-label" style="top:70%;left:50%;">SM City Cebu</div>
   <!-- Background pins (z-index:1 so behind content at z-index:2) -->
   <div class="sc12-pin" style="top:10%;left:8%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:0s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
   <div class="sc12-pin" style="top:12%;left:45%;z-index:1;"><div class="sc12-pin-zone"></div><div class="sc12-pin-dot" style="animation-delay:.8s"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="2" width="16" height="20" rx="2" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="4.5" stroke="var(--green)" stroke-width="1.5"/></svg></div></div>
