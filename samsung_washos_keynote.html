@@ -642,13 +642,13 @@
   /* Right side — digital phone with live map */
   .new-scene{width:80%;height:85%;display:flex;align-items:center;justify-content:center;position:relative;}
   /* Phone frame */
-  .new-phone{width:9vw;height:17vw;border-radius:1.2vw;border:.4vw solid #222;background:#111;display:flex;flex-direction:column;align-items:center;padding:.3vw;overflow:hidden;box-shadow:0 .4vw 2.5vw rgba(0,0,0,.6);position:relative;}
+  .new-phone{width:14vw;height:26vw;border-radius:1.8vw;border:.5vw solid #222;background:#111;display:flex;flex-direction:column;align-items:center;padding:.4vw;overflow:hidden;box-shadow:0 .5vw 3vw rgba(0,0,0,.6);position:relative;}
   .new-phone::before{content:'';position:absolute;right:-.5vw;top:4vw;width:.1vw;height:1.5vw;border-radius:0 .08vw .08vw 0;background:#333;}
   .new-phone::after{content:'';position:absolute;left:-.5vw;top:3.5vw;width:.1vw;height:1vw;border-radius:.08vw 0 0 .08vw;background:#333;}
-  .new-phone-notch{width:3vw;height:.25vw;border-radius:.18vw;background:#1a1a1a;border:1px solid #2a2a2a;margin-top:.12vw;margin-bottom:.12vw;flex-shrink:0;}
-  .new-phone-screen{flex:1;width:100%;border-radius:.8vw;overflow:hidden;position:relative;background:#161e1a;}
-  .new-phone-chin{height:.35vw;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
-  .new-phone-chin::after{content:'';width:2vw;height:.1vw;border-radius:.07vw;background:#333;}
+  .new-phone-notch{width:4.5vw;height:.35vw;border-radius:.25vw;background:#1a1a1a;border:1px solid #2a2a2a;margin-top:.18vw;margin-bottom:.18vw;flex-shrink:0;}
+  .new-phone-screen{flex:1;width:100%;border-radius:1.2vw;overflow:hidden;position:relative;background:#161e1a;}
+  .new-phone-chin{height:.5vw;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .new-phone-chin::after{content:'';width:3vw;height:.15vw;border-radius:.1vw;background:#333;}
   /* Map inside the phone screen */
   .new-map-tint{position:absolute;inset:0;background:linear-gradient(160deg,#1a2a22,#0f1a14);z-index:0;}
   /* Radar sweep */
@@ -663,7 +663,7 @@
   .new-map-road-main.new-map-road-h{height:3px;}
   .new-map-road-main.new-map-road-v{width:3px;}
   /* Blinking shop pins */
-  .new-map-pin{position:absolute;z-index:3;width:.5vw;height:.5vw;border-radius:50%;background:var(--green);box-shadow:0 0 .5vw rgba(76,175,80,.6);animation:sc3PinBlink 2s ease-in-out infinite;}
+  .new-map-pin{position:absolute;z-index:3;width:.8vw;height:.8vw;border-radius:50%;background:var(--green);box-shadow:0 0 .7vw rgba(76,175,80,.6);animation:sc3PinBlink 2s ease-in-out infinite;}
   .new-map-pin::before{content:'';position:absolute;inset:-.35vw;border-radius:50%;border:1.5px solid rgba(76,175,80,.12);animation:sc3PinPulse 2.5s ease-out infinite;}
   @keyframes sc3PinBlink{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:1;transform:scale(1.15);}}
   @keyframes sc3PinPulse{0%{transform:scale(.5);opacity:.5;}100%{transform:scale(2.5);opacity:0;}}
@@ -671,7 +671,7 @@
   .new-map-pin-lbl{position:absolute;left:120%;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.25vw;color:var(--green-bright);background:rgba(0,15,8,.85);padding:.05vw .15vw;border-radius:.08vw;border:1px solid rgba(76,175,80,.12);opacity:0;animation:sc3LblFade 4s ease-in-out infinite;}
   @keyframes sc3LblFade{0%,100%{opacity:0;}20%,80%{opacity:.7;}}
   /* Moving customer dots */
-  .new-map-cust{position:absolute;z-index:3;width:.3vw;height:.3vw;border-radius:50%;background:var(--green-bright);box-shadow:0 0 .3vw rgba(76,175,80,.3);opacity:0;animation:sc3CustMove var(--cdur) ease-in-out infinite;animation-delay:var(--cdelay);}
+  .new-map-cust{position:absolute;z-index:3;width:.5vw;height:.5vw;border-radius:50%;background:var(--green-bright);box-shadow:0 0 .4vw rgba(76,175,80,.3);opacity:0;animation:sc3CustMove var(--cdur) ease-in-out infinite;animation-delay:var(--cdelay);}
   @keyframes sc3CustMove{0%{opacity:0;transform:translate(0,0);}10%{opacity:.6;}80%{opacity:.4;}100%{opacity:0;transform:translate(var(--cx),var(--cy));}}
 
   .sp-tag{position:absolute;bottom:.8vw;font-size:0.98vw;letter-spacing:0.42vw;text-transform:uppercase;color:var(--gray);z-index:2;}
@@ -710,7 +710,7 @@
 
   /* SC5 powered by — tighter layout, bigger logo */
   .sc5-powered{font-family:'DM Sans',sans-serif;font-size:1vw;letter-spacing:0;text-transform:uppercase;color:var(--gray);margin-top:1.5vw;opacity:0;transition:opacity 3s ease;z-index:2;display:flex;align-items:center;gap:0;}
-  .sc5-powered .goodapps-logo{margin-left:.15vw;}
+  .sc5-powered .goodapps-logo{margin-left:-.1vw;}
   .sc5-powered.on{opacity:.6;}
   .sc5-powered .goodapps-logo{height:3.5vw;}
 
