@@ -1885,92 +1885,7 @@ const anim={
 
 let act=[];
 
-// ══════ SOUND EFFECTS ENGINE — Professional/Corporate ══════
-const sfx={
-  ctx:null,
-  init(){if(!this.ctx)this.ctx=new(window.AudioContext||window.webkitAudioContext)();if(this.ctx.state==='suspended')this.ctx.resume();},
-  // Warm whoosh — filtered noise sweep with long tail
-  whoosh(){
-    this.init();const c=this.ctx,now=c.currentTime;
-    const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.6,c.sampleRate),d=buf.getChannelData(0);
-    for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.15));}
-    n.buffer=buf;
-    const f=c.createBiquadFilter();f.type='bandpass';f.frequency.setValueAtTime(400,now);f.frequency.linearRampToValueAtTime(1200,now+.15);f.frequency.linearRampToValueAtTime(300,now+.5);f.Q.value=.8;
-    const g=c.createGain();g.gain.setValueAtTime(.05,now);g.gain.linearRampToValueAtTime(.07,now+.1);g.gain.exponentialRampToValueAtTime(.001,now+.6);
-    n.connect(f);f.connect(g);g.connect(c.destination);n.start(now);
-  },
-  // Elegant chime — dual sine with gentle decay
-  pop(){
-    this.init();const c=this.ctx,now=c.currentTime;
-    [880,1320].forEach((freq,i)=>{
-      const o=c.createOscillator(),g=c.createGain();
-      o.type='sine';o.frequency.value=freq;
-      g.gain.setValueAtTime(.03,now);g.gain.exponentialRampToValueAtTime(.001,now+.3);
-      o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.3);
-    });
-  },
-  // Grand reveal — ascending major chord with shimmer
-  reveal(){
-    this.init();const c=this.ctx,now=c.currentTime;
-    const chord=[261.6,329.6,392,523.3]; // C major with octave
-    chord.forEach((freq,i)=>{
-      const o=c.createOscillator(),g=c.createGain();
-      o.type='sine';o.frequency.value=freq;
-      g.gain.setValueAtTime(0,now+i*.2);g.gain.linearRampToValueAtTime(.035,now+i*.2+.15);
-      g.gain.exponentialRampToValueAtTime(.001,now+i*.2+1.5);
-      o.connect(g);g.connect(c.destination);o.start(now+i*.2);o.stop(now+i*.2+1.5);
-    });
-    // Shimmer overlay
-    const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*1.5,c.sampleRate),d=buf.getChannelData(0);
-    for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.3))*Math.sin(i*.005);}
-    n.buffer=buf;const f=c.createBiquadFilter();f.type='highpass';f.frequency.value=2000;
-    const g2=c.createGain();g2.gain.setValueAtTime(0,now);g2.gain.linearRampToValueAtTime(.02,now+.5);g2.gain.exponentialRampToValueAtTime(.001,now+1.5);
-    n.connect(f);f.connect(g2);g2.connect(c.destination);n.start(now);
-  },
-  // Crystal shimmer — rising harmonics
-  shimmer(){
-    this.init();const c=this.ctx,now=c.currentTime;
-    [600,900,1200].forEach((freq,i)=>{
-      const o=c.createOscillator(),g=c.createGain();
-      o.type='sine';o.frequency.setValueAtTime(freq*.7,now+i*.1);o.frequency.linearRampToValueAtTime(freq,now+i*.1+.4);
-      g.gain.setValueAtTime(.015,now+i*.1);g.gain.exponentialRampToValueAtTime(.001,now+i*.1+.6);
-      o.connect(g);g.connect(c.destination);o.start(now+i*.1);o.stop(now+i*.1+.6);
-    });
-  },
-  // Deep cinematic close — sub bass with impact
-  thud(){
-    this.init();const c=this.ctx,now=c.currentTime;
-    const o=c.createOscillator(),g=c.createGain();
-    o.type='sine';o.frequency.setValueAtTime(60,now);o.frequency.exponentialRampToValueAtTime(25,now+.5);
-    g.gain.setValueAtTime(.15,now);g.gain.exponentialRampToValueAtTime(.001,now+.8);
-    o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.8);
-    // Impact layer
-    const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.2,c.sampleRate),d=buf.getChannelData(0);
-    for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.03));}
-    n.buffer=buf;const g2=c.createGain();g2.gain.setValueAtTime(.08,now);g2.gain.exponentialRampToValueAtTime(.001,now+.15);
-    n.connect(g2);g2.connect(c.destination);n.start(now);
-  },
-  // Liquid splash — warm filtered noise
-  splash(){
-    this.init();const c=this.ctx,now=c.currentTime;
-    const n=c.createBufferSource(),buf=c.createBuffer(1,c.sampleRate*.7,c.sampleRate),d=buf.getChannelData(0);
-    for(let i=0;i<d.length;i++){d[i]=(Math.random()*2-1)*Math.exp(-i/(c.sampleRate*.18))*(1+Math.sin(i*.015)*.6);}
-    n.buffer=buf;const f=c.createBiquadFilter();f.type='lowpass';f.frequency.setValueAtTime(800,now);f.frequency.linearRampToValueAtTime(400,now+.5);
-    const g=c.createGain();g.gain.setValueAtTime(.05,now);g.gain.exponentialRampToValueAtTime(.001,now+.7);
-    n.connect(f);f.connect(g);g.connect(c.destination);n.start(now);
-  },
-  // Soft tick — subtle keystroke
-  tick(){
-    this.init();const c=this.ctx,now=c.currentTime;
-    const o=c.createOscillator(),g=c.createGain();
-    o.type='sine';o.frequency.value=1400;
-    g.gain.setValueAtTime(.02,now);g.gain.exponentialRampToValueAtTime(.001,now+.06);
-    o.connect(g);g.connect(c.destination);o.start(now);o.stop(now+.06);
-  }
-};
-
 function show(i){
-  sfx.whoosh(); // Scene transition sound
   act.forEach(t=>clearTimeout(t));act=[];
   document.querySelectorAll('.on').forEach(el=>el.classList.remove('on'));
   const br=document.getElementById('z5burst');if(br)br.classList.remove('on','dim');
@@ -2003,16 +1918,10 @@ function show(i){
       const el=document.getElementById(id);
       if(el){
         el.classList.add('on');
-        // Context-specific sounds
-        if(id==='z5burst'||id==='z5a')sfx.reveal();
-        else if(id==='z1vortex')sfx.splash();
-        else if(id.startsWith('z6')||id.startsWith('z11'))sfx.shimmer();
-        else if(id.startsWith('z8w'))sfx.tick();
-        else sfx.pop();
         // For SC9 machines group — animate children
         if(id==='z9m'){
           el.querySelectorAll('.sc9-machine').forEach((m,idx)=>{
-            setTimeout(()=>{m.classList.add('on');sfx.tick();},idx*600);
+            setTimeout(()=>m.classList.add('on'),idx*600);
           });
         }
       }
@@ -2114,12 +2023,10 @@ function show(i){
     // Step 3: Background folds shut
     act.push(setTimeout(()=>{
       const sc12=document.getElementById('sc12');if(sc12)sc12.classList.add('bg-folding');
-      sfx.thud();
     },groupTime+10000));
     // Step 4: Outro — logo reveal after fold completes
     act.push(setTimeout(()=>{
       const outro=document.getElementById('z12outro');if(outro)outro.classList.add('on');
-      sfx.reveal();
     },groupTime+13000));
   }
 }
