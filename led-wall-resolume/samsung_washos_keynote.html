@@ -1122,9 +1122,12 @@
   /* The 4:1 LED wall (aspect ratio wider than 2.5:1) — these do NOT apply */
   /* ══════ ULTRA-WIDE (4:1+) — LED wall overrides ══════ */
   @media (min-aspect-ratio:3/1){
+    /* Global: increase padding for ultra-wide so nothing crashes into edges */
+    .scene{padding:4vh 5vw;}
+
     /* Use vh-capped sizing to prevent vertical overflow on ultra-wide */
-    .hero-line{font-size:clamp(30px,11vh,140px);}
-    .sc2-fade{font-size:clamp(18px,5vh,50px);}
+    .hero-line{font-size:clamp(30px,10vh,140px);}
+    .sc2-fade{font-size:clamp(18px,4.5vh,50px);}
     .sc3-gap-text{font-size:clamp(18px,5vh,50px);}
     .sc3-col-label{font-size:min(2.5vw,8vh);}
     .sc4-q{font-size:min(3.5vw,12vh);}
@@ -1140,7 +1143,7 @@
     .sc5-tagline{font-size:min(2.5vw,9vh);}
     /* ── SC6/SC11 ecosystem override for ultra-wide ── */
     .sc6-lbl{font-size:5vh;}
-    .eco-orbit{width:72vh;height:72vh;}
+    .eco-orbit{width:65vh;height:65vh;}
     .eco-hub-center{width:30%;height:30%;gap:1vh;border-width:.2vh;}
     .eco-hub-center svg{width:8vh;height:8vh;}
     .eco-hub-center .eco-node-lbl{font-size:2.2vh;letter-spacing:.15vh;}
@@ -1154,7 +1157,7 @@
     .sc11-washer-drum::after{width:1.2vh;height:1.2vh;}
     .sc11-hub-logo{height:16vh;}
     .sc7-lbl{font-size:min(1.3vw,4.5vh);}
-    .sc7-phone-frame{width:min(8vw,28vh);height:min(15vw,52vh);}
+    .sc7-phone-frame{width:min(8vw,24vh);height:min(15vw,48vh);}
     .sc7-phone-label{font-size:min(.7vw,2.4vh);}
     /* ── SC8 ops grid override for ultra-wide ── */
     .sc8-ttl{font-size:8vh;margin-bottom:3vh;}
@@ -1170,12 +1173,13 @@
     .sc10-word{font-size:min(4vw,14vh);}
     .sc11-hub-logo{height:min(6vw,20vh);}
     .sc12-lbl{font-size:min(2.5vw,8vh);}
-    .sc12-laptop-img{height:min(18vw,60vh);}
+    .sc12-laptop-img{height:min(18vw,55vh);}
     .sc12-item-label{font-size:min(.6vw,2vh);}
     .sc12-outro-logo{height:min(10vw,35vh);}
     .sc12-outro-powered{font-size:min(.8vw,2.8vh);}
     .sc1-wb-core{width:min(14vw,45vh);height:min(12vw,38vh);}
-    .sc1-vortex{width:min(20vw,65vh);height:min(27vw,85vh);}
+    .sc1-vortex{width:min(20vw,65vh);height:min(27vw,80vh);top:52%;}
+    .sc1-vortex.on{transform:translate(-50%,-50%) scale(1);}
 
     /* ── SC3 full override for ultra-wide ── */
     /* At 4224×896, vh is the constraint. Size EVERYTHING from vh. */
