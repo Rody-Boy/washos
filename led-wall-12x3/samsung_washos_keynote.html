@@ -511,13 +511,13 @@
   .sc11-powered.on{opacity:1;}
   .sc11-powered .goodapps-logo{height:2.3vw;}
   /* SC11 realistic washing machine in eco node */
-  .sc11-washer{width:1.8vw;height:2.3vw;border-radius:.3vw;border:1.5px solid rgba(76,175,80,.3);background:linear-gradient(170deg,rgba(10,26,18,.7),rgba(6,16,10,.8));display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;box-shadow:0 0 .7vw rgba(76,175,80,.1);gap:.08vw;}
+  .sc11-washer{width:1.5vw;height:1.8vw;border-radius:.3vw;border:1.5px solid var(--green);background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;gap:.06vw;flex-shrink:0;}
   .sc11-washer-panel{width:80%;display:flex;align-items:center;justify-content:center;gap:.1vw;position:absolute;top:.15vw;}
-  .sc11-washer-panel-bar{width:.6vw;height:.1vw;border-radius:.05vw;background:rgba(76,175,80,.25);}
+  .sc11-washer-panel-bar{width:.6vw;height:.1vw;border-radius:.05vw;background:var(--green);}
   .sc11-washer-panel-dot{width:.14vw;height:.14vw;border-radius:50%;background:var(--green);box-shadow:0 0 .15vw rgba(76,175,80,.5);animation:sc9DotPulse 2s ease-in-out infinite;}
-  .sc11-washer-drum{width:1.2vw;height:1.2vw;border-radius:50%;border:1.5px solid rgba(76,175,80,.25);box-shadow:inset 0 0 .4vw rgba(76,175,80,.08);display:flex;align-items:center;justify-content:center;animation:drumSlow 18s linear infinite;overflow:hidden;position:relative;margin-top:.15vw;}
-  .sc11-washer-drum::after{content:'';width:.4vw;height:.4vw;border-radius:50%;border:1px solid rgba(76,175,80,.15);}
-  .sc11-washer-drum-water{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(180deg,rgba(76,175,80,.06),rgba(76,175,80,.15));border-radius:0 0 50% 50%;animation:sc9Slosh 3s ease-in-out infinite;}
+  .sc11-washer-drum{width:.9vw;height:.9vw;border-radius:50%;border:1.5px solid var(--green);display:flex;align-items:center;justify-content:center;animation:drumSlow 18s linear infinite;overflow:hidden;position:relative;margin-top:.1vw;}
+  .sc11-washer-drum::after{content:'';width:.3vw;height:.3vw;border-radius:50%;border:1px solid var(--green);}
+  .sc11-washer-drum-water{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(180deg,rgba(76,175,80,.1),rgba(76,175,80,.25));border-radius:0 0 50% 50%;animation:sc9Slosh 3s ease-in-out infinite;}
 
   /* ══════ SC3 — INDUSTRY GAP (illustrated) ══════ */
   #sc3{background:var(--deep);flex-direction:column;}
@@ -1243,24 +1243,6 @@
 <div class="scene" id="sc6">
   <div class="sc6-lbl" id="z6lbl">The Wash OS Ecosystem</div>
   <div class="eco-orbit">
-    <!-- Rotating decorative rings -->
-    <div class="eco-ring"></div>
-    <div class="eco-ring"></div>
-
-    <!-- Connecting arcs (SVG lines from nodes to center) -->
-    <div class="eco-connectors">
-      <svg viewBox="0 0 420 420" preserveAspectRatio="xMidYMid meet">
-        <!-- Top node to center -->
-        <line class="eco-arc" id="z6ar1" x1="210" y1="60" x2="210" y2="175"/>
-        <!-- Bottom-left node to center -->
-        <line class="eco-arc" id="z6ar2" x1="60" y1="330" x2="175" y2="240"/>
-        <!-- Bottom-right node to center -->
-        <line class="eco-arc" id="z6ar3" x1="360" y1="330" x2="245" y2="240"/>
-        <!-- Outer ring connecting all three nodes -->
-        <path class="eco-arc" id="z6ar4" d="M210 55 Q380 55 365 335 Q210 420 55 335 Q40 55 210 55" style="stroke-dasharray:8 6;"/>
-      </svg>
-    </div>
-
     <!-- Center hub — Wash OS Platform -->
     <div class="eco-hub-center" id="z6b">
       <svg viewBox="0 0 24 24" fill="none"><path d="M6 7c-2.2 0-4 1.5-4 3.4 0 1.8 1.5 3.3 3.4 3.3h13.2c1.9 0 3.4-1.5 3.4-3.3C22 8.5 20.2 7 18 7c-.4-2.3-2.4-4-4.8-4-2 0-3.7 1.2-4.4 2.9C7.5 5.6 6 6.7 6 7z" stroke="var(--green-bright)" stroke-width="1.5"/></svg>
@@ -1805,13 +1787,13 @@ function show(i){
     // Fade out logo/subtitle/powered-by, reveal tagline
     act.push(setTimeout(()=>{
       const fg=document.getElementById('z5fade');if(fg)fg.classList.add('faded');
-    },17000));
+    },15500));
     act.push(setTimeout(()=>{
       const tag=document.getElementById('z5tag');if(tag)tag.classList.add('on');
-    },18500));
+    },19000));
     act.push(setTimeout(()=>{
       const tag=document.getElementById('z5tag');if(tag)tag.classList.add('emphasis');
-    },21000));
+    },22000));
   }
 
   if(i===11){
