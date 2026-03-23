@@ -1898,9 +1898,11 @@ function show(i){
   act.forEach(t=>clearTimeout(t));act=[];
   document.querySelectorAll('.on').forEach(el=>el.classList.remove('on'));
   const br=document.getElementById('z5burst');if(br)br.classList.remove('on','dim');
-  // Reset SC5 fade group + tagline
-  const fg=document.getElementById('z5fade');if(fg)fg.classList.remove('faded');
-  const tag=document.getElementById('z5tag');if(tag)tag.classList.remove('on','emphasis');
+  // Reset SC5 fade group + tagline only when entering SC5; otherwise keep faded to prevent flash
+  const fg=document.getElementById('z5fade');
+  const tag=document.getElementById('z5tag');
+  if(i===4){if(fg)fg.classList.remove('faded');if(tag)tag.classList.remove('on','emphasis');}
+  else{if(fg){fg.classList.add('faded');fg.style.transition='none';requestAnimationFrame(()=>{fg.style.transition='';})}if(tag){tag.classList.remove('on','emphasis');}}
   // Reset SC12 featured + fold + absorb
   ['z12c1','z12c3'].forEach(id=>{const e=document.getElementById(id);if(e){e.classList.remove('featured','move-to-center-left','move-to-center-right','absorb-left','absorb-right');e.style.opacity='';}});
   ['z12a1'].forEach(id=>{const e=document.getElementById(id);if(e)e.classList.remove('fold');});
