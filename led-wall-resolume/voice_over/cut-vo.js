@@ -33,9 +33,9 @@ cuts.forEach(c => {
   const output = path.resolve(__dirname, c.file);
   const cmd = `"${ffmpegPath}" -y -i "${INPUT}" -ss ${c.start} -t ${duration} -acodec libmp3lame -q:a 2 "${output}"`;
 
-  // Add 0.25s silence at the start of each clip
-  const silenceCmd = `"${ffmpegPath}" -y -f lavfi -t 0.25 -i anullsrc=r=44100:cl=mono -i "${INPUT}" -ss ${c.start} -t ${duration} -filter_complex "[0:a][1:a]concat=n=2:v=0:a=1[out]" -map "[out]" -acodec libmp3lame -q:a 2 "${output}"`;
-  console.log(`  Slide ${c.slide}: ${c.start}s → ${c.end}s (${duration}s + 0.25s delay) → ${c.file}`);
+  // Add 0.50s silence at the start of each clip
+  const silenceCmd = `"${ffmpegPath}" -y -f lavfi -t 0.50 -i anullsrc=r=44100:cl=mono -i "${INPUT}" -ss ${c.start} -t ${duration} -filter_complex "[0:a][1:a]concat=n=2:v=0:a=1[out]" -map "[out]" -acodec libmp3lame -q:a 2 "${output}"`;
+  console.log(`  Slide ${c.slide}: ${c.start}s → ${c.end}s (${duration}s + 0.50s delay) → ${c.file}`);
   execSync(silenceCmd, { stdio: 'pipe' });
 });
 
