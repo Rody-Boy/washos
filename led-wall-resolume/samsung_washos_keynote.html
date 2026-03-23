@@ -2061,15 +2061,16 @@ function show(i){
 
 function nx(){show((cur+1)%T);}
 function pv(){show((cur-1+T)%T);}
-function go(){stop();play=true;document.getElementById('bA').textContent='II';tmr=setTimeout(()=>{nx();go();},dur[cur]);}
+function go(){if(tmr)clearTimeout(tmr);play=true;document.getElementById('bA').textContent='II';tmr=setTimeout(()=>{nx();go();},dur[cur]);}
 function stop(){play=false;document.getElementById('bA').textContent='▸';if(tmr)clearTimeout(tmr);}
 
-document.getElementById('bN').onclick=()=>{stop();nx();};
-document.getElementById('bP').onclick=()=>{stop();pv();};
+// Next/Prev always resume autoplay after navigating
+document.getElementById('bN').onclick=()=>{nx();go();};
+document.getElementById('bP').onclick=()=>{pv();go();};
 document.getElementById('bA').onclick=()=>{play?stop():go();};
 document.addEventListener('keydown',e=>{
-  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();stop();nx();}
-  if(e.key==='ArrowLeft'){stop();pv();}
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();nx();go();}
+  if(e.key==='ArrowLeft'){pv();go();}
 });
 
 // ══════ VOICEOVER AUDIO ══════
