@@ -1179,10 +1179,10 @@
 
     /* ── SC3 full override for ultra-wide ── */
     /* At 4224×896, vh is the constraint. Size EVERYTHING from vh. */
-    .sc3-layout{width:auto;max-width:90%;align-items:center;gap:3vh;}
-    .sc3-col{gap:1vh;}
+    .sc3-layout{width:100%;max-width:100%;align-items:center;justify-content:space-between;gap:0;padding:0 4vw;}
+    .sc3-col{gap:1vh;flex:none;}
     .sc3-col-label{font-size:4vh;}
-    .sc3-vs{font-size:3.5vh;}
+    .sc3-vs{font-size:3.5vh;flex:1;text-align:center;}
     /* Boxes: height-driven, width follows via aspect-ratio */
     .sp-L,.sp-R{height:58vh;width:auto;aspect-ratio:1.2/1 !important;max-width:45vw;max-height:unset !important;border-radius:1.2vh;}
     /* Laundry shop */
