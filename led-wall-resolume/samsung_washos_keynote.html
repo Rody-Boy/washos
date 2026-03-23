@@ -1873,6 +1873,39 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowLeft'){stop();pv();}
 });
 
+// ══════ VOICEOVER AUDIO ══════
+const voClips = [
+  'voice_over/vo_slide01.mp3', // SC1
+  'voice_over/vo_slide02.mp3', // SC2
+  'voice_over/vo_slide03.mp3', // SC3
+  'voice_over/vo_slide04.mp3', // SC4
+  'voice_over/vo_slide05.mp3', // SC5
+  'voice_over/vo_slide06.mp3', // SC6
+  'voice_over/vo_slide07.mp3', // SC7
+  'voice_over/vo_slide08.mp3', // SC8
+  'voice_over/vo_slide09.mp3', // SC9
+  'voice_over/vo_slide10.mp3', // SC10
+  'voice_over/vo_slide11.mp3', // SC11 (covers 11+12)
+  null                          // SC12 — no separate VO
+];
+let voAudio = null;
+
+function playVO(sceneIdx) {
+  if (voAudio) { voAudio.pause(); voAudio.currentTime = 0; voAudio = null; }
+  const src = voClips[sceneIdx];
+  if (!src) return;
+  voAudio = new Audio(src);
+  voAudio.volume = 1;
+  voAudio.play().catch(() => {}); // ignore autoplay block
+}
+
+// Patch show() to trigger voiceover
+const _origShow = show;
+show = function(i) {
+  _origShow(i);
+  playVO(i);
+};
+
 show(0);go();
 
 // Debug guides toggle — press G key or add ?debug=1 to URL
