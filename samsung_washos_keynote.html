@@ -594,7 +594,7 @@
   .sc3-layout{display:flex;width:85%;align-items:flex-end;justify-content:center;gap:2vw;position:relative;}
   .sc3-col{display:flex;flex-direction:column;align-items:center;gap:1vw;flex:1;opacity:0;transition:all 2.2s ease;}
   .sc3-col.on{opacity:1;}
-  .sc3-col-label{font-family:'Bebas Neue',sans-serif;font-size:2.5vw;letter-spacing:.3vw;text-transform:uppercase;color:#fff;}
+  .sc3-col-label{font-family:'Bebas Neue',sans-serif;font-size:2.5vw;letter-spacing:.3vw;text-transform:uppercase;color:#fff;position:absolute;bottom:1vw;left:50%;transform:translateX(-50%);z-index:5;text-shadow:0 0 1vw rgba(0,0,0,.8);}
   .sc3-vs{font-family:'Bebas Neue',sans-serif;font-size:2vw;letter-spacing:.2vw;color:var(--green);align-self:center;opacity:0;transition:all 2s ease;}
   .sc3-vs.on{opacity:.6;}
   .sp-L{background:linear-gradient(135deg,#2a2420,#181210);border-radius:1vw;overflow:hidden;display:flex;align-items:center;justify-content:center;}
@@ -1317,8 +1317,8 @@
   <div class="sc3-layout">
     <!-- LEFT: Yesterday -->
     <div class="sc3-col" id="z3a">
-      <div class="sc3-col-label">Yesterday</div>
       <div class="sp-L" style="width:100%;aspect-ratio:1/.95;position:relative;">
+        <div class="sc3-col-label">Yesterday</div>
         <div class="old-scene">
           <div class="old-storefront">
             <div class="old-wall"></div>
@@ -1351,8 +1351,8 @@
 
     <!-- RIGHT: Today -->
     <div class="sc3-col" id="z3b">
-      <div class="sc3-col-label">Today</div>
       <div class="sp-R" style="width:100%;aspect-ratio:1/.95;position:relative;">
+        <div class="sc3-col-label">Today</div>
         <div class="new-scene">
           <div class="new-phone">
             <div class="new-phone-notch"></div>
