@@ -18,7 +18,7 @@ const cuts = [
   { slide: 8,  start: 110.9,  end: 132.1, file: 'vo_slide08.mp3' },
   { slide: 9,  start: 132.1,  end: 140.7, file: 'vo_slide09.mp3' },
   { slide: 10, start: 140.7,  end: 150.0, file: 'vo_slide10.mp3' },
-  { slide: 11, start: 150.0,  end: 165.4, file: 'vo_slide11.mp3' },  // covers slide 11+12
+  { slide: 11, start: 150.0,  end: 168,   file: 'vo_slide11.mp3' },  // covers slide 11+12, extra room for "thank you"
 ];
 
 // Presentation scene start times (cumulative from dur array)
