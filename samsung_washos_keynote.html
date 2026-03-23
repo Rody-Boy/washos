@@ -179,12 +179,12 @@
   .sc1-waterbody{
     position:absolute;z-index:4;pointer-events:none;
     left:50%;top:50%;
-    animation:waterWander 12s ease-in-out forwards;
+    animation:waterWander 16s ease-in-out forwards;
   }
   /* Tail — ghost copies that follow behind, visible and water-like */
   .sc1-wb-tail{
     position:absolute;left:50%;top:50%;z-index:3;pointer-events:none;
-    animation:waterWander 12s ease-in-out forwards;
+    animation:waterWander 16s ease-in-out forwards;
   }
   .sc1-wb-tail-blob{
     border-radius:45% 55% 50% 50% / 50% 45% 55% 50%;
@@ -205,7 +205,7 @@
   /* Splash wake — water spray left behind */
   .sc1-wb-wake{
     position:absolute;left:50%;top:50%;z-index:3;pointer-events:none;
-    animation:waterWander 12s ease-in-out forwards;
+    animation:waterWander 16s ease-in-out forwards;
     animation-delay:.08s;
   }
   .sc1-wb-wake-drop{
@@ -228,7 +228,7 @@
     background:radial-gradient(ellipse at 40% 40%,rgba(64,196,255,.55) 0%,rgba(30,144,255,.45) 20%,rgba(64,196,255,.2) 45%,rgba(76,175,80,.1) 65%,transparent 100%);
     box-shadow:0 0 8vw rgba(30,144,255,.4),0 0 15vw rgba(64,196,255,.18);
     filter:blur(1px);
-    animation:wbMorph 1.5s ease-in-out infinite, wbShrink 12s ease-in-out forwards;
+    animation:wbMorph 2s ease-in-out infinite, wbShrink 16s ease-in-out forwards;
     position:relative;
     overflow:visible;
   }
@@ -300,10 +300,10 @@
   /* Shrink as it approaches center — smooth absorption */
   @keyframes wbShrink{
     0%{width:20vw;height:17vw;filter:blur(1px);}
-    70%{width:20vw;height:17vw;filter:blur(1px);}
-    85%{width:10vw;height:8vw;filter:blur(2px);}
-    95%{width:4vw;height:3vw;filter:blur(4px);}
-    100%{width:1vw;height:1vw;filter:blur(8px);}
+    75%{width:20vw;height:17vw;filter:blur(1px);}
+    88%{width:10vw;height:8vw;filter:blur(2px);}
+    96%{width:3vw;height:3vw;filter:blur(5px);}
+    100%{width:0;height:0;filter:blur(10px);}
   }
   /* Trailing drops wobble */
   @keyframes trailFollow{
@@ -1857,7 +1857,7 @@ const dur=[
 
 const anim={
   // SC1: Water wanders 0-6s, vortex at 6s. Host: "Good morning..." during water, pause after vortex
-  0:[[10000,'z1vortex']],
+  0:[[14000,'z1vortex']],
   // SC2: Host: "Laundry is something every household needs" → EVERY CITY (2s) → EVERY COMMUNITY (5s) → EVERY DAY (8s) → fade to universal (12s)
   1:[[2000,'z2a'],[5000,'z2b'],[8000,'z2c']],
   // SC3: Host: "Customers today live in a digital world..." → old side (2s) → new side (5s) → gap text (10s)
