@@ -1,0 +1,531 @@
+================================================================================
+
+   SAMSUNG WASH OS — LED WALL PRESENTATION
+   Technical Setup Guide for Resolume Arena
+
+   Prepared for: Samsung Product Launch Event
+   Prepared by: GoodApps, Inc.
+   Date: March 2026
+
+================================================================================
+
+
+TABLE OF CONTENTS
+-----------------
+  1. Overview
+  2. LED Wall Specifications
+  3. Folder Structure
+  4. Morning Presentation (With Voiceover)
+  5. Afternoon Presentation (Without Voiceover)
+  6. Resolume Arena Setup — Step by Step
+  7. LED Panel Mapping
+  8. Audio Setup
+  9. Testing Checklist
+  10. Keyboard Controls
+  11. Troubleshooting
+  12. Emergency Fallback (MP4 Export)
+  13. Technical Notes
+  14. Contact
+
+
+================================================================================
+1. OVERVIEW
+================================================================================
+
+This is an animated HTML/CSS/JS presentation designed for a 3-section LED wall,
+played through Resolume Arena's Web Browser source.
+
+There are TWO versions:
+
+  MORNING  — With voiceover narration (click to start)
+  AFTERNOON — Without voiceover (auto-starts on load)
+
+Both versions are self-contained folders with all assets embedded.
+NO INTERNET CONNECTION IS REQUIRED.
+
+
+================================================================================
+2. LED WALL SPECIFICATIONS
+================================================================================
+
+  Full canvas resolution:  4224 x 896 pixels
+  Aspect ratio:            4.71:1
+
+  Section breakdown:
+  ┌──────────────┬───────────────┬──────────────┐
+  │    LEFT      │    CENTER     │    RIGHT     │
+  │  1536 x 896  │  1152 x 896   │  1536 x 896  │
+  │  px 0-1535   │  px 1536-2687  │  px 2688-4223│
+  └──────────────┴───────────────┴──────────────┘
+
+  The HTML renders a single continuous 4224x896 canvas.
+  Resolume slices it across the three LED panels automatically.
+
+  Section boundaries (as percentage of canvas width):
+    Left edge of center panel:   36.36%
+    Right edge of center panel:  63.64%
+
+
+================================================================================
+3. FOLDER STRUCTURE
+================================================================================
+
+  washos/
+  │
+  ├── led-wall-resolume/                    ← MORNING (with voiceover)
+  │   ├── samsung_washos_keynote.html       ← Main file to load
+  │   ├── washos-logo.png
+  │   ├── whitegoodapps Logo.png
+  │   ├── WashOS Portal.png
+  │   ├── screenshot-loyalty.png
+  │   ├── screenshot-nearby.png
+  │   ├── screenshot-payment.png
+  │   ├── screenshot-tracking.png
+  │   ├── instructions.txt
+  │   ├── convert-to-mp4.js                ← Video export script (optional)
+  │   ├── .gitignore
+  │   └── voice_over/
+  │       ├── vo_slide01.mp3                ← Slide 1 voiceover
+  │       ├── vo_slide02.mp3                ← Slide 2 voiceover
+  │       ├── vo_slide03.mp3                ← Slide 3 voiceover
+  │       ├── vo_slide04.mp3                ← Slide 4 voiceover
+  │       ├── vo_slide05.mp3                ← Slide 5 voiceover
+  │       ├── vo_slide06.mp3                ← Slide 6 voiceover
+  │       ├── vo_slide07.mp3                ← Slide 7 voiceover
+  │       ├── vo_slide08.mp3                ← Slide 8 voiceover
+  │       ├── vo_slide09.mp3                ← Slide 9 voiceover
+  │       ├── vo_slide10.mp3                ← Slide 10 voiceover
+  │       ├── vo_slide11.mp3                ← Slide 11+12 voiceover
+  │       ├── vo_full_timed.mp3             ← Full timed audio track
+  │       ├── VO.mp3                        ← Original voiceover recording
+  │       ├── For VO_03232026.docx          ← Voiceover script
+  │       ├── cut-vo.js                     ← Audio cut script
+  │       └── build-full-vo.js              ← Audio build script
+  │
+  └── led-wall-resolume-no-vo/              ← AFTERNOON (no voiceover)
+      ├── samsung_washos_keynote.html       ← Main file to load
+      ├── washos-logo.png
+      ├── whitegoodapps Logo.png
+      ├── WashOS Portal.png
+      ├── screenshot-loyalty.png
+      ├── screenshot-nearby.png
+      ├── screenshot-payment.png
+      ├── screenshot-tracking.png
+      ├── convert-to-mp4.js                ← Video export script (optional)
+      └── .gitignore
+
+  IMPORTANT: Always copy the ENTIRE folder. Do not move or rename files
+  inside the folder — the HTML references assets by relative paths.
+
+
+================================================================================
+4. MORNING PRESENTATION (WITH VOICEOVER)
+================================================================================
+
+  Folder:    led-wall-resolume/
+  File:      samsung_washos_keynote.html
+  Duration:  248 seconds (4 minutes 8 seconds)
+  Audio:     Yes — voiceover narration per slide
+
+  Slide Timing:
+  ┌───────┬──────────────────────────────┬──────────┐
+  │ Slide │ Content                      │ Duration │
+  ├───────┼──────────────────────────────┼──────────┤
+  │   1   │ Opening Impact               │   30s    │
+  │   2   │ Universal Truth              │   10s    │
+  │   3   │ Industry Gap                 │   20s    │
+  │   4   │ The Opportunity              │   20s    │
+  │   5   │ WASH OS Reveal               │   10s    │
+  │   6   │ The Ecosystem                │   18s    │
+  │   7   │ Customer Experience          │   35s    │
+  │   8   │ Laundry Shop Operations      │   24s    │
+  │   9   │ Smart Machines               │   18s    │
+  │  10   │ Industry Transformation      │   16s    │
+  │  11   │ Closing Ecosystem            │   18s    │
+  │  12   │ Platform Overview + Outro    │   29s    │
+  ├───────┼──────────────────────────────┼──────────┤
+  │ TOTAL │                              │  248s    │
+  └───────┴──────────────────────────────┴──────────┘
+
+  BEHAVIOR:
+  - On load, a "Click anywhere to start" overlay appears
+  - After clicking, the presentation auto-plays with voiceover
+  - Each slide's voiceover plays automatically on transition
+  - After slide 12, it loops back to slide 1
+  - Next/Prev navigation (keyboard or buttons) triggers the
+    correct voiceover and resumes auto-advance
+
+  STARTING THE MORNING PRESENTATION:
+  1. Load the HTML in Resolume Web Browser source
+  2. The overlay "SAMSUNG WASH OS — Click anywhere to start" appears
+  3. Click anywhere on the Resolume output to begin
+  4. Presentation runs automatically from there
+
+
+================================================================================
+5. AFTERNOON PRESENTATION (WITHOUT VOICEOVER)
+================================================================================
+
+  Folder:    led-wall-resolume-no-vo/
+  File:      samsung_washos_keynote.html
+  Duration:  263 seconds (4 minutes 23 seconds)
+  Audio:     None
+
+  Slide Timing:
+  ┌───────┬──────────────────────────────┬──────────┐
+  │ Slide │ Content                      │ Duration │
+  ├───────┼──────────────────────────────┼──────────┤
+  │   1   │ Opening Impact               │   32s    │
+  │   2   │ Universal Truth              │   20s    │
+  │   3   │ Industry Gap                 │   18s    │
+  │   4   │ The Opportunity              │   20s    │
+  │   5   │ WASH OS Reveal               │   25s    │
+  │   6   │ The Ecosystem                │   15s    │
+  │   7   │ Customer Experience          │   25s    │
+  │   8   │ Laundry Shop Operations      │   27s    │
+  │   9   │ Smart Machines               │   23s    │
+  │  10   │ Industry Transformation      │   18s    │
+  │  11   │ Closing Ecosystem            │   18s    │
+  │  12   │ Platform Overview + Outro    │   22s    │
+  ├───────┼──────────────────────────────┼──────────┤
+  │ TOTAL │                              │  263s    │
+  └───────┴──────────────────────────────┴──────────┘
+
+  BEHAVIOR:
+  - Auto-starts immediately on load (no overlay, no click needed)
+  - No audio — silent playback
+  - Slides auto-advance continuously
+  - After slide 12, it loops back to slide 1
+
+
+================================================================================
+6. RESOLUME ARENA SETUP — STEP BY STEP
+================================================================================
+
+  PREREQUISITES:
+  - Resolume Arena (version 7.x or later recommended)
+  - The presentation folder copied to the Resolume machine's local drive
+  - LED wall hardware connected and mapped in Resolume
+
+  STEP 1: Copy the folder
+  ────────────────────────
+  Copy the entire presentation folder to a local path on the machine.
+  Example:
+    Windows:  C:\Presentations\led-wall-resolume\
+    macOS:    /Users/operator/Presentations/led-wall-resolume/
+
+  Do NOT use a network drive or USB during playback — keep files local.
+
+  STEP 2: Create a new composition
+  ─────────────────────────────────
+  1. Open Resolume Arena
+  2. Go to Composition > New
+  3. Set composition resolution to: 4224 x 896
+     (Composition > Settings > Resolution)
+
+  STEP 3: Add Web Browser source
+  ───────────────────────────────
+  1. In the clip deck, right-click an empty cell
+  2. Select: Sources > Web Browser
+     (If not visible: Sources > Browser or Sources > Web)
+  3. A new Web Browser clip appears
+
+  STEP 4: Configure the Web Browser source
+  ──────────────────────────────────────────
+  1. Select the Web Browser clip
+  2. In the clip properties panel, set:
+
+     URL (for morning with VO):
+     file:///C:/Presentations/led-wall-resolume/samsung_washos_keynote.html
+
+     URL (for afternoon no VO):
+     file:///C:/Presentations/led-wall-resolume-no-vo/samsung_washos_keynote.html
+
+     On macOS use:
+     file:///Users/operator/Presentations/led-wall-resolume/samsung_washos_keynote.html
+
+  3. Set the Web Browser resolution to: 4224 x 896
+     (This should match your composition resolution)
+
+  4. Set frame rate to: 30 fps (or match your composition fps)
+
+  STEP 5: Trigger the clip
+  ─────────────────────────
+  1. Click the Web Browser clip to trigger it
+  2. It should fill the entire composition at 4224x896
+  3. Verify output on the LED wall
+
+  STEP 6: For Morning version — Start playback
+  ─────────────────────────────────────────────
+  1. The overlay "Click anywhere to start" will appear on the LED wall
+  2. Click on the Resolume output window / web browser source
+  3. The presentation begins with voiceover
+
+  STEP 6: For Afternoon version — Automatic
+  ──────────────────────────────────────────
+  1. As soon as the clip is triggered, playback starts automatically
+  2. No click needed
+
+  STEP 7: Switching between Morning and Afternoon
+  ────────────────────────────────────────────────
+  Option A: Create two separate Web Browser clips in the deck
+            - Clip 1: Morning URL (with VO folder)
+            - Clip 2: Afternoon URL (no VO folder)
+            - Trigger the appropriate clip when needed
+
+  Option B: Change the URL in the clip properties between sessions
+
+
+================================================================================
+7. LED PANEL MAPPING
+================================================================================
+
+  The canvas is a single 4224x896 image. Map it to your panels as follows:
+
+  If using Resolume's Advanced Output:
+  1. Go to Output > Advanced
+  2. Create 3 output slices:
+
+     Slice 1 (LEFT):
+       Input:  x=0,    y=0, width=1536, height=896
+       Output: Map to left LED panel
+
+     Slice 2 (CENTER):
+       Input:  x=1536, y=0, width=1152, height=896
+       Output: Map to center LED panel
+
+     Slice 3 (RIGHT):
+       Input:  x=2688, y=0, width=1536, height=896
+       Output: Map to right LED panel
+
+  If your LED processor handles the slicing:
+  - Simply output the full 4224x896 canvas from Resolume
+  - Let the LED processor slice it into the 3 panels
+
+  DEBUG GUIDES:
+  Press the G key on the keyboard while the HTML is focused to toggle
+  red boundary lines showing exactly where the panel splits occur.
+  This helps verify alignment during setup.
+
+
+================================================================================
+8. AUDIO SETUP
+================================================================================
+
+  MORNING VERSION (with VO):
+  - Audio plays from the Web Browser source
+  - Ensure Resolume's audio output is routed to the venue PA/speakers
+  - Check: Preferences > Audio > Output Device
+  - The Web Browser source has its own audio — verify it's not muted
+    in Resolume's clip audio mixer
+  - Test audio levels before the event
+
+  AFTERNOON VERSION (no VO):
+  - No audio output — silent
+  - If background music is needed, use a separate Resolume audio layer
+    or external audio source
+
+  AUDIO TROUBLESHOOTING:
+  - If no sound: Check that the Web Browser clip's audio is enabled
+    in Resolume's mixer panel
+  - If still no sound: The browser autoplay policy may be blocking audio.
+    Click on the Resolume output / preview window to satisfy the
+    interaction requirement
+  - The morning version has a "Click to start" overlay specifically
+    to handle this — clicking it unlocks audio
+
+
+================================================================================
+9. TESTING CHECKLIST
+================================================================================
+
+  Before the event, verify each item:
+
+  [ ] Folder copied to LOCAL drive (not network/USB)
+  [ ] Resolume composition set to 4224 x 896
+  [ ] Web Browser source resolution set to 4224 x 896
+  [ ] Web Browser source URL points to correct local file
+  [ ] LED panels display the full canvas without black bars
+  [ ] Panel alignment correct (use G key for debug guides)
+  [ ] No content cut off at panel boundaries
+  [ ] All images load (logos, screenshots, portal)
+  [ ] Text is readable from viewing distance
+  [ ] Animations play smoothly (water, transitions, reveals)
+
+  MORNING VERSION ADDITIONAL CHECKS:
+  [ ] Click overlay appears on load
+  [ ] Clicking starts the presentation
+  [ ] Voiceover plays on slide 1
+  [ ] Voiceover plays on all subsequent slides
+  [ ] Audio routed to PA system at correct levels
+  [ ] Voiceover finishes before each slide transitions
+  [ ] No audio cuts or pops between slides
+
+  AFTERNOON VERSION ADDITIONAL CHECKS:
+  [ ] Presentation auto-starts on load (no overlay)
+  [ ] No audio output (silent)
+  [ ] Slides auto-advance at correct pace
+  [ ] Loops smoothly after slide 12
+
+  FULL RUN-THROUGH:
+  [ ] Play the morning version end-to-end (4:08)
+  [ ] Play the afternoon version end-to-end (4:23)
+  [ ] Verify loop behavior (does it restart cleanly?)
+
+
+================================================================================
+10. KEYBOARD CONTROLS
+================================================================================
+
+  These work when the Web Browser source has focus:
+
+  ┌────────────────────────┬──────────────────────────────────┐
+  │ Key                    │ Action                           │
+  ├────────────────────────┼──────────────────────────────────┤
+  │ Right Arrow / Space    │ Next slide (resumes auto-play)   │
+  │ Left Arrow             │ Previous slide (resumes auto-play│
+  │ G                      │ Toggle debug guides (panel lines)│
+  │ Click Play/Pause btn   │ Pause / Resume auto-advance      │
+  └────────────────────────┴──────────────────────────────────┘
+
+  NOTE: Manually advancing slides does NOT stop auto-play.
+  The timer resets for the current slide and continues advancing.
+
+
+================================================================================
+11. TROUBLESHOOTING
+================================================================================
+
+  PROBLEM: Black screen / nothing loads
+  SOLUTION:
+  - Verify the file:// URL is correct (check path and filename)
+  - Ensure all files are in the same folder as the HTML
+  - Try opening the HTML directly in Chrome to test
+
+  PROBLEM: Images missing (broken image icons or blank spaces)
+  SOLUTION:
+  - All PNG files must be in the same folder as the HTML
+  - Do NOT rename any asset files
+  - Do NOT move the HTML file out of its folder
+
+  PROBLEM: Fonts look wrong (default/system fonts showing)
+  SOLUTION:
+  - Fonts are embedded in the HTML — no internet needed
+  - If fonts look wrong, the HTML file may be corrupted
+  - Re-copy from the original source
+
+  PROBLEM: No audio in morning version
+  SOLUTION:
+  1. Click anywhere on the output first (browser autoplay policy)
+  2. Check Resolume audio output routing
+  3. Check Web Browser clip audio is not muted in mixer
+  4. Verify voice_over/ folder is present with all 11 MP3 files
+
+  PROBLEM: Animations look choppy or stuttering
+  SOLUTION:
+  - Reduce other layers/effects in Resolume to free GPU
+  - Ensure composition FPS matches Web Browser source FPS (30)
+  - Close unnecessary applications on the machine
+  - Ensure files are on a local SSD, not network/USB
+
+  PROBLEM: Content appears stretched or wrong aspect ratio
+  SOLUTION:
+  - Composition resolution must be exactly 4224 x 896
+  - Web Browser source resolution must be exactly 4224 x 896
+  - Check that no scaling/transform is applied to the clip
+
+  PROBLEM: Content gets cut off at panel edges
+  SOLUTION:
+  - Check Advanced Output slice mapping
+  - Use debug guides (press G) to verify panel boundaries
+  - Left: 0-1536, Center: 1536-2688, Right: 2688-4224
+
+  PROBLEM: Presentation doesn't loop after slide 12
+  SOLUTION:
+  - This is built-in — it should loop automatically
+  - If it doesn't, refresh the Web Browser source
+
+
+================================================================================
+12. EMERGENCY FALLBACK (MP4 EXPORT)
+================================================================================
+
+  If the Web Browser source is unreliable, export to MP4:
+
+  REQUIREMENTS:
+  - Node.js installed on the machine
+  - Run from terminal/command prompt in the project folder
+
+  STEP 1: Install dependencies (one time only)
+  cd washos
+  npm install
+
+  STEP 2: Export morning version
+  node led-wall-resolume/convert-to-mp4.js
+  Output: led-wall-resolume/samsung_washos_keynote_resolume.mp4
+
+  STEP 3: Add voiceover to morning video
+  ffmpeg -y -i led-wall-resolume/samsung_washos_keynote_resolume.mp4 \
+    -i led-wall-resolume/voice_over/vo_full_timed.mp3 \
+    -c:v copy -c:a aac -b:a 192k -shortest -movflags +faststart \
+    led-wall-resolume/samsung_washos_keynote_resolume_vo.mp4
+
+  STEP 4: Export afternoon version
+  node led-wall-resolume-no-vo/convert-to-mp4.js
+  Output: led-wall-resolume-no-vo/samsung_washos_keynote_resolume_no_vo.mp4
+
+  MP4 SPECS:
+  - Resolution: 4224 x 896
+  - Codec: H.264 High Profile @ Level 5.1
+  - Quality: CRF 12 (near-lossless)
+  - FPS: 30
+  - Pixel format: YUV 4:2:0
+  - Faststart enabled (moov atom at beginning)
+
+  Load the MP4 as a standard video clip in Resolume.
+  NOTE: MP4 version does not have interactive controls.
+
+
+================================================================================
+13. TECHNICAL NOTES
+================================================================================
+
+  - All fonts (Bebas Neue, DM Sans) are embedded as base64 in the HTML
+    No internet connection is required at any point
+
+  - All image assets are local PNG files referenced by relative paths
+    The HTML file must remain in its folder with the assets
+
+  - Animations use CSS keyframes + JavaScript setTimeout
+    All timing is deterministic and frame-accurate
+
+  - The presentation is responsive — it adapts to the 4224x896
+    aspect ratio using CSS media queries with vh-based sizing
+    to prevent vertical overflow on the ultra-wide display
+
+  - Voiceover uses the Web Audio API via a single <audio> element
+    Audio is unlocked by the click-to-start overlay interaction
+
+  - Debug guides (toggle with G key) show red vertical lines at
+    the panel boundaries (36.36% and 63.64% of canvas width)
+
+  - Scene padding: 4vh top/bottom, 5vw sides ensures no content
+    touches the screen edges
+
+  - The presentation loops after the last slide
+    To stop looping, click the pause button (bottom-right corner)
+
+
+================================================================================
+14. CONTACT
+================================================================================
+
+  For technical issues during the event:
+
+  Developer:    GoodApps, Inc.
+  Project:      Samsung Wash OS LED Wall Presentation
+
+
+================================================================================
+   END OF TECHNICAL SETUP GUIDE
+================================================================================
