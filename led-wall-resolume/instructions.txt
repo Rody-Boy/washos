@@ -1,0 +1,157 @@
+================================================================================
+   SAMSUNG WASH OS - LED WALL PRESENTATION
+   Playback Instructions for Resolume
+================================================================================
+
+OVERVIEW
+--------
+This is an animated HTML/CSS/JS presentation designed for a 3-section LED wall.
+It plays automatically with voiceover and runs for 4 minutes 8 seconds (248s).
+
+LED WALL SPECIFICATIONS
+-----------------------
+  Full canvas:    4224 x 896 px
+  Left section:   1536 x 896 px  (0 - 1535)
+  Center section: 1152 x 896 px  (1536 - 2687)
+  Right section:  1536 x 896 px  (2688 - 4223)
+
+  The video/HTML is a single continuous 4224x896 canvas.
+  Resolume slices it into the 3 sections automatically.
+
+
+OPTION 1: PLAY HTML DIRECTLY IN RESOLUME (RECOMMENDED)
+------------------------------------------------------
+1. Copy the entire "led-wall-resolume" folder to the Resolume machine
+2. Open Resolume Arena
+3. Add a new layer clip: Composition > Add Source > Web Browser
+4. Set the Web Browser source resolution to 4224 x 896
+5. In the source URL, enter the full path to the HTML file:
+
+   file:///[PATH_TO_FOLDER]/led-wall-resolume/samsung_washos_keynote.html
+
+   Example (macOS):
+   file:///Users/operator/Desktop/led-wall-resolume/samsung_washos_keynote.html
+
+   Example (Windows):
+   file:///C:/Users/operator/Desktop/led-wall-resolume/samsung_washos_keynote.html
+
+6. The presentation will auto-play with voiceover immediately
+7. Map the output to your LED wall slices as configured
+
+BENEFITS OF HTML PLAYBACK:
+  - All animations render in real-time at native resolution
+  - Voiceover plays automatically per slide
+  - No video compression artifacts
+  - Works offline (fonts embedded, no internet needed)
+
+
+OPTION 2: PLAY MP4 VIDEO FILE
+------------------------------
+If Resolume's Web Browser source is unavailable or causes issues:
+
+1. Generate the video using the render script (requires Node.js):
+
+   cd led-wall-resolume
+   node convert-to-mp4.js
+
+2. This creates: samsung_washos_keynote_resolume.mp4
+   - Resolution: 4224 x 896
+   - Codec: H.264 High@5.1
+   - Quality: CRF 12 (near-lossless)
+   - FPS: 30
+   - Duration: 248 seconds
+
+3. To add voiceover to the video, run:
+
+   ffmpeg -y -i samsung_washos_keynote_resolume.mp4 \
+     -i voice_over/vo_full_timed.mp3 \
+     -c:v copy -c:a aac -b:a 192k -shortest \
+     -movflags +faststart \
+     samsung_washos_keynote_resolume_vo.mp4
+
+4. Load the MP4 into Resolume as a standard video clip
+
+
+FOLDER CONTENTS
+---------------
+  samsung_washos_keynote.html   - Main presentation file (self-contained)
+  washos-logo.png               - WashOS logo
+  whitegoodapps Logo.png        - GoodApps logo
+  WashOS Portal.png             - Laptop portal screenshot
+  screenshot-loyalty.png        - App screenshot: loyalty
+  screenshot-nearby.png         - App screenshot: find shops
+  screenshot-payment.png        - App screenshot: payment
+  screenshot-tracking.png       - App screenshot: tracking
+
+  voice_over/
+    vo_slide01.mp3 - vo_slide11.mp3   - Per-slide voiceover clips
+    vo_full_timed.mp3                  - Full 248s timed audio track
+    VO.mp3                             - Original voiceover recording
+
+  convert-to-mp4.js             - Video export script (Node.js)
+  instructions.txt              - This file
+
+
+PRESENTATION STRUCTURE (12 SLIDES)
+-----------------------------------
+  Slide  1:  30s  -  Opening Impact
+  Slide  2:  10s  -  Universal Truth
+  Slide  3:  20s  -  Industry Gap (Yesterday vs Today)
+  Slide  4:  20s  -  The Opportunity
+  Slide  5:  10s  -  WASH OS Reveal
+  Slide  6:  18s  -  The Ecosystem
+  Slide  7:  35s  -  Customer Experience
+  Slide  8:  24s  -  Laundry Shop Operations
+  Slide  9:  18s  -  Smart Machines
+  Slide 10:  16s  -  Industry Transformation
+  Slide 11:  18s  -  Closing Ecosystem
+  Slide 12:  29s  -  Platform Overview + Outro
+  -----------------------------------------
+  TOTAL:    248s  (4 minutes 8 seconds)
+
+
+KEYBOARD CONTROLS (for testing in browser)
+-------------------------------------------
+  Right Arrow / Space  -  Next slide
+  Left Arrow           -  Previous slide
+  G key                -  Toggle debug guides (shows LED panel boundaries)
+  ?debug=1 in URL      -  Show debug guides on load
+
+
+TROUBLESHOOTING
+---------------
+  Q: No audio playing?
+  A: Browser autoplay policies may block audio. Click anywhere on the page
+     first, then refresh. In Resolume, check Web Browser audio output settings.
+
+  Q: Fonts look wrong?
+  A: Fonts are embedded in the HTML file. No internet needed. If fonts still
+     look wrong, ensure the HTML file hasn't been modified.
+
+  Q: Images not loading?
+  A: Make sure all PNG files are in the same folder as the HTML file.
+     Do NOT move the HTML file out of its folder.
+
+  Q: Animations look choppy?
+  A: Ensure Resolume's Web Browser source is set to 4224x896 resolution.
+     Reduce other layer effects to free GPU resources.
+
+  Q: Need to restart the presentation?
+  A: Refresh the Web Browser source in Resolume, or press F5 if testing
+     in a regular browser.
+
+
+TECHNICAL NOTES
+---------------
+  - All fonts are embedded as base64 — no internet connection required
+  - All assets are local relative paths — self-contained folder
+  - HTML uses viewport units (vw/vh) — scales to any resolution
+  - Animations use CSS keyframes + JS setTimeout — deterministic timing
+  - Voiceover uses Web Audio API — plays per-slide on scene transition
+  - Debug guides available at panel boundaries (36.36% and 63.64%)
+
+
+================================================================================
+   Prepared for Samsung Product Launch Event
+   Built by GoodApps, Inc.
+================================================================================
