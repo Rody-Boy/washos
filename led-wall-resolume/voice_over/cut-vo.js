@@ -9,8 +9,8 @@ const TOTAL_DURATION = 165.41; // 2:45.41
 // Adjust these after listening — these are best-guess splits
 const cuts = [
   { slide: 1,  start: 0,      end: 27.5,  file: 'vo_slide01.mp3' },
-  { slide: 2,  start: 27.5,   end: 39,    file: 'vo_slide02.mp3' },
-  { slide: 3,  start: 39,     end: 53,    file: 'vo_slide03.mp3' },
+  { slide: 2,  start: 27.5,   end: 42,    file: 'vo_slide02.mp3' },
+  { slide: 3,  start: 42,     end: 55,    file: 'vo_slide03.mp3' },
   { slide: 4,  start: 53,     end: 68.5,  file: 'vo_slide04.mp3' },
   { slide: 5,  start: 68.5,   end: 79,    file: 'vo_slide05.mp3' },
   { slide: 6,  start: 79,     end: 86,    file: 'vo_slide06.mp3' },

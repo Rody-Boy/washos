@@ -546,12 +546,12 @@
   .sc3-col-label{font-family:'Bebas Neue',sans-serif;font-size:2.5vw;letter-spacing:.3vw;text-transform:uppercase;color:#fff;margin-top:.8vw;text-align:center;}
   .sc3-vs{font-family:'Bebas Neue',sans-serif;font-size:2vw;letter-spacing:.2vw;color:var(--green);align-self:center;opacity:0;transition:all 2s ease;}
   .sc3-vs.on{opacity:.6;}
-  .sp-L{background:linear-gradient(135deg,#2a2420,#181210);border-radius:1vw;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-  .sp-R{background:linear-gradient(135deg,#081a12,#041008);border-radius:1vw;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .sp-L{background:linear-gradient(135deg,#2a2420,#181210);border-radius:1vw;overflow:visible;display:flex;align-items:center;justify-content:center;}
+  .sp-R{background:linear-gradient(135deg,#081a12,#041008);border-radius:1vw;overflow:visible;display:flex;align-items:center;justify-content:center;}
 
   /* Left side — laundry shop building */
-  .old-scene{width:88%;height:80%;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-  .old-storefront{width:95%;height:80%;position:relative;display:flex;flex-direction:column;overflow:visible;border-radius:.3vw;margin-top:3vw;}
+  .old-scene{width:88%;height:85%;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .old-storefront{width:95%;height:75%;position:relative;display:flex;flex-direction:column;overflow:visible;border-radius:.3vw;margin-top:4vh;}
   .old-wall{position:absolute;inset:0;background:repeating-linear-gradient(0deg,#3a2a1e 0,#3a2a1e .8vw,#2a1c12 .8vw,#2a1c12 .85vw),repeating-linear-gradient(90deg,#352518 0,#352518 1.6vw,#2a1c12 1.6vw,#2a1c12 1.65vw);border:1px solid #4a3828;}
   .old-roof{width:100%;height:.4vw;background:linear-gradient(180deg,#5a4a38,#4a3a28);border-bottom:2px solid #3a2a1e;z-index:2;flex-shrink:0;}
   .old-signboard{width:70%;height:1.3vw;background:linear-gradient(180deg,#2a2018,#1a1208);border:1px solid #4a3a28;border-radius:.2vw;margin:.3vw auto .2vw;display:flex;align-items:center;justify-content:center;z-index:2;box-shadow:0 .08vw .3vw rgba(0,0,0,.3);position:relative;}
@@ -560,7 +560,7 @@
   .old-front{display:flex;width:90%;margin:0 auto;flex:1;gap:.2vw;z-index:2;padding-bottom:.2vw;}
   .old-window{flex:1.5;background:linear-gradient(180deg,rgba(40,55,65,.4),rgba(30,40,48,.6));border:1.5px solid #5a5040;border-radius:.2vw;display:flex;align-items:flex-end;justify-content:center;gap:.25vw;padding:.25vw .2vw;position:relative;box-shadow:inset 0 0 .7vw rgba(100,160,200,.04);}
   /* Triangular roof above storefront */
-  .old-roof-triangle{position:absolute;top:-3vw;left:-8%;width:116%;height:3.2vw;z-index:4;clip-path:polygon(50% 0%,0% 100%,100% 100%);background:linear-gradient(180deg,#6a5a48,#4a3a28);border-bottom:2px solid #5a4a38;}
+  .old-roof-triangle{position:absolute;top:min(-3vw,-3vh);left:-8%;width:116%;height:min(3.2vw,5vh);z-index:4;clip-path:polygon(50% 0%,0% 100%,100% 100%);background:linear-gradient(180deg,#6a5a48,#4a3a28);border-bottom:2px solid #5a4a38;}
   .old-door{flex:.6;background:linear-gradient(180deg,rgba(40,55,65,.3),rgba(30,40,48,.5));border:1.5px solid #5a5040;border-radius:.2vw;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;}
   .old-door-handle{position:absolute;right:.2vw;top:45%;width:.14vw;height:.55vw;border-radius:.07vw;background:#8a7a68;border:1px solid #6a5a48;}
   .old-door-push{font-size:.2vw;letter-spacing:.05vw;text-transform:uppercase;color:rgba(200,200,200,.15);margin-top:.2vw;}
@@ -1040,6 +1040,11 @@
     .sc3-layout{width:90%;}
     .sc1-wb-core{width:min(14vw,45vh);height:min(12vw,38vh);}
     .sc1-vortex{width:min(20vw,65vh);height:min(27vw,85vh);}
+    .old-washer{width:min(7vw,18vh);height:min(8.5vw,22vh);}
+    .old-washer-drum{width:min(4.5vw,12vh);height:min(4.5vw,12vh);}
+    .new-phone{width:min(10vw,35vh);height:min(18vw,60vh);}
+    .sc3-col-label{font-size:min(2vw,5vh);}
+    .sc3-vs{font-size:min(1.5vw,4vh);}
   }
 
   /* ══════ UI ══════ */
@@ -1188,7 +1193,7 @@
   <div class="sc3-layout">
     <!-- LEFT: Yesterday -->
     <div class="sc3-col" id="z3a">
-      <div class="sp-L" style="width:100%;aspect-ratio:1.4/1;position:relative;">
+      <div class="sp-L" style="width:100%;aspect-ratio:1.4/1;max-height:65vh;position:relative;">
         <div class="old-scene">
           <div class="old-storefront">
             <div class="old-wall"></div>
@@ -1222,7 +1227,7 @@
 
     <!-- RIGHT: Today -->
     <div class="sc3-col" id="z3b">
-      <div class="sp-R" style="width:100%;aspect-ratio:1.4/1;position:relative;">
+      <div class="sp-R" style="width:100%;aspect-ratio:1.4/1;max-height:65vh;position:relative;">
         <div class="new-scene">
           <div class="new-phone">
             <div class="new-phone-notch"></div>
