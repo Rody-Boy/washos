@@ -609,20 +609,20 @@
   .sc4-flow{display:flex;align-items:center;justify-content:center;gap:min(2.5vw,8vh);}
   .sc4-icon{width:min(6vw,22vh);height:min(6vw,22vh);border-radius:.6vw;border:1.5px solid rgba(76,175,80,.22);background:linear-gradient(160deg,#0a1a14,#061008);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.15vw;opacity:0;transform:scale(.7);transition:all 1.8s cubic-bezier(.25,.46,.45,.94);box-shadow:0 0 2vw rgba(76,175,80,.04);}
   .sc4-icon.on{opacity:1;transform:scale(1);box-shadow:0 0 3vw rgba(76,175,80,.1);}
-  .sc4-icon svg{width:min(2.5vw,9vh);height:min(2.5vw,9vh);}
+  .sc4-icon svg{width:min(3.8vw,12vh);height:min(3.8vw,12vh);}
   .sc4-icon-lbl{font-size:min(.65vw,2.2vh);letter-spacing:0.12vw;text-transform:uppercase;color:#fff;}
   .sc4-arrow{font-size:min(1.3vw,4.5vh);color:var(--green);opacity:0;transition:opacity 2s ease;}
   .sc4-arrow.on{opacity:.6;}
   .sc4-q{font-family:'Bebas Neue',sans-serif;font-size:min(3.5vw,12vh);letter-spacing:0.35vw;text-align:center;line-height:1.15;max-width:80%;opacity:0;transform:translateY(14px);transition:all 2.8s ease;}
   .sc4-q.on{opacity:1;transform:translateY(0);}
   /* SC4 realistic washing machine */
-  .sc4-washer{width:min(3.5vw,12vh);height:min(4.2vw,14vh);border-radius:.4vw;border:2px solid rgba(76,175,80,.28);background:linear-gradient(170deg,rgba(10,26,18,.7),rgba(6,16,10,.8));display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;box-shadow:0 0 1vw rgba(76,175,80,.08);gap:.15vw;}
+  .sc4-washer{width:min(3.8vw,12vh);height:min(4.5vw,14vh);border-radius:.4vw;border:1.5px solid var(--green);background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;gap:.15vw;}
   .sc4-washer-panel{width:80%;display:flex;align-items:center;justify-content:center;gap:.15vw;position:absolute;top:.2vw;}
-  .sc4-washer-panel-bar{width:1vw;height:.15vw;border-radius:.08vw;background:rgba(76,175,80,.2);}
+  .sc4-washer-panel-bar{width:1vw;height:.15vw;border-radius:.08vw;background:var(--green);}
   .sc4-washer-panel-dot{width:.2vw;height:.2vw;border-radius:50%;background:var(--green);box-shadow:0 0 .2vw rgba(76,175,80,.4);animation:sc9DotPulse 2s ease-in-out infinite;}
-  .sc4-washer-drum{width:min(2.2vw,7.5vh);height:min(2.2vw,7.5vh);border-radius:50%;border:2px solid rgba(76,175,80,.22);box-shadow:inset 0 0 .7vw rgba(76,175,80,.08);display:flex;align-items:center;justify-content:center;animation:drumSlow 18s linear infinite;overflow:hidden;position:relative;margin-top:.3vw;}
-  .sc4-washer-drum::after{content:'';width:.7vw;height:.7vw;border-radius:50%;border:2px solid rgba(76,175,80,.12);}
-  .sc4-washer-drum-water{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(180deg,rgba(76,175,80,.05),rgba(76,175,80,.12));border-radius:0 0 50% 50%;animation:sc9Slosh 3s ease-in-out infinite;}
+  .sc4-washer-drum{width:min(2.4vw,8vh);height:min(2.4vw,8vh);border-radius:50%;border:1.5px solid var(--green);display:flex;align-items:center;justify-content:center;animation:drumSlow 18s linear infinite;overflow:hidden;position:relative;margin-top:.3vw;}
+  .sc4-washer-drum::after{content:'';width:.8vw;height:.8vw;border-radius:50%;border:1.5px solid var(--green);}
+  .sc4-washer-drum-water{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(180deg,rgba(76,175,80,.1),rgba(76,175,80,.25));border-radius:0 0 50% 50%;animation:sc9Slosh 3s ease-in-out infinite;}
 
   /* ══════ SC5 — WASH OS REVEAL ══════ */
   #sc5{background:var(--black);flex-direction:column;}
@@ -1209,7 +1209,10 @@
   <div class="sc4-q" id="z4f">What If Every <span class="accent">Laundry Machine</span> Became <span class="accent">Connected</span>?</div>
   <div class="sc4-flow">
     <div class="sc4-icon" id="z4a">
-      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="2" width="18" height="20" rx="3" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="5" stroke="var(--green)" stroke-width="1.5"/><circle cx="12" cy="14" r="1.5" stroke="var(--green)" stroke-width="1"/><line x1="6" y1="7" x2="18" y2="7" stroke="var(--green)" stroke-width="1"/><circle cx="7" cy="4.5" r=".8" fill="var(--green)"/><rect x="10" y="3.5" width="5" height="2" rx=".5" stroke="var(--green)" stroke-width=".8"/></svg>
+      <div class="sc4-washer">
+        <div class="sc4-washer-panel"><div class="sc4-washer-panel-bar"></div><div class="sc4-washer-panel-dot"></div></div>
+        <div class="sc4-washer-drum"><div class="sc4-washer-drum-water"></div></div>
+      </div>
       <span class="sc4-icon-lbl">Machine</span>
     </div>
     <div class="sc4-arrow" id="z4b">→</div>
