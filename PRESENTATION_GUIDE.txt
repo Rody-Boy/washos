@@ -1,0 +1,369 @@
+================================================================================
+
+   SAMSUNG WASH OS — LED WALL PRESENTATION
+   Presentation Guide (Non-Technical)
+
+   Prepared for: Samsung Product Launch Event
+   Prepared by: GoodApps, Inc.
+   Date: March 2026
+
+================================================================================
+
+
+WHAT IS THIS?
+─────────────
+This is an animated digital presentation for the Samsung Wash OS product launch.
+It plays automatically on the LED wall — like a high-quality video, but built
+with web technology so it looks razor-sharp on the LED panels.
+
+There are TWO versions:
+
+   MORNING   →  With voiceover narration (a voice explains each slide)
+   AFTERNOON →  Without voiceover (visuals only, for live speaker or background)
+
+
+================================================================================
+HOW TO PREVIEW ON YOUR COMPUTER
+================================================================================
+
+You don't need any special software. Just a web browser (Chrome recommended).
+
+  STEP 1: Find the files
+  ──────────────────────
+  You received a folder called "washos" containing two sub-folders:
+
+     led-wall-resolume/           ← Morning version (with voice)
+     led-wall-resolume-no-vo/     ← Afternoon version (no voice)
+
+  STEP 2: Open in browser
+  ────────────────────────
+  Double-click the file:
+
+     Morning:   led-wall-resolume/samsung_washos_keynote.html
+     Afternoon: led-wall-resolume-no-vo/samsung_washos_keynote.html
+
+  It will open in your default web browser.
+
+  STEP 3: Start the presentation
+  ───────────────────────────────
+  MORNING VERSION:
+  - You'll see a dark screen with "SAMSUNG WASH OS" and
+    "Click anywhere to start"
+  - Click anywhere
+  - The presentation begins automatically with voice narration
+  - It runs for 4 minutes and 8 seconds, then loops
+
+  AFTERNOON VERSION:
+  - Opens and starts playing immediately — no click needed
+  - Runs for 4 minutes and 23 seconds, then loops
+  - No sound (designed for a live speaker or ambient display)
+
+
+  NOTE: On your computer the aspect ratio will look different from the
+  actual LED wall (your screen is wider/taller). This is normal.
+  On the LED wall (4224x896 pixels) it will look perfect.
+
+
+================================================================================
+PREVIEWING ONLINE (GITHUB PAGES)
+================================================================================
+
+If the files are hosted on GitHub Pages, you can preview from any device:
+
+  Morning (with voice):
+  https://rody-boy.github.io/washos/led-wall-resolume/samsung_washos_keynote.html
+
+  Afternoon (no voice):
+  https://rody-boy.github.io/washos/led-wall-resolume-no-vo/samsung_washos_keynote.html
+
+  Just open the link in Chrome on your phone, tablet, or laptop.
+
+  IMPORTANT: The online preview may not auto-play the voiceover due to
+  browser restrictions. Click anywhere on the page first, then the voice
+  will work. On the actual LED wall this is not an issue.
+
+
+================================================================================
+WHAT EACH SLIDE SHOWS
+================================================================================
+
+  Slide  1 — OPENING IMPACT
+              Animated water ball moves across the screen, transforms into
+              a washing machine. Sets the cinematic tone.
+
+  Slide  2 — UNIVERSAL TRUTH
+              "EVERY CITY. EVERY COMMUNITY. EVERY DAY."
+              Text reveals one line at a time.
+
+  Slide  3 — INDUSTRY GAP
+              Split screen: old laundry shop on the left vs. modern phone
+              app on the right. "Yesterday" vs "Today" with "VS" in center.
+
+  Slide  4 — THE OPPORTUNITY
+              Machine → Cloud → Phone flow diagram.
+              "What if every laundry machine became connected?"
+
+  Slide  5 — WASH OS REVEAL
+              Dramatic burst effect with WashOS logo appearing.
+              "Intelligence in Every Cycle. Powered by GoodApps."
+              Transitions to tagline: "The Operating System for Modern Laundry"
+
+  Slide  6 — THE ECOSYSTEM
+              Three circles orbiting around a central Wash OS hub:
+              Customers, Laundry Shops, Laundry Machines.
+              Animated connecting lines between them.
+
+  Slide  7 — CUSTOMER EXPERIENCE
+              Four phone screens cycling through app features:
+              Find Shops, Book Machines, Track Progress, Pay Digitally.
+
+  Slide  8 — LAUNDRY SHOP OPERATIONS
+              Five icon cards appearing with the title:
+              "A Complete Operating System For Laundry Shops"
+              Booking, Tracking, Payment, Inventory, Analytics.
+
+  Slide  9 — SMART MACHINES
+              Three neon-green Samsung washing machines with data streams.
+              Words appear: "CONNECTED", "INTELLIGENT", "MONITORED"
+
+  Slide 10 — INDUSTRY TRANSFORMATION
+              Map background with text:
+              "LAUNDRY IS BECOMING A DIGITAL SERVICE NETWORK"
+
+  Slide 11 — CLOSING ECOSYSTEM
+              Orbital diagram with WashOS logo at center.
+              Customers, Shops, and Machines connected.
+
+  Slide 12 — PLATFORM OVERVIEW + OUTRO
+              Laptop (Shop Portal) on left, phone (Customer App) on right,
+              text in center. Fades to black, then WashOS logo +
+              "Powered by GoodApps" as final outro.
+
+
+================================================================================
+TIMING BREAKDOWN
+================================================================================
+
+  MORNING VERSION (with voiceover) — Total: 4 minutes 8 seconds
+  ──────────────────────────────────────────────────────────────
+
+  ┌───────┬──────────────────────────────┬──────────┬─────────────┐
+  │ Slide │ Title                        │ Duration │ Voice       │
+  ├───────┼──────────────────────────────┼──────────┼─────────────┤
+  │   1   │ Opening Impact               │   30s    │ Yes         │
+  │   2   │ Universal Truth              │   10s    │ Yes         │
+  │   3   │ Industry Gap                 │   20s    │ Yes         │
+  │   4   │ The Opportunity              │   20s    │ Yes         │
+  │   5   │ WASH OS Reveal               │   10s    │ Yes         │
+  │   6   │ The Ecosystem                │   18s    │ Yes         │
+  │   7   │ Customer Experience          │   35s    │ Yes         │
+  │   8   │ Shop Operations              │   24s    │ Yes         │
+  │   9   │ Smart Machines               │   18s    │ Yes         │
+  │  10   │ Industry Transformation      │   16s    │ Yes         │
+  │  11   │ Closing Ecosystem            │   18s    │ Yes         │
+  │  12   │ Platform + Outro             │   29s    │ No (outro)  │
+  ├───────┼──────────────────────────────┼──────────┼─────────────┤
+  │ TOTAL │                              │  4:08    │             │
+  └───────┴──────────────────────────────┴──────────┴─────────────┘
+
+
+  AFTERNOON VERSION (no voiceover) — Total: 4 minutes 23 seconds
+  ──────────────────────────────────────────────────────────────
+
+  ┌───────┬──────────────────────────────┬──────────┐
+  │ Slide │ Title                        │ Duration │
+  ├───────┼──────────────────────────────┼──────────┤
+  │   1   │ Opening Impact               │   32s    │
+  │   2   │ Universal Truth              │   20s    │
+  │   3   │ Industry Gap                 │   18s    │
+  │   4   │ The Opportunity              │   20s    │
+  │   5   │ WASH OS Reveal               │   25s    │
+  │   6   │ The Ecosystem                │   15s    │
+  │   7   │ Customer Experience          │   25s    │
+  │   8   │ Shop Operations              │   27s    │
+  │   9   │ Smart Machines               │   23s    │
+  │  10   │ Industry Transformation      │   18s    │
+  │  11   │ Closing Ecosystem            │   18s    │
+  │  12   │ Platform + Outro             │   22s    │
+  ├───────┼──────────────────────────────┼──────────┤
+  │ TOTAL │                              │  4:23    │
+  └───────┴──────────────────────────────┴──────────┘
+
+
+================================================================================
+VOICEOVER SCRIPT (MORNING VERSION)
+================================================================================
+
+  SLIDE 1 — OPENING IMPACT
+  "Laundry is part of life, but let's be honest — it can be slow,
+  unpredictable, and stressful. Waiting for machines. Making payments
+  the old way. It's a challenge — but also an opportunity. Today, we
+  are not just launching a new solution. We are launching the future
+  of laundry."
+
+  SLIDE 2 — UNIVERSAL TRUTH
+  "Every household does laundry. Every city depends on it. For decades,
+  the way we handle laundry hasn't really changed."
+
+  SLIDE 3 — INDUSTRY GAP
+  "Today's customers live in a digital world. They expect convenience.
+  Easy payments. Real-time updates. But most laundry services are still
+  manual and disconnected."
+
+  SLIDE 4 — THE OPPORTUNITY
+  "Imagine a world where every laundry machine is connected. Where
+  customers, shops, and machines all work together seamlessly. Where
+  laundry is simple, predictable, and digital."
+
+  SLIDE 5 — THE REVEAL
+  "Introducing WASH OS. Intelligence in every cycle. Powered by
+  GoodApps. A complete operating system built for modern laundry
+  businesses."
+
+  SLIDE 6 — THE ECOSYSTEM
+  "WASH OS connects three worlds: Customers, Laundry shop owners,
+  Samsung smart machines."
+
+  SLIDE 7 — CUSTOMER EXPERIENCE
+  "With Wash OS, customers can now: Find nearby laundry shops, Book
+  machines in real-time, Track their laundry progress, Pay online.
+  Laundry is no longer a chore — it's a seamless experience. Finally,
+  laundry that keeps up with our life."
+
+  SLIDE 8 — LAUNDRY SHOP OPERATIONS
+  "For shop owners, WASH OS is a complete business tool: Manage
+  Booking, Track Progress, Check Payments, Control Inventory, Analyze
+  Performance. Everything you need to run your shop efficiently."
+
+  SLIDE 9 — SMART MACHINES
+  "Samsung commercial laundry machines are now intelligent and
+  connected. They report cycle progress, alert shop owners when
+  attention is needed, and provide real-time updates."
+
+  SLIDE 10 — INDUSTRY TRANSFORMATION
+  "Laundry is no longer just a service. It's a connected network.
+  A digital experience. A smarter way of life."
+
+  SLIDE 11 — CLOSING
+  "Samsung commercial laundry machines are more than machines — they
+  are the future of connected laundry. Smarter. Faster. Effortless.
+  The future is clean, connected, and ready — thank you!"
+
+  SLIDE 12 — (No voiceover — visual outro with WashOS logo)
+
+
+================================================================================
+LED WALL SETUP (WHAT TO TELL THE TECH TEAM)
+================================================================================
+
+If you need to brief the tech team, here's what they need to know:
+
+  1. The LED wall resolution is 4224 x 896 pixels (three panels)
+  2. The presentation is an HTML file played through Resolume Arena
+  3. There's a detailed TECHNICAL_SETUP_GUIDE.txt in the same folder
+  4. The folder must be copied to the Resolume machine's local drive
+  5. No internet is required — everything works offline
+  6. Morning version needs one click to start (for audio to work)
+  7. Afternoon version auto-starts — no interaction needed
+  8. There's a debug mode (press G) to check panel alignment
+
+  Give the tech team:
+  - The "washos" folder (contains both versions)
+  - The TECHNICAL_SETUP_GUIDE.txt file
+  - This PRESENTATION_GUIDE.txt file
+
+
+================================================================================
+EVENT DAY QUICK REFERENCE
+================================================================================
+
+  MORNING SESSION:
+  ────────────────
+  1. Tech team loads: led-wall-resolume/samsung_washos_keynote.html
+  2. "Click anywhere to start" appears on LED wall
+  3. When ready, click to begin
+  4. Presentation plays for 4:08 with voice narration
+  5. It loops automatically — click pause button to stop
+
+  AFTERNOON SESSION:
+  ──────────────────
+  1. Tech team loads: led-wall-resolume-no-vo/samsung_washos_keynote.html
+  2. Presentation starts immediately (no click needed)
+  3. Plays for 4:23 silently — speaker presents live
+  4. Loops automatically
+  5. Speaker can use arrow keys to manually advance if needed
+     (presentation continues auto-advancing after manual skip)
+
+
+================================================================================
+FREQUENTLY ASKED QUESTIONS
+================================================================================
+
+  Q: Can the presenter control the slides manually?
+  A: Yes. Press the right arrow key to go forward, left arrow to go back.
+     The presentation will continue auto-advancing after a manual skip.
+     The voiceover for each slide plays regardless of how you got there.
+
+  Q: Can we pause the presentation?
+  A: Yes. There's a small pause button in the bottom-right corner.
+     Click it to pause, click again to resume.
+
+  Q: What happens after the last slide?
+  A: It loops back to slide 1 and starts over.
+
+  Q: Can we skip the voiceover on the morning version?
+  A: You can advance slides manually with arrow keys, but the voiceover
+     for each slide will still play. To run without voice entirely,
+     use the afternoon version instead.
+
+  Q: Does it need internet?
+  A: No. Everything is embedded in the files — fonts, images, audio.
+     It works completely offline.
+
+  Q: Can we edit the text or timing?
+  A: The presentation is built in HTML/CSS/JS. A developer can modify
+     it, but it's not recommended to change anything on event day.
+
+  Q: What if something goes wrong?
+  A: The tech team can refresh the browser source in Resolume to
+     restart. See TECHNICAL_SETUP_GUIDE.txt for detailed troubleshooting.
+
+  Q: Can I preview on my phone?
+  A: Yes. Open the GitHub Pages link in Chrome on your phone.
+     The layout will look different (your phone isn't 4224x896)
+     but you can verify the content and voiceover.
+
+  Q: Is there a video file backup?
+  A: The tech team can export an MP4 video as a backup.
+     See TECHNICAL_SETUP_GUIDE.txt section 12 for instructions.
+
+
+================================================================================
+FILES INCLUDED
+================================================================================
+
+  washos/
+  ├── TECHNICAL_SETUP_GUIDE.txt        ← For the tech team (detailed)
+  ├── PRESENTATION_GUIDE.txt           ← This file (for everyone)
+  │
+  ├── led-wall-resolume/               ← MORNING version (with voice)
+  │   ├── samsung_washos_keynote.html  ← The presentation
+  │   ├── voice_over/                  ← Audio files for narration
+  │   ├── [image assets]               ← Logos and screenshots
+  │   ├── instructions.txt             ← Quick setup reference
+  │   └── convert-to-mp4.js           ← Video export (tech team only)
+  │
+  └── led-wall-resolume-no-vo/         ← AFTERNOON version (no voice)
+      ├── samsung_washos_keynote.html  ← The presentation
+      ├── [image assets]               ← Logos and screenshots
+      └── convert-to-mp4.js           ← Video export (tech team only)
+
+  IMPORTANT: Always share the ENTIRE "washos" folder.
+  Do not extract or move individual files.
+
+
+================================================================================
+
+   For questions or issues, contact GoodApps, Inc.
+
+================================================================================
