@@ -420,7 +420,7 @@
   /* Door ring — bezel around the glass */
   .vortex-machine-door-ring{
     width:68%;aspect-ratio:1;border-radius:50%;
-    margin-top:1%;position:relative;
+    margin-top:6%;position:relative;
     border:3px solid rgba(76,175,80,.2);
     box-shadow:0 0 2vw rgba(76,175,80,.05);
     display:flex;align-items:center;justify-content:center;
@@ -594,7 +594,7 @@
   .sc3-layout{display:flex;width:85%;align-items:flex-end;justify-content:center;gap:2vw;position:relative;}
   .sc3-col{display:flex;flex-direction:column;align-items:center;gap:1vw;flex:1;opacity:0;transition:all 2.2s ease;}
   .sc3-col.on{opacity:1;}
-  .sc3-col-label{font-family:'Bebas Neue',sans-serif;font-size:2.5vw;letter-spacing:.3vw;text-transform:uppercase;color:#fff;position:absolute;bottom:-3.5vw;left:50%;transform:translateX(-50%);z-index:5;white-space:nowrap;}
+  .sc3-col-label{font-family:'Bebas Neue',sans-serif;font-size:2.5vw;letter-spacing:.3vw;text-transform:uppercase;color:#fff;margin-top:.8vw;text-align:center;}
   .sc3-vs{font-family:'Bebas Neue',sans-serif;font-size:2vw;letter-spacing:.2vw;color:var(--green);align-self:center;opacity:0;transition:all 2s ease;}
   .sc3-vs.on{opacity:.6;}
   .sp-L{background:linear-gradient(135deg,#2a2420,#181210);border-radius:1vw;overflow:hidden;display:flex;align-items:center;justify-content:center;}
@@ -1318,7 +1318,6 @@
     <!-- LEFT: Yesterday -->
     <div class="sc3-col" id="z3a">
       <div class="sp-L" style="width:100%;aspect-ratio:1.4/1;position:relative;">
-        <div class="sc3-col-label">Yesterday</div>
         <div class="old-scene">
           <div class="old-storefront">
             <div class="old-wall"></div>
@@ -1344,6 +1343,7 @@
           </div>
         </div>
       </div>
+      <div class="sc3-col-label">Yesterday</div>
     </div>
 
     <!-- VS divider -->
@@ -1352,7 +1352,6 @@
     <!-- RIGHT: Today -->
     <div class="sc3-col" id="z3b">
       <div class="sp-R" style="width:100%;aspect-ratio:1.4/1;position:relative;">
-        <div class="sc3-col-label">Today</div>
         <div class="new-scene">
           <div class="new-phone">
             <div class="new-phone-notch"></div>
@@ -1375,6 +1374,7 @@
           </div>
         </div>
       </div>
+      <div class="sc3-col-label">Today</div>
     </div>
   </div>
   <div class="sc3-gap-text" id="z3c">Customers Have Changed. <span class="dim-text">Laundry Operations Have Not.</span></div>
