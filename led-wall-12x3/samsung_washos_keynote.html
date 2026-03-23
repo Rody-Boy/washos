@@ -178,7 +178,7 @@
   /* Tail — ghost copies following behind */
   .sc1-wb-tail{
     position:absolute;left:50%;top:50%;z-index:3;pointer-events:none;
-    animation:waterWander 6s cubic-bezier(.4,0,.2,1) forwards;
+    animation:waterWander 12s ease-in-out forwards;
   }
   .sc1-wb-tail-blob{
     border-radius:45% 55% 50% 50% / 50% 45% 55% 50%;
@@ -198,7 +198,7 @@
   .sc1-wb-tail-5 .sc1-wb-tail-blob{width:3.5vw;height:2.8vw;opacity:.1;filter:blur(3px);}
   .sc1-wb-wake{
     position:absolute;left:50%;top:50%;z-index:3;pointer-events:none;
-    animation:waterWander 6s cubic-bezier(.4,0,.2,1) forwards;
+    animation:waterWander 12s ease-in-out forwards;
     animation-delay:.08s;
   }
   .sc1-wb-wake-drop{
@@ -216,7 +216,7 @@
   .sc1-waterbody{
     position:absolute;z-index:4;pointer-events:none;
     left:50%;top:50%;
-    animation:waterWander 6s cubic-bezier(.4,0,.2,1) forwards;
+    animation:waterWander 12s ease-in-out forwards;
   }
   .sc1-wb-core{
     width:14vw;height:12vw;
@@ -224,7 +224,7 @@
     background:radial-gradient(ellipse at 40% 40%,rgba(64,196,255,.55) 0%,rgba(30,144,255,.45) 20%,rgba(64,196,255,.2) 45%,rgba(76,175,80,.1) 65%,transparent 100%);
     box-shadow:0 0 6vw rgba(30,144,255,.4),0 0 12vw rgba(64,196,255,.18);
     filter:blur(1px);
-    animation:wbMorph 1.2s ease-in-out infinite, wbShrink 6s cubic-bezier(.4,0,.2,1) forwards;
+    animation:wbMorph 1.5s ease-in-out infinite, wbShrink 12s ease-in-out forwards;
     position:relative;overflow:visible;
   }
   .sc1-wb-surface{
@@ -260,21 +260,19 @@
     100%{border-radius:40% 60% 55% 45% / 55% 40% 60% 45%;transform:scale(1) rotate(0deg);}
   }
   @keyframes waterWander{
-    0%{transform:translate(-85vw,-40vh);opacity:0;}
+    0%{transform:translate(-70vw,-30vh);opacity:0;}
     3%{opacity:1;}
-    12%{transform:translate(-30vw,-30vh);}
-    20%{transform:translate(20vw,-35vh);}
-    30%{transform:translate(30vw,5vh);}
-    40%{transform:translate(10vw,25vh);}
-    50%{transform:translate(-35vw,15vh);}
-    60%{transform:translate(-20vw,-10vh);}
-    70%{transform:translate(15vw,-5vh);}
-    80%{transform:translate(-5vw,8vh);}
-    88%{transform:translate(-2vw,2vh);opacity:.9;}
-    94%{transform:translate(-1vw,0vh);opacity:.6;}
+    15%{transform:translate(-25vw,-25vh);}
+    30%{transform:translate(25vw,-20vh);}
+    45%{transform:translate(20vw,20vh);}
+    60%{transform:translate(-25vw,15vh);}
+    72%{transform:translate(-8vw,-5vh);}
+    82%{transform:translate(5vw,5vh);opacity:1;}
+    90%{transform:translate(-2vw,1vh);opacity:.8;}
+    96%{transform:translate(0,0);opacity:.5;}
     100%{transform:translate(-50%,-50%);opacity:0;}
   }
-  @keyframes wbShrink{0%{width:14vw;height:12vw;filter:blur(1px);}55%{width:14vw;height:12vw;filter:blur(1px);}80%{width:6vw;height:5vw;filter:blur(2px);}100%{width:1.5vw;height:1.5vw;filter:blur(5px);}}
+  @keyframes wbShrink{0%{width:14vw;height:12vw;filter:blur(1px);}70%{width:14vw;height:12vw;filter:blur(1px);}85%{width:7vw;height:6vw;filter:blur(2px);}95%{width:3vw;height:2.5vw;filter:blur(4px);}100%{width:.8vw;height:.8vw;filter:blur(8px);}}
   @keyframes trailFollow{
     0%,100%{transform:translate(0,0) scale(1);opacity:.5;}
     25%{transform:translate(var(--tx1),var(--ty1)) scale(.7);opacity:.7;}
@@ -1662,7 +1660,7 @@ const dur=[
 })();
 
 const anim={
-  0:[[5500,'z1vortex']],
+  0:[[10000,'z1vortex']],
   1:[[2000,'z2a'],[5000,'z2b'],[8000,'z2c']],
   2:[[2000,'z3a'],[5000,'z3b'],[10000,'z3c']],
   3:[[2000,'z4f'],[7000,'z4a'],[7800,'z4b'],[8600,'z4c'],[9400,'z4d'],[10200,'z4e']],
