@@ -27,13 +27,13 @@ OPTION 1: PLAY HTML DIRECTLY IN RESOLUME (RECOMMENDED)
 4. Set the Web Browser source resolution to 4224 x 896
 5. In the source URL, enter the full path to the HTML file:
 
-   file:///[PATH_TO_FOLDER]/led-wall-resolume/index.html
+   file:///[PATH_TO_FOLDER]/led-wall-resolume/samsung_washos_keynote.html
 
    Example (macOS):
-   file:///Users/operator/Desktop/led-wall-resolume/index.html
+   file:///Users/operator/Desktop/led-wall-resolume/samsung_washos_keynote.html
 
    Example (Windows):
-   file:///C:/Users/operator/Desktop/led-wall-resolume/index.html
+   file:///C:/Users/operator/Desktop/led-wall-resolume/samsung_washos_keynote.html
 
 6. The presentation will auto-play with voiceover immediately
 7. Map the output to your LED wall slices as configured
@@ -74,7 +74,7 @@ If Resolume's Web Browser source is unavailable or causes issues:
 
 FOLDER CONTENTS
 ---------------
-  index.html   - Main presentation file (self-contained)
+  samsung_washos_keynote.html   - Main presentation file (self-contained)
   washos-logo.png               - WashOS logo
   whitegoodapps Logo.png        - GoodApps logo
   WashOS Portal.png             - Laptop portal screenshot

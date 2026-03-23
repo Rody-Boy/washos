@@ -6,7 +6,7 @@ const fs = require('fs');
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
-const HTML_FILE = path.resolve(__dirname, 'index.html');
+const HTML_FILE = path.resolve(__dirname, 'samsung_washos_keynote.html');
 const FRAMES_DIR = path.resolve(__dirname, 'frames');
 const OUTPUT = path.resolve(__dirname, 'samsung_washos_keynote_resolume_no_vo.mp4');
 const FPS = 30;
