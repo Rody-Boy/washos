@@ -8,8 +8,8 @@ const TOTAL_DURATION = 165.41; // 2:45.41
 // Estimated timestamps based on word count proportional to 165s
 // Adjust these after listening — these are best-guess splits
 const cuts = [
-  { slide: 1,  start: 0,      end: 27.5,  file: 'vo_slide01.mp3' },
-  { slide: 2,  start: 27.5,   end: 42,    file: 'vo_slide02.mp3' },
+  { slide: 1,  start: 0,      end: 29.5,  file: 'vo_slide01.mp3' },
+  { slide: 2,  start: 29.5,   end: 42,    file: 'vo_slide02.mp3' },
   { slide: 3,  start: 42,     end: 55,    file: 'vo_slide03.mp3' },
   { slide: 4,  start: 55,     end: 70,    file: 'vo_slide04.mp3' },
   { slide: 5,  start: 70,     end: 83,    file: 'vo_slide05.mp3' },
