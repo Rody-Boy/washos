@@ -1232,6 +1232,12 @@
 </head>
 <body>
 
+<!-- Click to start overlay — needed for browser audio autoplay policy -->
+<div id="startOverlay" style="position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.95);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-direction:column;gap:2vh;">
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:5vh;color:#4caf50;letter-spacing:.5vh;">SAMSUNG WASH OS</div>
+  <div style="font-size:2vh;color:rgba(255,255,255,.6);letter-spacing:.3vh;text-transform:uppercase;">Click anywhere to start</div>
+</div>
+
 <!-- Debug guides for LED wall section boundaries (toggle with G key or ?debug=1) -->
 <div class="debug-guides" id="debugGuides">
   <div class="guide-line"></div>
@@ -2088,32 +2094,20 @@ const voClips = [
   'voice_over/vo_slide11.mp3', // SC11 (covers 11+12)
   null                          // SC12 — no separate VO
 ];
-let voAudio = null;
 
-let voUnlocked = false;
+// Single reusable audio element — avoids browser blocking new Audio() objects
+const voAudio = document.createElement('audio');
+voAudio.preload = 'auto';
+document.body.appendChild(voAudio);
 
 function playVO(sceneIdx) {
-  if (voAudio) { voAudio.pause(); voAudio.currentTime = 0; voAudio = null; }
+  voAudio.pause();
   const src = voClips[sceneIdx];
-  if (!src) return;
-  voAudio = new Audio(src);
-  voAudio.volume = 1;
+  if (!src) { voAudio.removeAttribute('src'); return; }
+  voAudio.src = src;
+  voAudio.currentTime = 0;
   voAudio.play().catch(() => {});
 }
-
-// Unlock audio on first user interaction, then replay slide 1 VO if still on it
-function unlockAudio() {
-  if (voUnlocked) return;
-  voUnlocked = true;
-  // If still on slide 1, play the VO that was blocked
-  if (cur === 0) playVO(0);
-  document.removeEventListener('click', unlockAudio);
-  document.removeEventListener('keydown', unlockAudio);
-  document.removeEventListener('touchstart', unlockAudio);
-}
-document.addEventListener('click', unlockAudio);
-document.addEventListener('keydown', unlockAudio);
-document.addEventListener('touchstart', unlockAudio);
 
 // Patch show() to trigger voiceover
 const _origShow = show;
@@ -2122,20 +2116,18 @@ show = function(i) {
   playVO(i);
 };
 
-show(0);go();
+// Show first scene visually (no audio yet, no autoplay)
+_origShow(0);
 
-// Also try to auto-unlock via silent audio context (works in some browsers/Resolume)
-(function(){
-  try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const buf = ctx.createBuffer(1, 1, 22050);
-    const src = ctx.createBufferSource();
-    src.buffer = buf;
-    src.connect(ctx.destination);
-    src.start(0);
-    ctx.resume().then(() => { voUnlocked = true; playVO(0); });
-  } catch(e) {}
-})();
+// Don't start until user clicks the overlay — guarantees audio works
+const overlay = document.getElementById('startOverlay');
+overlay.addEventListener('click', function startPresentation() {
+  overlay.style.opacity = '0';
+  overlay.style.transition = 'opacity 0.5s ease';
+  setTimeout(() => overlay.remove(), 600);
+  show(0);
+  go();
+}, { once: true });
 
 // Debug guides toggle — press G key or add ?debug=1 to URL
 (function(){
