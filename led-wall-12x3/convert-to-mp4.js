@@ -10,8 +10,8 @@ const HTML_FILE = path.resolve(__dirname, 'samsung_washos_keynote.html');
 const FRAMES_DIR = path.resolve(__dirname, 'frames');
 const OUTPUT = path.resolve(__dirname, 'samsung_washos_keynote_led_12x3.mp4');
 const FPS = 30;
-const WIDTH = 7680;  // 12m LED wall — 8K width for maximum quality
-const HEIGHT = 1920; // 3m LED wall — 4:1 aspect ratio
+const WIDTH = 3840;  // 12m LED wall
+const HEIGHT = 960;  // 3m LED wall — 4:1 aspect ratio
 const FRAME_DURATION_MS = 1000 / FPS;
 
 // Scene durations from the HTML (in ms)
