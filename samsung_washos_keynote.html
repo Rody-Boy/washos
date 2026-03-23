@@ -13,7 +13,7 @@
     --blue-dim:#0d47a1;--cyan:#40c4ff;
     --green:#4caf50;--green-bright:#66bb6a;--green-dim:#1b5e20;
     --teal:#00897b;--accent-grad:linear-gradient(135deg,#2196f3,#4caf50);
-    --white:#e8f5e9;--gray:#6e8a7a;--dim:#3a5045;
+    --white:#e8f5e9;--gray:#d0e0d5;--dim:#3a5045;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html,body{width:100%;height:100%;background:#000;overflow:hidden;font-family:'DM Sans',sans-serif;color:var(--white);-webkit-font-smoothing:antialiased;}
@@ -132,29 +132,29 @@
   /* Digital washer body — dark/green abstract style */
   .washer-body{
     width:6vw;height:7.5vw;border-radius:.8vw;
-    border:1px solid rgba(76,175,80,.15);
-    background:linear-gradient(170deg,rgba(10,26,18,.6),rgba(6,16,10,.7));
-    display:flex;align-items:center;justify-content:center;position:relative;
-    box-shadow:0 0 2vw rgba(76,175,80,.06);
-    backdrop-filter:blur(2px);
+    border:1.5px solid rgba(76,175,80,.2);
+    background:linear-gradient(170deg,rgba(10,26,18,.7),rgba(6,16,10,.8));
+    display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;
+    box-shadow:0 0 2vw rgba(76,175,80,.08);gap:.2vw;
   }
-  .washer-brand{position:absolute;bottom:.5vw;left:50%;transform:translateX(-50%);font-size:.32vw;letter-spacing:.12vw;text-transform:uppercase;color:rgba(76,175,80,.2);font-weight:600;white-space:nowrap;}
   .washer-panel{
-    position:absolute;top:.5vw;left:50%;transform:translateX(-50%);
-    width:2.8vw;height:.25vw;border-radius:.15vw;
-    background:rgba(76,175,80,.15);
+    width:80%;display:flex;align-items:center;justify-content:center;gap:.2vw;
+    position:absolute;top:.4vw;
   }
+  .washer-panel-bar{width:1.8vw;height:.2vw;border-radius:.1vw;background:rgba(76,175,80,.2);}
+  .washer-panel-dot{width:.25vw;height:.25vw;border-radius:50%;background:var(--green);box-shadow:0 0 .3vw rgba(76,175,80,.4);animation:sc9DotPulse 2s ease-in-out infinite;}
   .washer-drum{
     width:3.6vw;height:3.6vw;border-radius:50%;
-    border:1.5px solid rgba(76,175,80,.2);
+    border:1.5px solid rgba(76,175,80,.22);
     box-shadow:inset 0 0 1.2vw rgba(76,175,80,.06);
     position:relative;display:flex;align-items:center;justify-content:center;
-    animation:drumSlow 20s linear infinite;
+    animation:drumSlow 20s linear infinite;overflow:hidden;
   }
   .washer-drum::after{
     content:'';width:1.2vw;height:1.2vw;border-radius:50%;
-    border:1px solid rgba(30,144,255,.12);
+    border:1px solid rgba(76,175,80,.12);
   }
+  .washer-drum-water{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(180deg,rgba(76,175,80,.05),rgba(76,175,80,.12));border-radius:0 0 50% 50%;animation:sc9Slosh 3s ease-in-out infinite;}
   @keyframes drumSlow{0%{transform:rotate(0);}100%{transform:rotate(360deg);}}
 
   /* Vary rotation speeds per washer */
@@ -330,11 +330,11 @@
   /* — Central vortex drum — */
   .sc1-vortex{
     position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.2);
-    width:28vw;height:28vw;z-index:5;
+    width:28vw;height:38vw;z-index:5;
     opacity:0;transition:opacity 2.5s ease, transform 3.5s cubic-bezier(.16,1,.3,1);
   }
   .sc1-vortex.on{opacity:1;transform:translate(-50%,-50%) scale(1);}
-  @media (max-aspect-ratio:2.5/1){.sc1-vortex{width:min(28vw,55vh);height:min(28vw,55vh);}}
+  @media (max-aspect-ratio:2.5/1){.sc1-vortex{width:min(28vw,55vh);height:min(38vw,75vh);}}
 
   /* Outer glow — brighter, more dynamic */
   .vortex-glow{
@@ -612,10 +612,13 @@
   .old-door-handle{position:absolute;right:.3vw;top:45%;width:.2vw;height:.8vw;border-radius:.1vw;background:#8a7a68;border:1px solid #6a5a48;}
   .old-door-push{font-size:.3vw;letter-spacing:.08vw;text-transform:uppercase;color:rgba(200,200,200,.15);margin-top:.3vw;}
   /* Washers visible through window — digital style */
-  .old-washer{width:10vw;height:12vw;border-radius:1vw;border:2px solid rgba(76,175,80,.28);background:linear-gradient(170deg,rgba(10,26,18,.7),rgba(6,16,10,.8));display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 2vw rgba(76,175,80,.08);}
-  .old-washer-panel{position:absolute;top:.6vw;left:50%;transform:translateX(-50%);width:5vw;height:.35vw;border-radius:.2vw;background:rgba(76,175,80,.2);}
-  .old-washer-drum{width:6.5vw;height:6.5vw;border-radius:50%;border:2px solid rgba(76,175,80,.22);box-shadow:inset 0 0 1.5vw rgba(76,175,80,.08);display:flex;align-items:center;justify-content:center;animation:drumSlow 18s linear infinite;}
-  .old-washer-drum::after{content:'';width:2vw;height:2vw;border-radius:50%;border:2px solid rgba(30,144,255,.12);}
+  .old-washer{width:10vw;height:12vw;border-radius:1vw;border:2px solid rgba(76,175,80,.28);background:linear-gradient(170deg,rgba(10,26,18,.7),rgba(6,16,10,.8));display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;box-shadow:0 0 2vw rgba(76,175,80,.08);gap:.3vw;}
+  .old-washer-panel{width:80%;display:flex;align-items:center;justify-content:center;gap:.3vw;position:absolute;top:.5vw;}
+  .old-washer-panel-bar{width:3vw;height:.3vw;border-radius:.15vw;background:rgba(76,175,80,.2);}
+  .old-washer-panel-dot{width:.4vw;height:.4vw;border-radius:50%;background:var(--green);box-shadow:0 0 .4vw rgba(76,175,80,.4);animation:sc9DotPulse 2s ease-in-out infinite;}
+  .old-washer-drum{width:6.5vw;height:6.5vw;border-radius:50%;border:2px solid rgba(76,175,80,.22);box-shadow:inset 0 0 1.5vw rgba(76,175,80,.08);display:flex;align-items:center;justify-content:center;animation:drumSlow 18s linear infinite;overflow:hidden;position:relative;}
+  .old-washer-drum::after{content:'';width:2vw;height:2vw;border-radius:50%;border:2px solid rgba(76,175,80,.12);}
+  .old-washer-drum-water{position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(180deg,rgba(76,175,80,.05),rgba(76,175,80,.12));border-radius:0 0 50% 50%;animation:sc9Slosh 3s ease-in-out infinite;}
   /* People silhouettes inside the shop */
   /* People — realistically proportioned (person ~2.5x washer height) */
   .old-person{position:absolute;bottom:0;z-index:2;display:flex;flex-direction:column;align-items:center;}
@@ -1175,19 +1178,19 @@
 
   <!-- Samsung washers — digital style, spread across width -->
   <div class="sc1-washer">
-    <div class="washer-body"><div class="washer-panel"></div><div class="washer-drum"></div></div>
+    <div class="washer-body"><div class="washer-panel"><div class="washer-panel-bar"></div><div class="washer-panel-dot"></div></div><div class="washer-drum"><div class="washer-drum-water"></div></div></div>
   </div>
   <div class="sc1-washer">
-    <div class="washer-body"><div class="washer-panel"></div><div class="washer-drum"></div></div>
+    <div class="washer-body"><div class="washer-panel"><div class="washer-panel-bar"></div><div class="washer-panel-dot"></div></div><div class="washer-drum"><div class="washer-drum-water"></div></div></div>
   </div>
   <div class="sc1-washer">
-    <div class="washer-body"><div class="washer-panel"></div><div class="washer-drum"></div></div>
+    <div class="washer-body"><div class="washer-panel"><div class="washer-panel-bar"></div><div class="washer-panel-dot"></div></div><div class="washer-drum"><div class="washer-drum-water"></div></div></div>
   </div>
   <div class="sc1-washer">
-    <div class="washer-body"><div class="washer-panel"></div><div class="washer-drum"></div></div>
+    <div class="washer-body"><div class="washer-panel"><div class="washer-panel-bar"></div><div class="washer-panel-dot"></div></div><div class="washer-drum"><div class="washer-drum-water"></div></div></div>
   </div>
   <div class="sc1-washer">
-    <div class="washer-body"><div class="washer-panel"></div><div class="washer-drum"></div></div>
+    <div class="washer-body"><div class="washer-panel"><div class="washer-panel-bar"></div><div class="washer-panel-dot"></div></div><div class="washer-drum"><div class="washer-drum-water"></div></div></div>
   </div>
 
   <!-- Tail — ghost trail following the water body -->
@@ -1304,9 +1307,9 @@
           </div>
           <div class="old-front">
             <div class="old-window">
-              <div class="old-washer"><div class="old-washer-panel"></div><div class="old-washer-drum"></div></div>
-              <div class="old-washer"><div class="old-washer-panel"></div><div class="old-washer-drum"></div></div>
-              <div class="old-washer"><div class="old-washer-panel"></div><div class="old-washer-drum"></div></div>
+              <div class="old-washer"><div class="old-washer-panel"><div class="old-washer-panel-bar"></div><div class="old-washer-panel-dot"></div></div><div class="old-washer-drum"><div class="old-washer-drum-water"></div></div></div>
+              <div class="old-washer"><div class="old-washer-panel"><div class="old-washer-panel-bar"></div><div class="old-washer-panel-dot"></div></div><div class="old-washer-drum"><div class="old-washer-drum-water"></div></div></div>
+              <div class="old-washer"><div class="old-washer-panel"><div class="old-washer-panel-bar"></div><div class="old-washer-panel-dot"></div></div><div class="old-washer-drum"><div class="old-washer-drum-water"></div></div></div>
             </div>
             <div class="old-door">
               <div class="old-door-handle"></div>
