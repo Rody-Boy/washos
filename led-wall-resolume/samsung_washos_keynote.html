@@ -2121,13 +2121,21 @@ _origShow(0);
 
 // Don't start until user clicks the overlay — guarantees audio works
 const overlay = document.getElementById('startOverlay');
-overlay.addEventListener('click', function startPresentation() {
+function startPresentation() {
   overlay.style.opacity = '0';
   overlay.style.transition = 'opacity 0.5s ease';
   setTimeout(() => overlay.remove(), 600);
   show(0);
   go();
-}, { once: true });
+}
+overlay.addEventListener('click', startPresentation, { once: true });
+
+// ?autostart=1 — skip overlay, start immediately (for Resolume or autoplay setups)
+if (new URLSearchParams(location.search).get('autostart') === '1') {
+  overlay.remove();
+  show(0);
+  go();
+}
 
 // Debug guides toggle — press G key or add ?debug=1 to URL
 (function(){
