@@ -8,17 +8,17 @@ const TOTAL_DURATION = 165.41; // 2:45.41
 // Estimated timestamps based on word count proportional to 165s
 // Adjust these after listening — these are best-guess splits
 const cuts = [
-  { slide: 1,  start: 0,      end: 29.5,  file: 'vo_slide01.mp3' },
-  { slide: 2,  start: 29.5,   end: 42,    file: 'vo_slide02.mp3' },
-  { slide: 3,  start: 42,     end: 55,    file: 'vo_slide03.mp3' },
-  { slide: 4,  start: 55,     end: 70,    file: 'vo_slide04.mp3' },
-  { slide: 5,  start: 70,     end: 83,    file: 'vo_slide05.mp3' },
-  { slide: 6,  start: 83,     end: 92,    file: 'vo_slide06.mp3' },
-  { slide: 7,  start: 92,     end: 113,   file: 'vo_slide07.mp3' },
-  { slide: 8,  start: 113,    end: 129,   file: 'vo_slide08.mp3' },
-  { slide: 9,  start: 129,    end: 143,   file: 'vo_slide09.mp3' },
-  { slide: 10, start: 143,    end: 153,   file: 'vo_slide10.mp3' },
-  { slide: 11, start: 153,    end: 165.4, file: 'vo_slide11.mp3' },  // covers slide 11+12
+  { slide: 1,  start: 0,      end: 28.5,  file: 'vo_slide01.mp3' },
+  { slide: 2,  start: 28.5,   end: 33.2,  file: 'vo_slide02.mp3' },
+  { slide: 3,  start: 33.2,   end: 46.8,  file: 'vo_slide03.mp3' },
+  { slide: 4,  start: 46.8,   end: 64.1,  file: 'vo_slide04.mp3' },
+  { slide: 5,  start: 64.1,   end: 68.8,  file: 'vo_slide05.mp3' },
+  { slide: 6,  start: 68.8,   end: 78.7,  file: 'vo_slide06.mp3' },
+  { slide: 7,  start: 78.7,   end: 110.9, file: 'vo_slide07.mp3' },
+  { slide: 8,  start: 110.9,  end: 132.1, file: 'vo_slide08.mp3' },
+  { slide: 9,  start: 132.1,  end: 140.7, file: 'vo_slide09.mp3' },
+  { slide: 10, start: 140.7,  end: 150.0, file: 'vo_slide10.mp3' },
+  { slide: 11, start: 150.0,  end: 165.4, file: 'vo_slide11.mp3' },  // covers slide 11+12
 ];
 
 // Presentation scene start times (cumulative from dur array)

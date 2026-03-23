@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 // Scene start times (cumulative from dur array)
-const sceneStarts = [0, 30, 50, 70, 88, 108, 126, 150, 170, 188, 204, 222];
+const sceneStarts = [0, 30, 40, 60, 80, 90, 108, 143, 167, 185, 201, 219];
 const TOTAL_DURATION = 248;
 
 // VO clips mapped to scene indices

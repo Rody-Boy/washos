@@ -19,7 +19,7 @@ const DEVICE_SCALE = 2; // Capture at 8448×1792, downscale to 4224×896
 const FRAME_DURATION_MS = 1000 / FPS;
 
 // Scene durations from the HTML (in ms)
-const durations = [30000, 20000, 20000, 18000, 20000, 18000, 24000, 20000, 18000, 16000, 18000, 26000];
+const durations = [30000, 10000, 20000, 20000, 10000, 18000, 35000, 24000, 18000, 16000, 18000, 29000];
 const TOTAL_MS = durations.reduce((a, b) => a + b, 0);
 const TOTAL_FRAMES = Math.ceil((TOTAL_MS / 1000) * FPS);
 
