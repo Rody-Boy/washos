@@ -11,14 +11,14 @@ const cuts = [
   { slide: 1,  start: 0,      end: 27.5,  file: 'vo_slide01.mp3' },
   { slide: 2,  start: 27.5,   end: 42,    file: 'vo_slide02.mp3' },
   { slide: 3,  start: 42,     end: 55,    file: 'vo_slide03.mp3' },
-  { slide: 4,  start: 53,     end: 68.5,  file: 'vo_slide04.mp3' },
-  { slide: 5,  start: 68.5,   end: 79,    file: 'vo_slide05.mp3' },
-  { slide: 6,  start: 79,     end: 86,    file: 'vo_slide06.mp3' },
-  { slide: 7,  start: 86,     end: 108,   file: 'vo_slide07.mp3' },
-  { slide: 8,  start: 108,    end: 124,   file: 'vo_slide08.mp3' },
-  { slide: 9,  start: 124,    end: 139,   file: 'vo_slide09.mp3' },
-  { slide: 10, start: 139,    end: 150,   file: 'vo_slide10.mp3' },
-  { slide: 11, start: 150,    end: 165.4, file: 'vo_slide11.mp3' },  // covers slide 11+12
+  { slide: 4,  start: 55,     end: 70,    file: 'vo_slide04.mp3' },
+  { slide: 5,  start: 70,     end: 83,    file: 'vo_slide05.mp3' },
+  { slide: 6,  start: 83,     end: 92,    file: 'vo_slide06.mp3' },
+  { slide: 7,  start: 92,     end: 113,   file: 'vo_slide07.mp3' },
+  { slide: 8,  start: 113,    end: 129,   file: 'vo_slide08.mp3' },
+  { slide: 9,  start: 129,    end: 143,   file: 'vo_slide09.mp3' },
+  { slide: 10, start: 143,    end: 153,   file: 'vo_slide10.mp3' },
+  { slide: 11, start: 153,    end: 165.4, file: 'vo_slide11.mp3' },  // covers slide 11+12
 ];
 
 // Presentation scene start times (cumulative from dur array)
