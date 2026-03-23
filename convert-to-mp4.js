@@ -9,7 +9,7 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 const HTML_FILE = path.resolve(__dirname, 'samsung_washos_keynote.html');
 const FRAMES_DIR = path.resolve(__dirname, 'frames');
 const OUTPUT = path.resolve(__dirname, 'samsung_washos_keynote.mp4');
-const FPS = 60;
+const FPS = 30;
 const WIDTH = 3840;
 const HEIGHT = 2160;
 const FRAME_DURATION_MS = 1000 / FPS; // 33.333ms per frame
