@@ -420,7 +420,7 @@
   /* Door ring — bezel around the glass */
   .vortex-machine-door-ring{
     width:68%;aspect-ratio:1;border-radius:50%;
-    margin-top:6%;position:relative;
+    margin-top:12%;position:relative;
     border:3px solid rgba(76,175,80,.2);
     box-shadow:0 0 2vw rgba(76,175,80,.05);
     display:flex;align-items:center;justify-content:center;
@@ -1419,6 +1419,15 @@
 <div class="scene" id="sc6">
   <div class="sc6-lbl" id="z6lbl">The Wash OS Ecosystem</div>
   <div class="eco-orbit">
+    <!-- Connecting lines from nodes to center hub -->
+    <div class="eco-connectors">
+      <svg viewBox="0 0 420 420" preserveAspectRatio="xMidYMid meet">
+        <line class="eco-arc" id="z6ar1" x1="210" y1="60" x2="210" y2="175"/>
+        <line class="eco-arc" id="z6ar2" x1="60" y1="330" x2="175" y2="240"/>
+        <line class="eco-arc" id="z6ar3" x1="360" y1="330" x2="245" y2="240"/>
+      </svg>
+    </div>
+
     <!-- Center hub — Wash OS Platform -->
     <div class="eco-hub-center" id="z6b">
       <svg viewBox="0 0 24 24" fill="none"><path d="M6 7c-2.2 0-4 1.5-4 3.4 0 1.8 1.5 3.3 3.4 3.3h13.2c1.9 0 3.4-1.5 3.4-3.3C22 8.5 20.2 7 18 7c-.4-2.3-2.4-4-4.8-4-2 0-3.7 1.2-4.4 2.9C7.5 5.6 6 6.7 6 7z" stroke="var(--green-bright)" stroke-width="1.5"/></svg>
@@ -1576,6 +1585,15 @@
   <div class="sc11-glow" id="z11glow"></div>
 
   <div class="eco-orbit sc11-orbit" id="z11orbit">
+    <!-- Connecting lines from nodes to center hub -->
+    <div class="eco-connectors">
+      <svg viewBox="0 0 420 420" preserveAspectRatio="xMidYMid meet">
+        <line class="eco-arc" id="z11ar1" x1="210" y1="60" x2="210" y2="175"/>
+        <line class="eco-arc" id="z11ar2" x1="60" y1="330" x2="175" y2="240"/>
+        <line class="eco-arc" id="z11ar3" x1="360" y1="330" x2="245" y2="240"/>
+      </svg>
+    </div>
+
     <!-- Center hub — Wash OS logo -->
     <div class="eco-hub-center sc11-hub" id="z11hub">
       <img src="washos-logo.png" alt="Wash OS" class="sc11-hub-logo"/>
@@ -1863,7 +1881,7 @@ const anim={
   // SC5: THE BIG REVEAL — Host pauses 3s, then "we created WASH OS" → burst+logo (4s), subtitle (10s), powered by (14s)
   4:[[4000,'z5burst'],[4500,'z5a'],[10000,'z5b'],[14000,'z5c']],
   // SC6: Host: "WASH OS connects three worlds. Customers. Laundry shops. Samsung machines." — elements appear as host names them
-  5:[[1500,'z6lbl'],[4000,'z6b'],[6000,'z6a'],[8000,'z6c'],[10000,'z6d'],[11500,'z6ar1'],[11800,'z6ar2'],[12100,'z6ar3'],[12400,'z6ar4']],
+  5:[[1500,'z6lbl'],[4000,'z6b'],[6000,'z6a'],[8000,'z6c'],[10000,'z6d'],[11500,'z6ar1'],[11800,'z6ar2'],[12100,'z6ar3']],
   // SC7: Host: "find nearby shops" (3s) → "book machines" (6s) → "track progress" (9s) → "pay digitally" (12s)
   6:[[1500,'z7lbl'],[3000,'z7f1'],[6000,'z7f2'],[9000,'z7f3'],[12000,'z7f4']],
   // SC8: Icons appear as host says: "Orders" (2s) → "Payments" (4s) → etc → then title words enter
@@ -1873,7 +1891,7 @@ const anim={
   // SC10: Host: "Laundry is no longer..." → map (2s) → LAUNDRY (4s) → IS BECOMING (6.5s) → A DIGITAL SERVICE NETWORK (9s)
   9:[[2000,'z10map'],[4000,'z10l1'],[6500,'z10l2'],[9000,'z10l3']],
   // SC11: Visual-only ecosystem — auto-animate, no speech
-  10:[[1200,'z11glow'],[2000,'z11orbit'],[3000,'z11hub'],[5000,'z11n1'],[6500,'z11n2'],[8000,'z11n3'],[9500,'z11ar1'],[9800,'z11ar2'],[10100,'z11ar3'],[10400,'z11ar4']],
+  10:[[1200,'z11glow'],[2000,'z11orbit'],[3000,'z11hub'],[5000,'z11n1'],[6500,'z11n2'],[8000,'z11n3'],[9500,'z11ar1'],[9800,'z11ar2'],[10100,'z11ar3']],
   // SC12: Host: "Together with Samsung..." → phone (3s) → laptop (6s) → map (9s) → then closing speech + fold
   11:[[1500,'z12bg'],[5000,'z12c3'],[8000,'z12c1'],[12000,'z12lbl']]
 };
