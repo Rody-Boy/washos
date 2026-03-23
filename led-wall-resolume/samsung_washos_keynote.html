@@ -2090,14 +2090,30 @@ const voClips = [
 ];
 let voAudio = null;
 
+let voUnlocked = false;
+
 function playVO(sceneIdx) {
   if (voAudio) { voAudio.pause(); voAudio.currentTime = 0; voAudio = null; }
   const src = voClips[sceneIdx];
   if (!src) return;
   voAudio = new Audio(src);
   voAudio.volume = 1;
-  voAudio.play().catch(() => {}); // ignore autoplay block
+  voAudio.play().catch(() => {});
 }
+
+// Unlock audio on first user interaction, then replay slide 1 VO if still on it
+function unlockAudio() {
+  if (voUnlocked) return;
+  voUnlocked = true;
+  // If still on slide 1, play the VO that was blocked
+  if (cur === 0) playVO(0);
+  document.removeEventListener('click', unlockAudio);
+  document.removeEventListener('keydown', unlockAudio);
+  document.removeEventListener('touchstart', unlockAudio);
+}
+document.addEventListener('click', unlockAudio);
+document.addEventListener('keydown', unlockAudio);
+document.addEventListener('touchstart', unlockAudio);
 
 // Patch show() to trigger voiceover
 const _origShow = show;
@@ -2107,6 +2123,19 @@ show = function(i) {
 };
 
 show(0);go();
+
+// Also try to auto-unlock via silent audio context (works in some browsers/Resolume)
+(function(){
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const buf = ctx.createBuffer(1, 1, 22050);
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    src.connect(ctx.destination);
+    src.start(0);
+    ctx.resume().then(() => { voUnlocked = true; playVO(0); });
+  } catch(e) {}
+})();
 
 // Debug guides toggle — press G key or add ?debug=1 to URL
 (function(){
