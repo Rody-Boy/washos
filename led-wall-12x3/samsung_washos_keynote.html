@@ -165,14 +165,14 @@
   .sc1-washer:nth-child(5) .washer-drum{animation-duration:16s;}
 
   /* Vary sizes/opacity for depth */
-  .sc1-washer:nth-child(1) .washer-body{width:3.8vw;height:4.7vw;opacity:.5;}
+  .sc1-washer:nth-child(1) .washer-body{width:3.8vw;height:4.7vw;opacity:.8;}
   .sc1-washer:nth-child(1) .washer-drum{width:2.2vw;height:2.2vw;}
-  .sc1-washer:nth-child(2) .washer-body{width:5vw;height:6vw;opacity:.65;}
+  .sc1-washer:nth-child(2) .washer-body{width:5vw;height:6vw;opacity:.9;}
   .sc1-washer:nth-child(2) .washer-drum{width:3vw;height:3vw;}
-  .sc1-washer:nth-child(3) .washer-body{width:4.5vw;height:5.6vw;opacity:.55;}
-  .sc1-washer:nth-child(4) .washer-body{width:4vw;height:5vw;opacity:.4;}
+  .sc1-washer:nth-child(3) .washer-body{width:4.5vw;height:5.6vw;opacity:.85;}
+  .sc1-washer:nth-child(4) .washer-body{width:4vw;height:5vw;opacity:.7;}
   .sc1-washer:nth-child(4) .washer-drum{width:2.3vw;height:2.3vw;}
-  .sc1-washer:nth-child(5) .washer-body{width:3.5vw;height:4.2vw;opacity:.3;}
+  .sc1-washer:nth-child(5) .washer-body{width:3.5vw;height:4.2vw;opacity:.6;}
   .sc1-washer:nth-child(5) .washer-drum{width:2vw;height:2vw;}
 
   /* Tail — ghost copies following behind */
@@ -260,17 +260,17 @@
     100%{border-radius:40% 60% 55% 45% / 55% 40% 60% 45%;transform:scale(1) rotate(0deg);}
   }
   @keyframes waterWander{
-    0%{transform:translate(-70vw,-30vh);opacity:0;}
+    0%{transform:translate(-70vw,-15vh);opacity:0;}
     3%{opacity:1;}
-    15%{transform:translate(-25vw,-25vh);}
-    30%{transform:translate(25vw,-20vh);}
-    45%{transform:translate(20vw,20vh);}
-    60%{transform:translate(-25vw,15vh);}
-    72%{transform:translate(-8vw,-5vh);}
-    82%{transform:translate(5vw,5vh);opacity:1;}
-    90%{transform:translate(-2vw,1vh);opacity:.8;}
-    96%{transform:translate(0,0);opacity:.5;}
-    100%{transform:translate(-50%,-50%);opacity:0;}
+    15%{transform:translate(-25vw,-10vh);}
+    30%{transform:translate(25vw,0vh);}
+    45%{transform:translate(20vw,22vh);}
+    60%{transform:translate(-25vw,18vh);}
+    72%{transform:translate(-8vw,8vh);}
+    82%{transform:translate(5vw,10vh);opacity:1;}
+    90%{transform:translate(-2vw,6vh);opacity:.8;}
+    96%{transform:translate(0,5vh);opacity:.5;}
+    100%{transform:translate(-50%,-40%);opacity:0;}
   }
   @keyframes wbShrink{0%{width:14vw;height:12vw;filter:blur(1px);}75%{width:14vw;height:12vw;filter:blur(1px);}88%{width:7vw;height:6vw;filter:blur(2px);}96%{width:2vw;height:2vw;filter:blur(5px);}100%{width:0;height:0;filter:blur(10px);}}
   @keyframes trailFollow{
@@ -1141,7 +1141,7 @@
   <div class="sc3-layout">
     <!-- LEFT: Yesterday -->
     <div class="sc3-col" id="z3a">
-      <div class="sp-L" style="width:100%;aspect-ratio:1/.95;position:relative;">
+      <div class="sp-L" style="width:100%;aspect-ratio:1.4/1;position:relative;">
         <div class="sc3-col-label">Yesterday</div>
         <div class="old-scene">
           <div class="old-storefront">
@@ -1175,7 +1175,7 @@
 
     <!-- RIGHT: Today -->
     <div class="sc3-col" id="z3b">
-      <div class="sp-R" style="width:100%;aspect-ratio:1/.95;position:relative;">
+      <div class="sp-R" style="width:100%;aspect-ratio:1.4/1;position:relative;">
         <div class="sc3-col-label">Today</div>
         <div class="new-scene">
           <div class="new-phone">
