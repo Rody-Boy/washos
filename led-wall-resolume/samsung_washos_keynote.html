@@ -2122,17 +2122,20 @@ _origShow(0);
 // Don't start until user clicks the overlay — guarantees audio works
 const overlay = document.getElementById('startOverlay');
 function startPresentation() {
-  // Unlock ALL audio elements with a silent play within the click handler
-  [voAudio, bgAudio, sfxAudio].forEach(a => {
-    a.src = 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABhgC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAABhgFJmkQAAAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABhgC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAABhgFJmkQAAAAAAAAAAAAAAAAA';
-    a.play().then(() => a.pause()).catch(() => {});
-    a.removeAttribute('src');
+  // Unlock ALL audio elements — wait for unlock to complete, then start
+  const silence = 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABhgC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAABhgFJmkQAAAAAAAAAAAAAAAAA';
+  const unlocks = [voAudio, bgAudio, sfxAudio].map(a => {
+    a.src = silence;
+    return a.play().then(() => { a.pause(); a.currentTime = 0; }).catch(() => {});
   });
-  overlay.style.opacity = '0';
-  overlay.style.transition = 'opacity 0.5s ease';
-  setTimeout(() => overlay.remove(), 600);
-  show(0);
-  go();
+  // Wait for all audio elements to unlock, then start presentation
+  Promise.all(unlocks).then(() => {
+    overlay.style.opacity = '0';
+    overlay.style.transition = 'opacity 0.5s ease';
+    setTimeout(() => overlay.remove(), 600);
+    show(0);
+    go();
+  });
 }
 overlay.addEventListener('click', startPresentation, { once: true });
 
@@ -2207,9 +2210,15 @@ show = function(i) {
     act.push(setTimeout(() => fadeBG(1500), dur[0] - 1500));
   }
 
-  // Slide 5 — Whoosh SFX when logo appears (z5a triggers at 4500ms)
+  // Slide 5 — Preload whoosh, then play exactly when logo appears (z5a at 4500ms)
   if (i === 4) {
-    act.push(setTimeout(() => playSFX('bg-music/Slide 5 - Product Show.mp3', 0.6), 4500));
+    sfxAudio.src = 'bg-music/Slide 5 - Product Show.mp3';
+    sfxAudio.load(); // Force preload so it's ready instantly
+    act.push(setTimeout(() => {
+      sfxAudio.volume = 0.6;
+      sfxAudio.currentTime = 0;
+      sfxAudio.play().catch(() => {});
+    }, 4500));
   }
 
   // Slide 12 — Outro BG music starts immediately

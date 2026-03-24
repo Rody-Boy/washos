@@ -2134,9 +2134,15 @@ show = function(i) {
     act.push(setTimeout(() => fadeBG(1500), dur[0] - 1500));
   }
 
-  // Slide 5 — Whoosh SFX when logo appears (z5a triggers at 4500ms)
+  // Slide 5 — Preload whoosh, then play exactly when logo appears (z5a at 4500ms)
   if (i === 4) {
-    act.push(setTimeout(() => playSFX('bg-music/Slide 5 - Product Show.mp3', 0.7), 4500));
+    sfxAudio.src = 'bg-music/Slide 5 - Product Show.mp3';
+    sfxAudio.load();
+    act.push(setTimeout(() => {
+      sfxAudio.volume = 0.7;
+      sfxAudio.currentTime = 0;
+      sfxAudio.play().catch(() => {});
+    }, 4500));
   }
 
   // Slide 12 — Outro BG music starts immediately
