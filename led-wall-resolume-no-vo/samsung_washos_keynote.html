@@ -2172,8 +2172,8 @@ show = function(i) {
       bgAudio.play().catch(() => {});
       let fadeInVol = 0;
       const fadeIn = setInterval(() => {
-        fadeInVol += 0.5 / 20;
-        if (fadeInVol >= 0.5) { bgAudio.volume = 0.5; clearInterval(fadeIn); }
+        fadeInVol += 0.1 / 20;
+        if (fadeInVol >= 0.1) { bgAudio.volume = 0.1; clearInterval(fadeIn); }
         else { bgAudio.volume = fadeInVol; }
       }, 100);
     }, 6000));
