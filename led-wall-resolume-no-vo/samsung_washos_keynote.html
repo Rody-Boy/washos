@@ -2073,7 +2073,79 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowLeft'){pv();go();}
 });
 
-// No voiceover — auto-start immediately
+// ══════ BACKGROUND MUSIC & SFX ══════
+const bgAudio = document.createElement('audio');
+bgAudio.preload = 'auto';
+document.body.appendChild(bgAudio);
+
+const sfxAudio = document.createElement('audio');
+sfxAudio.preload = 'auto';
+document.body.appendChild(sfxAudio);
+
+let bgFadeTimer = null;
+
+function stopBG() {
+  if (bgFadeTimer) { clearInterval(bgFadeTimer); bgFadeTimer = null; }
+  bgAudio.pause();
+  bgAudio.removeAttribute('src');
+  sfxAudio.pause();
+  sfxAudio.removeAttribute('src');
+}
+
+function playBG(src, vol) {
+  bgAudio.src = src;
+  bgAudio.volume = vol;
+  bgAudio.currentTime = 0;
+  bgAudio.play().catch(() => {});
+}
+
+function fadeBG(duration) {
+  const steps = 20;
+  const stepTime = duration / steps;
+  const stepVol = bgAudio.volume / steps;
+  bgFadeTimer = setInterval(() => {
+    if (bgAudio.volume > stepVol) {
+      bgAudio.volume = Math.max(0, bgAudio.volume - stepVol);
+    } else {
+      bgAudio.volume = 0;
+      bgAudio.pause();
+      clearInterval(bgFadeTimer);
+      bgFadeTimer = null;
+    }
+  }, stepTime);
+}
+
+function playSFX(src, vol) {
+  sfxAudio.src = src;
+  sfxAudio.volume = vol;
+  sfxAudio.currentTime = 0;
+  sfxAudio.play().catch(() => {});
+}
+
+// Hook BG music into scene changes
+const _origShow = show;
+show = function(i) {
+  _origShow(i);
+  stopBG();
+
+  // Slide 1 — Intro BG music, fade out near end
+  if (i === 0) {
+    playBG('bg-music/Slide 1 - Intro.mp3', 0.4);
+    act.push(setTimeout(() => fadeBG(1500), dur[0] - 1500));
+  }
+
+  // Slide 5 — Whoosh SFX when logo appears (z5a triggers at 4500ms)
+  if (i === 4) {
+    act.push(setTimeout(() => playSFX('bg-music/Slide 5 - Product Show.mp3', 0.7), 4500));
+  }
+
+  // Slide 12 — Outro BG music starts immediately
+  if (i === 11) {
+    playBG('bg-music/slide 12 - outro.mp3', 0.45);
+  }
+};
+
+// Auto-start immediately
 show(0);go();
 
 // Debug guides toggle — press G key or add ?debug=1 to URL
