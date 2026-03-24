@@ -2122,6 +2122,12 @@ _origShow(0);
 // Don't start until user clicks the overlay — guarantees audio works
 const overlay = document.getElementById('startOverlay');
 function startPresentation() {
+  // Unlock ALL audio elements with a silent play within the click handler
+  [voAudio, bgAudio, sfxAudio].forEach(a => {
+    a.src = 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABhgC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAABhgFJmkQAAAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAABhgC7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7u7//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAAAAAAAAAABhgFJmkQAAAAAAAAAAAAAAAAA';
+    a.play().then(() => a.pause()).catch(() => {});
+    a.removeAttribute('src');
+  });
   overlay.style.opacity = '0';
   overlay.style.transition = 'opacity 0.5s ease';
   setTimeout(() => overlay.remove(), 600);
