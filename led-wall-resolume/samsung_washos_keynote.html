@@ -2244,8 +2244,8 @@ show = function(i) {
       // Fade in to 55% over 2s
       let fadeInVol = 0;
       const fadeIn = setInterval(() => {
-        fadeInVol += 0.17 / 20;
-        if (fadeInVol >= 0.17) { bgAudio.volume = 0.17; clearInterval(fadeIn); }
+        fadeInVol += 0.1 / 20;
+        if (fadeInVol >= 0.1) { bgAudio.volume = 0.1; clearInterval(fadeIn); }
         else { bgAudio.volume = fadeInVol; }
       }, 100);
     }, 6000));
