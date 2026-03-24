@@ -2199,30 +2199,76 @@ function playSFX(src, vol) {
 
 // Hook BG music into scene changes — runs AFTER show() and playVO()
 const _showWithVO = show;
+let bgMusicPlaying = false; // Track if continuous BG music is active (slides 5-11)
+
 show = function(i) {
   _showWithVO(i);
-  stopBG(); // Stop any playing BG/SFX from previous scene
+
+  // Stop SFX on any scene change
+  sfxAudio.pause();
+  sfxAudio.removeAttribute('src');
 
   // Slide 1 — Intro BG music, fade out near end
   if (i === 0) {
+    bgMusicPlaying = false;
+    stopBG();
     playBG('bg-music/Slide 1 - Intro.mp3', 0.3);
-    // Fade out 1.5s before slide ends (dur[0] = 30000)
     act.push(setTimeout(() => fadeBG(1500), dur[0] - 1500));
   }
 
-  // Slide 5 — Preload whoosh, then play exactly when logo appears (z5a at 4500ms)
-  if (i === 4) {
+  // Slides 2-3-4 — silence (stop any BG)
+  else if (i >= 1 && i <= 3) {
+    bgMusicPlaying = false;
+    stopBG();
+  }
+
+  // Slide 5 — Whoosh/thump with logo, then start continuous BG music
+  else if (i === 4) {
+    stopBG();
+    // Preload whoosh — trigger slightly BEFORE logo (4300ms) so they feel simultaneous
     sfxAudio.src = 'bg-music/Slide 5 - Product Show.mp3';
-    sfxAudio.load(); // Force preload so it's ready instantly
+    sfxAudio.load();
     act.push(setTimeout(() => {
       sfxAudio.volume = 0.6;
       sfxAudio.currentTime = 0;
       sfxAudio.play().catch(() => {});
-    }, 4500));
+    }, 4300));
+    // Start continuous BG music after whoosh settles (~6s into slide 5)
+    act.push(setTimeout(() => {
+      bgMusicPlaying = true;
+      bgAudio.src = 'bg-music/BG Music.mp3';
+      bgAudio.volume = 0;
+      bgAudio.loop = true; // Loop in case it's not long enough
+      bgAudio.currentTime = 0;
+      bgAudio.play().catch(() => {});
+      // Fade in to 55% over 2s
+      let fadeInVol = 0;
+      const fadeIn = setInterval(() => {
+        fadeInVol += 0.55 / 20;
+        if (fadeInVol >= 0.55) { bgAudio.volume = 0.55; clearInterval(fadeIn); }
+        else { bgAudio.volume = fadeInVol; }
+      }, 100);
+    }, 6000));
   }
 
-  // Slide 12 — Outro BG music starts immediately
-  if (i === 11) {
+  // Slides 6-10 — BG music continues playing (do NOT stop it)
+  else if (i >= 5 && i <= 9) {
+    // Don't touch bgAudio — let it keep playing
+  }
+
+  // Slide 11 — BG music fades out over last 3s to transition to outro
+  else if (i === 10) {
+    // Fade out BG music near the end of slide 11
+    act.push(setTimeout(() => {
+      bgMusicPlaying = false;
+      fadeBG(3000);
+    }, dur[10] - 3500));
+  }
+
+  // Slide 12 — Outro music starts
+  else if (i === 11) {
+    bgMusicPlaying = false;
+    stopBG();
     playBG('bg-music/slide 12 - outro.mp3', 0.35);
   }
 };

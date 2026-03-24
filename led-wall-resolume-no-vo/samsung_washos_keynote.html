@@ -2130,29 +2130,72 @@ function playSFX(src, vol) {
 
 // Hook BG music into scene changes
 const _origShow = show;
+let bgMusicPlaying = false;
+
 show = function(i) {
   _origShow(i);
-  stopBG();
+
+  sfxAudio.pause();
+  sfxAudio.removeAttribute('src');
 
   // Slide 1 — Intro BG music, fade out near end
   if (i === 0) {
+    bgMusicPlaying = false;
+    stopBG();
     playBG('bg-music/Slide 1 - Intro.mp3', 0.4);
     act.push(setTimeout(() => fadeBG(1500), dur[0] - 1500));
   }
 
-  // Slide 5 — Preload whoosh, then play exactly when logo appears (z5a at 4500ms)
-  if (i === 4) {
+  // Slides 2-3-4 — silence
+  else if (i >= 1 && i <= 3) {
+    bgMusicPlaying = false;
+    stopBG();
+  }
+
+  // Slide 5 — Whoosh/thump with logo, then continuous BG music
+  else if (i === 4) {
+    stopBG();
     sfxAudio.src = 'bg-music/Slide 5 - Product Show.mp3';
     sfxAudio.load();
     act.push(setTimeout(() => {
       sfxAudio.volume = 0.7;
       sfxAudio.currentTime = 0;
       sfxAudio.play().catch(() => {});
-    }, 4500));
+    }, 4300));
+    // Start continuous BG music after whoosh
+    act.push(setTimeout(() => {
+      bgMusicPlaying = true;
+      bgAudio.src = 'bg-music/BG Music.mp3';
+      bgAudio.volume = 0;
+      bgAudio.loop = true;
+      bgAudio.currentTime = 0;
+      bgAudio.play().catch(() => {});
+      let fadeInVol = 0;
+      const fadeIn = setInterval(() => {
+        fadeInVol += 0.6 / 20;
+        if (fadeInVol >= 0.6) { bgAudio.volume = 0.6; clearInterval(fadeIn); }
+        else { bgAudio.volume = fadeInVol; }
+      }, 100);
+    }, 6000));
   }
 
-  // Slide 12 — Outro BG music starts immediately
-  if (i === 11) {
+  // Slides 6-10 — BG music continues
+  else if (i >= 5 && i <= 9) {
+    // Don't stop bgAudio
+  }
+
+  // Slide 11 — fade out BG music
+  else if (i === 10) {
+    act.push(setTimeout(() => {
+      bgMusicPlaying = false;
+      fadeBG(3000);
+    }, dur[10] - 3500));
+  }
+
+  // Slide 12 — Outro music
+  else if (i === 11) {
+    bgMusicPlaying = false;
+    stopBG();
     playBG('bg-music/slide 12 - outro.mp3', 0.45);
   }
 };
